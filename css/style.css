@@ -274,10 +274,11 @@ ul li {
 }
 
 .row.workspace-wrapper {
-	max-height:528px;
+	height:100%;
 	overflow-y:scroll;
 	margin-right: -15px;
 	padding-top:20px;
+	padding-bottom:20px;
 }
 
 .team-wrapper {
