@@ -2,7 +2,20 @@
 
 $(document).ready(function() {
 		
+	/* DESPLEGABLE PARA PROJECTS STATES */
 	
+	$('.all-projects-states').click(function (e) {
+	  e.preventDefault();
+	  $('#other-projects-states').toggleClass("visible");
+    });
+	
+	/* DESPLEGABLE PARA SUBTASKS */
+	
+	$('a.view-subtask').click(function (e) {
+	  e.preventDefault();
+	  $(this).parent().parent().find('.subtask-wrapper').toggleClass("visible");
+	  $(this).parent().parent().toggleClass("active");
+    });
 		
 	
 	/* END */

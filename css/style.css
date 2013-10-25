@@ -34,6 +34,20 @@ body {
 	margin:0;
 }
 
+.modal.fade .modal-dialog {
+	-webkit-transform:none;
+	-ms-transform:none;
+	transform: none;
+	-webkit-transition: -webkit-transform .3s ease-out;
+	-moz-transition: -moz-transform .3s ease-out;
+	-o-transition: -o-transform .3s ease-out;
+	transition: transform .3s ease-out;
+}
+
+body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
+margin-right: 0px;
+}
+
 .dropdown {
 	float:left;
 }
@@ -49,6 +63,17 @@ body {
 
 .dropdown-menu .divider {
 	margin:0;
+}
+
+.dropdown .caret {
+	position: absolute;
+	top: -5px;
+	left: 50%;
+	margin-left: -2px;
+	border-top: 0px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid #FFF;
+	border-left: 5px solid transparent;
 }
 
 .btn:focus {
@@ -129,12 +154,12 @@ ul li {
 }
 
 .add-new.open > .btn {
-	border-radius:4px 4px 4px 0;
+	border-radius:4px 4px 0 0;
 }
 
 .add-new .dropdown-menu {
-	min-width: 160px;
-	margin-top: -1px;
+	min-width: 199px;
+	margin-top: 2px;
 	margin-left: -1px;
 }
 
@@ -166,6 +191,10 @@ ul li {
 
 .notifications a:focus, .messages a:focus {
 	opacity:0.6;
+}
+
+.notifications .dropdown-menu {
+	margin-left: -101px;
 }
 
 .notifications .dropdown-menu a {
@@ -204,13 +233,6 @@ ul li {
 	color: #FFF;
 }
 
-.notifications .caret {
-	border-width: 5px 5px 0;
-	border-bottom-width: 0;
-	border-top-color: #FFF;
-	border-bottom-color: #FFF;
-}
-
 .messages a {
 	background:url(images/message-icon.png);
 	width:19px;
@@ -237,10 +259,12 @@ ul li {
 
 .sidebar {
 	background:#F3F3F3;
+	border-right: 1px solid #CCC;
+	padding-left: 0;
 }
 
 .search-form {
-	padding:12px 0;
+	padding: 12px 0px 12px 15px;
 }
 
 .search-form input {
@@ -256,21 +280,30 @@ ul li {
 	border-bottom:1px solid #999999;
 }
 
-.dropdown.company {
+.company {
 	width: 100%;
 	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.company:hover {
+	background:#D4D4D4;
 }
 
 .company a {
 	padding-left: 15px;
 	width: 100%;
 	display: block;
-	background:url(images/btn-arrow-dark.png) no-repeat right center;
+	background:url(images/pencil-icon.png) no-repeat right center;
 	font-weight:bold;
 	color:#535353;
-	margin: 10px 0;
+	padding: 10px 0 10px 15px;
 	font-size: 13px;
 	text-transform:uppercase;
+}
+
+.company a:hover {
+	text-decoration:none;
 }
 
 .row.workspace-wrapper {
@@ -278,7 +311,6 @@ ul li {
 	overflow-y:scroll;
 	margin-right: -15px;
 	padding-top:20px;
-	padding-bottom:20px;
 }
 
 .team-wrapper {
@@ -292,6 +324,10 @@ ul li {
 	font-size: 13px;
 }
 
+.team-name a {
+	padding-left:15px;
+}
+
 .team-content {
 	margin-top:10px;
 }
@@ -299,6 +335,7 @@ ul li {
 .team-people {
 	margin-bottom:10px;
 	height: 23px;
+	padding-left: 15px;
 }
 
 .team-people a {
@@ -329,21 +366,91 @@ ul li {
 	background:url(images/btn-plus.png) no-repeat right center;
 	padding-right:15px;
 	font-size: 13px;
+	padding-left: 15px;
+}
+
+.team-content .add-project:hover {
+	text-decoration:none;
 }
 
 .projects-team li {
 	padding-top:5px;
+	position:relative;
 }
 
 .projects-team li a {
-	color:#262626;
+	color:#333333;
 	font-size:12px;
+	display: block;
+	padding: 4px 0 4px 15px;
+}
+
+.projects-team li:hover > a{
+	text-decoration:none;
+	background:#E0E0E0;
+	color:#666;
+}
+
+.projects-team li .dropdown {
+	position:absolute;
+	right:0;
+	top:0;
+	width:100%;
+}
+
+.projects-team li .dropdown a.options-arrow {
+	right: 12px;
+	position: absolute;
+	z-index:100;
+	padding:0px;
+	top:7px;
+	background:url(images/arrow-options.png) #EEE no-repeat center;
+	width:21px;
+	height:20px;
+	border:1px solid #CCC;
+	border-radius: 3px;
+	opacity:0;
+}
+
+.projects-team li:hover .dropdown a.options-arrow, .projects-team li .dropdown.open a.options-arrow {
+	opacity:1!important;
+}
+
+.projects-team li .dropdown-menu {
+	right: 0;
+	left: inherit;
+	top: 28px;
+	min-width:115px;
+}
+
+.projects-team li .dropdown-menu li {
+	padding-top:0;
+}
+
+.projects-team li .dropdown a.options-arrow:hover, .projects-team li .dropdown.open a.options-arrow {
+	background:url(images/arrow-options.png) #FFF no-repeat center;
+}
+
+.workspace-wrapper::-webkit-scrollbar, .teams-updates::-webkit-scrollbar {
+    width: 8px;
+}
+
+.workspace-wrapper::-webkit-scrollbar-track, .teams-updates::-webkit-scrollbar-track {
+	background:#CCCCCC;
+}
+
+.workspace-wrapper::-webkit-scrollbar-thumb, .teams-updates::-webkit-scrollbar-thumb {
+    background: #999999; 
+	cursor: pointer;
+}
+
+.workspace-wrapper::-webkit-scrollbar-thumb:window-inactive, .teams-updates::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255,0,0,0.4); 
 }
 
 /* Content */
 
 .app-content {
-	border-left: 1px solid #CCC;
 	padding-right:0;
 }
 
@@ -361,7 +468,7 @@ ul li {
 	width: 19.2%;
 	float: left;
 	border-radius: 4px;
-	background: #666;
+	background: #CCC;
 	height: 94px;
 	color: #FFF;
 	box-sizing: border-box;
@@ -397,6 +504,21 @@ ul li {
 
 .progress-bar {
 	background-color:#999999;
+}
+
+#other-projects-states {
+	width: 100%;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	max-height:0;
+	overflow: hidden;
+}
+
+#other-projects-states.visible {
+	max-height:25em;
 }
 
 .color-1 {
@@ -441,18 +563,26 @@ ul li {
 	border-bottom:1px solid #CCCCCC;
 }
 
+.module.states .clearfix:first-child {
+	margin:15px 0 0;
+}
+
+.module.states .clearfix {
+	margin:15px 0;
+}
+
 .module .dropdown {
 	float:right;
 }
 
-.options .btn {
-	background: url(images/options-icon.png) no-repeat center #666;
+.filter .btn {
+	background: url(images/filter-icon.png) no-repeat center #666;
 	height:30px;
 	width:30px;
 	margin-right: 5px;
 }
 
-.filter .btn {
+.options .btn {
 	background: url(images/btn-arrow.png) no-repeat center #666;
 	height:30px;
 	width:30px;
@@ -466,6 +596,7 @@ ul li {
 	margin-bottom:10px;
 	width:100%;
 	color:#333333;
+	float: left;
 }
 
 #tasks .task:first-child {
@@ -474,8 +605,8 @@ ul li {
 
 .task {
 	width:100%;
-	height: 36px;
 	border-top: 1px solid #ddd;
+	float:left;
 }
 
 .task div {
@@ -501,6 +632,24 @@ ul li {
 
 .task-title {
 	width:310px;
+}
+
+.task-title span {
+	float:left;
+}
+
+a.view-subtask {
+	background:url(images/icon-subtask.png) #EEE no-repeat center;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #CCC;
+	border-radius: 3px;
+	float:left;
+	margin-left: 8px;
+}
+
+a.view-subtask:hover {
+	background:url(images/icon-subtask.png) #FFF no-repeat center;
 }
 
 .task-project .label {
@@ -612,6 +761,71 @@ a.remove-task-btn {
 
 #tasks .task:hover {
 	background:#EFEFEF;
+}
+
+.task.has-subtask.active {
+	background: url(images/bg-line-updates.jpg) repeat-y 38px center;
+}
+
+#tasks .task.has-subtask.active:hover {
+	background: url(images/bg-line-updates.jpg) #EFEFEF repeat-y 38px center;
+}
+
+.task .subtask-wrapper {
+	width: 100%;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	max-height:0;
+	overflow: hidden;
+	padding-top: 0;
+}
+
+.task .subtask-wrapper.visible {
+	max-height:15em;
+}
+
+.subtask {
+	width:100%;
+	padding-top: 0!important;
+	clear:both;
+	padding-bottom: 7px;
+}
+
+.subtask .task-state {
+	margin-left: 38px;
+	padding-left: 10px;
+	width: 40px;
+	background:url(images/subtask-line.jpg) left 18px no-repeat;
+}
+
+/* Modal TASK */
+
+#modal-task .modal-dialog {
+	width:70%;
+}
+
+#modal-task .modal-body {
+	padding:20px 0;
+}
+
+#modal-task .teams-update-wrapper {
+	border-left:1px solid #CCC;
+}
+
+#modal-task .teams-update-wrapper .update-body {
+	width: 89%
+}
+
+#modal-task .teams-update-wrapper .teams-update {
+	padding-bottom:0;
+}
+
+#modal-task .teams-update-wrapper .task-update {
+	margin-bottom:0;
+	border-bottom:none;
 }
 
 /* Teams Updates */
