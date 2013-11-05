@@ -1,0 +1,16 @@
+#####################################################################
+# HTACCESS: se encarga de la redireccion autom�tica.                #
+#    Si la derecci�n de la URL no se trata de un archivo (!-f),     #
+#       ni se trata de un directorio (!-d):                         #
+#    Tomo toda la URL (:*) la coloco en la variable $1(llamada s)   #
+#       y la la apendeo a index.php                                 #
+#    [L] indica que la url no cambie a index.php y [QSA] apendea    #
+#       si hay algun querrystring                                   #
+#####################################################################
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule (.*) /admin/index.php?s=$1 [L,QSA]
+</IfModule>

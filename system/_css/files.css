@@ -1,0 +1,86 @@
+/* 
+    Document   : extensions.css
+    Created on : 24-jun-2011, 10:34:10
+    Author     : clavepablo
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+ul.filelist > a[href$='.pdf'] {
+    display:inline-block;
+    padding-left:20px;
+    line-height:18px;
+    background:transparent url(images/pdf.png) center left no-repeat;
+}
+
+ul.filelist > a[href$='.bmp'], 
+ul.filelist > a[href$='.gif'], 
+ul.filelist > a[href$='.jpg'], 
+ul.filelist > a[href$='.png'] {
+    display:inline-block;
+    padding-left:20px;
+    line-height:18px;
+    background:transparent url(images/document-image.png) center left no-repeat;
+}
+
+ul.filelist > a[href$='.wav'], 
+ul.filelist > a[href$='.mp3'], 
+ul.filelist > a[href$='.wma'], 
+ul.filelist > a[href$='.ogg'] {
+    display:inline-block;
+    padding-left:20px;
+    line-height:18px;
+    background:transparent url(images/document-music.png) center left no-repeat;
+}
+
+ul.filelist > a[href$='.swf'], 
+ul.filelist > a[href$='.fla'], 
+ul.filelist > a[href$='.swd'] {
+    display:inline-block;
+    padding-left:20px;
+    line-height:18px;
+    background:transparent url(images/document-flash.png) center left no-repeat;
+}
+
+ul.filelist > a[href$='.xls'], 
+ul.filelist > a[href$='.csv'], 
+ul.filelist > a[href$='.xlt'], 
+ul.filelist > a[href$='.xlw'] {
+    display:inline-block;
+    padding-left:20px;
+    line-height:18px;
+    background:transparent url(images/document-excel.png) center left no-repeat;
+}
+
+ul.filelist > a[href$='.ppt'], 
+ul.filelist > a[href$='.pps'] {
+    display:inline-block;
+    padding-left:20px;
+    line-height:18px;
+    background:transparent url(images/pps.png) center left no-repeat;
+}
+
+ul.filelist > a[href$='.doc'], 
+ul.filelist > a[href$='.docx'], 
+ul.filelist > a[href$='.rtf'], 
+ul.filelist > a[href$='.txt'], 
+ul.filelist > a[href$='.wps'] {
+    display:inline-block;
+    padding-left:20px;
+    line-height:18px;
+    background:transparent url(images/document-word.png) center left no-repeat;
+}
+
+ul.filelist > a[href$='.zip'], 
+ul.filelist > a[href$='.gzip'], 
+ul.filelist > a[href$='.rar'] {
+    display:inline-block;
+    padding-left:20px;
+    line-height:18px;
+    background:transparent url(images/document-zipper.png) center left no-repeat;
+}
