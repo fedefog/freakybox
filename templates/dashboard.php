@@ -13,6 +13,17 @@
     <link href="/css/style.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900,300italic,400italic,900italic' rel='stylesheet' type='text/css'>
 
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/freakybox.js"></script>
+	
+	<script src="http://192.168.0.107:5000/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="/js/frontend.js"></script>
+	<script>
+		var Frontend = new Core();
+		Frontend.init('192.168.0.107:5000');
+	</script>
+	
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="../../assets/js/html5shiv.js"></script>
@@ -178,11 +189,11 @@
                                 
 								<span class="clearfix"></span>
 								
-                                <a class="add-project" data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
+                                <a class="add-project" data-toggle="modal" data-team="1" href="#projectModal" role="menuitem" tabindex="-1">
                                     PROJECT
                                 </a>
                                 
-                                <ul class="projects-team">
+                                <ul id="team-1" class="projects-team">
                                     <li>
 										<a href="" title="">Project 1</a>
 										<div class="dropdown project-options">
@@ -282,11 +293,11 @@
 								
 								<span class="clearfix"></span>
                                 
-                                <a class="add-project" data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
+                                <a class="add-project" data-toggle="modal" data-team="2" href="#projectModal" role="menuitem" tabindex="-1">
                                     PROJECT
                                 </a>
                                 
-                                <ul class="projects-team">
+                                <ul id="team-2" class="projects-team">
                                     <li>
 										<a href="" title="">Project 1</a>
 										<div class="dropdown project-options">
@@ -386,11 +397,11 @@
 								
 								<span class="clearfix"></span>
                                 
-                                <a class="add-project" data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
+                                <a class="add-project" data-toggle="modal" data-team="3" href="#projectModal" role="menuitem" tabindex="-1">
                                     PROJECT
                                 </a>
                                 
-                                <ul class="projects-team">
+                                <ul id="team-3" class="projects-team">
                                     <li>
 										<a href="" title="">Project 1</a>
 										<div class="dropdown project-options">
@@ -1130,6 +1141,70 @@
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
               </div><!-- /.modal -->
+			  
+			  <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">Create Project</h4>
+                    </div>
+                    <div class="modal-body">
+                      <form class="form-horizontal" role="form">
+						  <input type="hidden" name="team" value=""/>
+                          <div class="form-group">
+                            <label for="project-name" class="col-lg-3 control-label">Project Name</label>
+                            <div class="col-lg-9">
+                              <input type="text" name="name" class="form-control" id="project-name" placeholder="Project Name">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                          	<label for="team-privacy" class="col-lg-3 control-label">Project Privacy</label>
+                            <div class="col-lg-9">
+                              <div class="radio">
+                              	<label>
+                                <input type="radio" id="project-private" name="private" value="0" checked>
+                                Public
+                                </label>
+                                </div>
+                                <div class="radio">
+                                <label>
+                                <input type="radio" id="project-private" name="private" value="1">
+                                Private
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-9">
+                              <button type="submit" class="btn btn-default btn-submit">Create New Project</button>
+                            </div>
+                          </div>
+                    </form>
+						<script type="text/javascript">
+							$(document).ready(function(){
+								$(document).on("click", ".add-project", function () {
+									 var teamId = $(this).data('team');
+									 $("div#projectModal input[name=team]").val(teamId);
+								});
+
+								$("div#projectModal button.btn-submit").click(function(e){
+									e.preventDefault();
+									var proyecto = {
+										team_id: $("div#projectModal input[name=team]").val(),
+										nombre: $("div#projectModal input[name=name]").val(),
+										privado: $("div#projectModal input[name=private]:checked").val()
+									};
+									Frontend.createProject(proyecto);
+									$('input#project-name').val('');
+									$('div#projectModal').modal('hide');
+								});								
+							});
+						</script>
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
               
               <div class="modal fade" id="modal-task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -1332,18 +1407,5 @@
         </div> <!-- /container -->
         
      </div><!-- / wrap -->   
-
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
-    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/js/freakybox.js"></script>
-	
-	<script src="/socket.io/socket.io.js"></script>
-	<script type="text/javascript" src="/js/frontend.js"></script>
-	<script>
-		var Frontend = new Core();
-		Frontend.init('192.168.0.107:5000');
-		var proyecto = {name:"Nombre del proyecto"};
-		Frontend.createProject(proyecto);
-	</script>
   </body>
 </html>
