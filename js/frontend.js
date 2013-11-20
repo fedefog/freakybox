@@ -2,6 +2,9 @@ var Core = (function() {
     var _host;
 	var _socket;
 	
+	// Keep the team id of the current user.
+	var _team;
+	
     function Core(){};	
 			
 	Core.prototype.init = function(url) {
