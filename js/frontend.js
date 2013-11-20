@@ -3,16 +3,12 @@ var Core = (function() {
 	var _socket;
 	
     function Core(){};	
-		
+			
 	Core.prototype.init = function(url) {
 		_host = url;
 		_socket = io.connect(_host);
 		
-		_socket.on('chat', function(data) {
-			$('div#messages').append($('<p>'), data);
-		});
-		
-		_socket.on('createProject', updateProjects);
+		_socket.on('createProject', createProject);
     };
 	
     Core.prototype.doAction = function(event, data) {
@@ -20,12 +16,13 @@ var Core = (function() {
     };
 	
 	Core.prototype.createProject = function(data) {
+		createProject(data);
         _socket.emit('createProject', data);
     };
 	
-	var updateProjects = function() {
-        // Private code here
+	var createProject = function(data) {
+        $('ul.projects').append($('<li>'), data.name);
     };
-		
+	
     return Core;
 })();
