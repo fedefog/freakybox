@@ -32,6 +32,17 @@ io.sockets.on('connection', function (socket) {
 				
 		connection.query('INSERT INTO proyecto SET ?', proyecto, function(err, result) {
 			if (err) throw err;
+			
+			var id = result.insertId;
+			
+			var rel_proyectousuario = {
+				fk_proyecto_id: id,
+				fk_usuario_id: 1
+			};
+			
+			connection.query('INSERT INTO rel_proyectousuario SET ?', rel_proyectousuario, function(err, result) {
+				if (err) throw err;
+			});
 		});
     });
 });
