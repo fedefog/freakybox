@@ -1,1 +1,0 @@
-Archivo: novedad.php
