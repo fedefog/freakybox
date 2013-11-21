@@ -261,6 +261,15 @@ ul li {
 	background:#F3F3F3;
 	border-right: 1px solid #CCC;
 	padding-left: 0;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+.sidebar.no-visible {
+	margin-left:-17%;
 }
 
 .search-form {
@@ -452,6 +461,15 @@ ul li {
 
 .app-content {
 	padding-right:0;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+.app-content.full-width {
+	width:100%!important;
 }
 
 /* Projects States */

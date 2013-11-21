@@ -17,6 +17,13 @@ $(document).ready(function() {
 	  $(this).parent().parent().toggleClass("active");
     });
 		
+	/* CLOSE SIDEBAR */	
+	
+	$('a.close-sidebar').click(function (e) {
+	  e.preventDefault();
+	  $('.sidebar').toggleClass("no-visible");
+	  $('.app-content').toggleClass("full-width");
+    });
 	
 	/* END */
 		
