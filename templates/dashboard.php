@@ -10,10 +10,12 @@
     <title>Freakybox</title>
 
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900,300italic,400italic,900italic' rel='stylesheet' type='text/css'>
 
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/js/freakybox.js"></script>
 	
@@ -53,7 +55,7 @@
                           <a data-toggle="dropdown" class="btn" href="#">Add New<span></span></a>
                           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                          	 <span class="caret"></span>
-                            <li role="presentation"><a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">Create a Team</a></li>
+                            <li role="presentation"><a data-toggle="modal" href="#teamModal" role="menuitem" tabindex="-1">Create a Team</a></li>
                             <li class="divider"></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Create a Project</a></li>
                             <li class="divider"></li>
@@ -792,7 +794,7 @@
             
             </div><!-- / row footer -->  
             
-              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal fade" id="teamModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -804,27 +806,131 @@
                           <div class="form-group">
                             <label for="team-name" class="col-lg-3 control-label">Team Name</label>
                             <div class="col-lg-9">
-                              <input type="text" class="form-control" id="team-name" placeholder="Team Name">
+                              <input type="text" name="team" class="form-control" id="team-name" placeholder="Team Name">
                             </div>
                           </div>
                           <div class="form-group">
-                            <label for="members-team" class="col-lg-3 control-label">Members</label>
+                            <label for="team-name" class="col-lg-3 control-label">Team Members</label>
                             <div class="col-lg-9">
-                              <textarea id="members-team" class="form-control" placeholder="Name or Email" rows="3"></textarea>
+                              <input type="text" class="form-control tagsearch" id="user-name" placeholder="User or E-mail">
+							  <div class="tagholder">
+							  </div>
                             </div>
                           </div>
+							<style>
+
+								.ui-menu .ui-menu-item a {
+								  font-size: 12px;
+								}
+								.ui-autocomplete {
+								  position: absolute;
+								  top: 0;
+								  left: 0;
+								  z-index: 1510 !important;
+								  float: left;
+								  display: none;
+								  min-width: 160px;
+								  width: 160px;
+								  padding: 4px 0;
+								  margin: 2px 0 0 0;
+								  list-style: none;
+								  background-color: #ffffff;
+								  border-color: #ccc;
+								  border-color: rgba(0, 0, 0, 0.2);
+								  border-style: solid;
+								  border-width: 1px;
+								  -webkit-border-radius: 2px;
+								  -moz-border-radius: 2px;
+								  border-radius: 2px;
+								  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+								  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+								  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+								  -webkit-background-clip: padding-box;
+								  -moz-background-clip: padding;
+								  background-clip: padding-box;
+								  *border-right-width: 2px;
+								  *border-bottom-width: 2px;
+								}
+							</style>
+							<script type="text/javascript">
+								$(document).ready(function(){
+									$(".tagsearch").each(function() {
+										var el = $(this);
+										el.autocomplete({
+											source: "/ajax/getMembers",
+											minLength: 3,
+											select: function(event, ui) {
+												var tag = '<span class="tag" data-id="'+ui.item.id+'" data-nombre="'+ui.item.nombre+'" data-avatar="'+ui.item.avatar+'"><img src="http://www.gravatar.com/avatar/'+ui.item.avatar+'?d=identicon&s=22" title="'+ui.item.nombre+'" alt="'+ui.item.nombre+'" /><a href="#" class="removetag" title="Quitar">x</a></span>';
+												el.val("");
+												el.next().append(tag);
+												return false;
+											},
+											messages: {
+												noResults: '',
+												results: function() {}
+											},
+											create: function () {
+												$(this).data('ui-autocomplete')._renderItem = function (ul, item) {
+													return $('<li>')
+														.data( "item.autocomplete", item )
+														.append( '<a><img src="http://www.gravatar.com/avatar/'+item.avatar+'?d=identicon&s=22" title="'+item.nombre+'" alt="'+item.nombre+'" />' + item.nombre + '</a>' )
+														.appendTo(ul);
+												};
+											}
+										});
+									});
+									$(".tagsearch").keypress(function (e){
+										if (e.which == 13) {
+											e.preventDefault();
+											var tag = '<span class="tag" data-id="0" data-nombre="" data-email="'+$(this).val()+'"><img src="http://www.gravatar.com/avatar/000?d=identicon&s=22" title="'+$(this).val()+'" alt="'+$(this).val()+'" /><a href="#" class="removetag" title="Quitar">x</a></span>';
+											$(this).next().append(tag);
+											$(this).val("");
+											return false;
+										}
+									});
+									$(document).on('click', '.removetag', function(){
+										$(this).parent().remove();
+										return false;
+									});
+
+									$("div#teamModal button.btn-submit").click(function(e){
+										e.preventDefault();
+										var members = [];
+										$("div#teamModal span.tag").each(function(index, value){
+											var member = {
+												id: $(this).data("id"),
+												nombre: $(this).data("nombre"),
+												avatar: $(this).data("avatar"),
+												email: $(this).data("email")
+											};
+											members.push(member);
+										});
+										var team = {
+											nombre: $("div#teamModal input[name=team]").val(),
+											privado: $("div#teamModal input[name=private]:checked").val(),
+											members: members
+										};
+
+										Frontend.createTeam(team);
+										
+										$("div#teamModal input[name=team]").val('');
+										$("div#teamModal div.tagholder").html('');
+										$('div#teamModal').modal('hide');
+									});		
+								});
+							</script>
                           <div class="form-group">
                           	<label for="team-privacy" class="col-lg-3 control-label">Team Privacy</label>
                             <div class="col-lg-9">
                               <div class="radio">
                               	<label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                <input type="radio" name="private" id="optionsRadios1" value="0" checked>
                                 Public
                                 </label>
                                 </div>
                                 <div class="radio">
                                 <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                <input type="radio" name="private" id="optionsRadios2" value="1">
                                 Private
                                 </label>
                               </div>
@@ -832,7 +938,7 @@
                           </div>
                           <div class="form-group">
                             <div class="col-lg-offset-3 col-lg-9">
-                              <button type="submit" class="btn btn-default">Create New Team</button>
+                              <button type="submit" class="btn btn-default btn-submit">Create New Team</button>
                             </div>
                           </div>
                     </form>
