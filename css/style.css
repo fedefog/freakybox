@@ -851,7 +851,7 @@ a.remove-task-btn {
 .teams-updates {
 	border: 1px solid #CCC;
 	background: #FFF;
-	padding: 15px 0;
+	padding: 15px 0 0;
 	height:403px;
 	overflow-y: scroll;
 }
@@ -922,6 +922,25 @@ a.remove-task-btn {
 
 .follow-task a {
 	color:#333;
+}
+
+/* REPLY NOTIFICATION  */
+
+.reply-notification {
+	float: left;
+	clear: both;
+	width: 100%;
+	background: #EEE;
+	padding: 8px 24px;
+	border-left:1px solid #CCC;
+	border-right:1px solid #CCC;
+	border-bottom:1px solid #CCC;
+}
+
+.reply-notification .btn.enviar-mensaje {
+	padding: 4px 16px;
+	margin-top:5px;
+	background:#93C4E4;
 }
 
 /* FOOTER  */
