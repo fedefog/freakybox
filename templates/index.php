@@ -264,15 +264,15 @@ You can try every plan 15-day free. <span>Enjoy it!</span></div>
                       	<form role="form">
                           <div class="form-group">
                             <label for="exampleInputEmail">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail" placeholder="Email">
+                            <input name="email" type="email" class="form-control" id="exampleInputEmail" placeholder="Email">
                           </div>
                           <div class="form-group">
                             <label for="exampleInputPassword">Contraseña</label>
-                            <input type="password" class="form-control" id="exampleInputPassword" placeholder="Contraseña">
+                            <input name="password" type="password" class="form-control" id="exampleInputPassword" placeholder="Contraseña">
                           </div>
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox">Recordarme
+                              <input name="remember" type="checkbox" value="1">Recordarme
                             </label>
                           </div>
                           <button type="submit" class="btn btn-default">Iniciar Sesion</button>
