@@ -200,7 +200,7 @@ section {
 
 .quick-start #free {
 	border:none;
-	background:#4A97B8 url(images/free.png) center no-repeat;
+	background:#4A97B8 url(images-landing/free.png) center no-repeat;
 	height: 50px;
 	box-sizing: border-box;
 	width:75px;
@@ -284,7 +284,7 @@ section {
 }
 
 #features .feature {
-	background:url(images/bg-feature.jpg) repeat ;
+	background:url(images-landing/bg-feature.jpg) repeat ;
 	width:356px;
 	float:left;
 	box-sizing: border-box;
@@ -323,7 +323,7 @@ section {
 #features ul li {
 	color:#6B6B6B;
 	font-size:16px;
-	background:url(images/bullet.png) left center no-repeat;
+	background:url(images-landing/bullet.png) left center no-repeat;
 	list-style-type: none;
 	padding-left: 35px;
 	text-align: left;
@@ -382,7 +382,7 @@ section {
 /* TEam Builder */
 
 #team-builder {
-	background:url(images/bg-team-bulder.jpg) no-repeat;
+	background:url(images-landing/bg-team-bulder.jpg) no-repeat;
 	background-size:cover;
 }
 
@@ -426,12 +426,12 @@ section {
 }
 
 .steps-navigation a.left {
-	background:url(images/left-step.png);
+	background:url(images-landing/left-step.png);
 	left: 25px;
 }
 
 .steps-navigation a.right {
-	background:url(images/right-step.png);
+	background:url(images-landing/right-step.png);
 	right:25px;
 }
 
@@ -673,7 +673,7 @@ a#inicio-sesion {
 }
 
 .learn-more {
-	background:url(images/circle-home.png) no-repeat;
+	background:url(images-landing/circle-home.png) no-repeat;
 	width:117px;
 	height:61px;
 	display:block;
