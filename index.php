@@ -18,6 +18,94 @@ $usuario_id = '1';
 */
 $response = null;
 if($uri->segment(1) == 'ajax'){
+	if($uri->segment(2) == 'register'){
+		if($_POST){
+			if(empty($_POST['email']) || empty($_POST['password'])){
+				$response = array("error" => 1, "msg" => "El email y la contraseña son requeridos.");
+				die(json_encode($response));
+			}
+			
+			if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+				$response = array("error" => 1, "msg" => "El email no es una direccion valida.");
+				die(json_encode($response));
+			}
+				
+			$usuario_email = mysql_real_escape_string(strtolower($_POST['email']));
+			$exists = getRow("SELECT usuario_id FROM usuario WHERE LOWER(usuario_email) = '$usuario_email'");
+			
+			if($exists){
+				if(empty($exists['usuario_pass'])){
+					if($_POST['password'] == $_POST['passconf']){
+						$encoded = encrypt($_POST['password'], $config->get('encode_key'));
+						mysql_query("UPDATE usuario SET usuario_pass = '$encoded' WHERE LOWER(usuario_email) = '$usuario_email'");
+						//@TODO: Sistema de validacion por mail
+						$_SESSION['uid'] = $exists['usuario_id'];
+						$response = array("error" => 0);
+					}
+					else{
+						$response = array("error" => 1, "msg" => "La contraseña y la confirmación no concuerdan.");
+					}
+				}
+				else{
+					$response = array("error" => 1, "msg" => "La cuenta ya se encuentra registrada.");
+				}
+			}
+			else{
+				if($_POST['password'] == $_POST['passconf']){
+					$encoded = encrypt($_POST['password'], $config->get('encode_key'));
+					mysql_query("INSERT INTO usuario SET usuario_email = '$usuario_email', usuario_pass = '$encoded'");
+					
+					$uid = mysql_insert_id();
+					if($uid > 0){
+						//@TODO: Sistema de validacion por mail
+						$_SESSION['uid'] = $uid;
+						$response = array("error" => 0);
+					}
+					else{
+						$response = array("error" => 1, "msg" => "La cuenta ya se encuentra registrada.");
+					}
+				}
+				else{
+					$response = array("error" => 1, "msg" => "La contraseña y la confirmación no concuerdan.");
+				}
+			}
+		}
+		die(json_encode($response));
+	}
+	if($uri->segment(2) == 'login'){
+		if($_POST){
+			if(empty($_POST['email']) || empty($_POST['password'])){
+				$response = array("error" => 1, "msg" => "El email y la contraseña son requeridos.");
+				die(json_encode($response));
+			}
+			
+			if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+				$response = array("error" => 1, "msg" => "El email no es una direccion valida.");
+				die(json_encode($response));
+			}
+				
+			$usuario_email = mysql_real_escape_string(strtolower($_POST['email']));
+			$exists = getRow("SELECT usuario_id FROM usuario WHERE LOWER(usuario_email) = '$usuario_email'");
+			
+			if($exists){
+				if(empty($exists['usuario_pass'])){
+					$encoded = encrypt($_POST['password'], $config->get('encode_key'));
+				
+					if($exists['usuario_pass'] == $encoded){
+						$_SESSION['uid'] = $exists['usuario_id'];
+						$response = array("error" => 0);
+					}
+					else{
+						$response = array("error" => 1, "msg" => "La contraseña no concuerda.");
+					}
+				}
+			}
+			else{
+				$response = array("error" => 1, "msg" => "La cuenta no existe.");
+			}
+		}
+		die(json_encode($response));
+	}
 	if($uri->segment(2) == 'sidebar'){
 		$teams = getResult("
 			SELECT team_id, team_nombre, team_privado
@@ -76,6 +164,11 @@ if($uri->segment(1) == 'ajax'){
 			);
 		}
 		die(json_encode($result));
+	}
+}
+
+if($uri->segment(1) == 'index'){
+	if($_POST['register']){
 	}
 }
 
