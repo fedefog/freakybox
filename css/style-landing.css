@@ -457,7 +457,6 @@ section {
 }
 
 #footer {
-	background:#782726;
 }
 
 /* PRICE */
@@ -582,6 +581,7 @@ section {
 	padding-top: 10px;
 	padding-bottom: 20px;
 	height:38px;
+	box-sizing:content-box;
 }
 
 #price .plan .try {
@@ -594,6 +594,10 @@ section {
 	font-family: 'SohoStd-Bold', Helvetica;
 	font-size:14px;
 	line-height: 32px;
+}
+
+#price .plan .try a {
+	color:#FFF;
 }
 
 #price .sign-up-free {
@@ -612,6 +616,7 @@ section {
 #price .sign-up-free a {
 	line-height:18px;
 	font-family: 'SohoStd-Bold', Helvetica;
+	color:#FFF;
 }
 
 #price .sign-up-free span {
@@ -625,6 +630,82 @@ section {
 
 #price .sign-up-free span {
 	color:#435060;
+}
+
+/* FOOTER */
+
+#video-footer {
+	background:url(images-landing/video2.jpg);
+	height:420px;
+	width:100%;
+	position:relative;
+}
+
+#video-footer a {
+	width:100%;
+	height:100%;
+	background:url(images-landing/play.png) no-repeat center;
+	display:block;
+}
+
+#video-footer .subt {
+	color: #FFF;
+	top: 65%;
+	position: absolute;
+	left: 50%;
+	margin-left: -254px;
+	font-size: 20px;
+}
+
+#clients {
+	background:#EFF2F3;
+	position:relative;
+	text-align: center;
+}
+
+#clients .subt {
+	position:absolute;
+	top:10px;
+	color:#455264;
+	left:50%;
+	font-size:16px;
+	margin-left:-183px;
+}
+
+#footer-content {
+	background:#455264;
+	float: left;
+	width: 100%;
+}
+
+#footer-content ul {
+	float:left;
+	margin:20px 10px 20px 0;
+	width:150px;
+}
+
+#footer-content ul li a {
+	color:#FFF;
+}
+
+#footer-content ul li {
+	list-style-type:none;
+	padding:3px 0;
+}
+
+#footer-content ul li:first-child {
+	color:#FFF;
+	font-family: 'SohoStd-Bold', Helvetica;
+}
+
+#logo-footer {
+	float: right;
+	margin-top: 60px;
+	width: 200px;
+}
+
+#logo-footer img {
+	max-width:100%;
 }
 
 /* HEADER */
