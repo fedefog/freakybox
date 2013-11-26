@@ -25,6 +25,10 @@ $(document).ready(function() {
 	  $('.app-content').toggleClass("full-width");
     });
 	
+	/* DATAPICKER */
+	
+	$('.datepicker').datepicker()
+	
 	/* END */
 		
 });

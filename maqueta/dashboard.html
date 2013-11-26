@@ -17,6 +17,7 @@
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="../js/freakybox.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -48,11 +49,11 @@
                           <a data-toggle="dropdown" class="btn" href="#">Add New<span></span></a>
                           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                          	 <span class="caret"></span>
-                            <li role="presentation"><a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">Create a Team</a></li>
+                            <li role="presentation"><a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">Crear Equipo</a></li>
                             <li class="divider"></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Create a Project</a></li>
+                            <li role="presentation"><a data-toggle="modal" href="#modal-create-project" role="menuitem" tabindex="-1">Crear Proyecto</a></li>
                             <li class="divider"></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Create a Task</a></li>
+                            <li role="presentation"><a data-toggle="modal" href="#modal-create-task" role="menuitem" tabindex="-1">Crear Tarea</a></li>
                           </ul>
                         </div><!-- / dropdown -->
                         
@@ -1192,6 +1193,79 @@
 									});
 								});
 							</script>
+                          <div class="form-group">
+                          	<label for="team-privacy" class="col-lg-3 control-label">Team Privacy</label>
+                            <div class="col-lg-9">
+                              <div class="radio">
+                              	<label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                Public
+                                </label>
+                                </div>
+                                <div class="radio">
+                                <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                Private
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-9">
+                              <button type="submit" class="btn btn-default">Create New Team</button>
+                            </div>
+                          </div>
+                    </form>
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
+			  
+			  <div class="modal fade" id="modal-create-task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">Crear Tarea</h4>
+                    </div>
+                    <div class="modal-body">
+                      <form class="form-horizontal" role="form">
+                          <div class="form-group">
+                            <label for="task-name" class="col-lg-3 control-label">Nombre de la tarea</label>
+                            <div class="col-lg-9">
+                              <input type="text" class="form-control" id="task-name" placeholder="Nombre de la tarea">
+                            </div>
+                          </div>
+						  <div class="form-group">
+                            <label for="project-name" class="col-lg-3 control-label">Proyecto</label>
+                            <div class="col-lg-9">
+                              <input type="text" class="form-control" id="project-name" placeholder="Proyecto">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="user-name" class="col-lg-3 control-label">Responsable</label>
+                            <div class="col-lg-9">
+                              <input type="text" class="form-control tagsearch" id="user-name" placeholder="Usuario o E-mail">
+							  <div class="tagholder">
+							  </div>
+                            </div>
+                          </div>
+						  <div class="form-group">
+                            <label for="start-date" class="col-lg-3 control-label">Fecha de Inicio</label>
+                            <div class="col-lg-9">
+                              <input type="text" class="datepicker" value="02-16-2012" id="dp1">
+							  <div class="tagholder">
+							  </div>
+                            </div>
+                          </div>	
+						  <div class="form-group">
+                            <label for="due-date" class="col-lg-3 control-label">Fecha de Fin</label>
+                            <div class="col-lg-9">
+                              <input type="text" class="datepicker" value="02-16-2012" id="dp1">
+							  <div class="tagholder">
+							  </div>
+                            </div>
+                          </div>						  
                           <div class="form-group">
                           	<label for="team-privacy" class="col-lg-3 control-label">Team Privacy</label>
                             <div class="col-lg-9">

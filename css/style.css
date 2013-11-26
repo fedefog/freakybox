@@ -1016,3 +1016,7 @@ a.remove-task-btn {
 	background:#A8C77B;
 	color:#FFF;
 }
+
+.datepicker {
+	z-index:2000;
+}
