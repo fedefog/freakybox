@@ -13,6 +13,10 @@ $data['uri'] = $uri;
 // @TODO
 $usuario_id = '1';
 
+$team_id = $uri->segment(1);
+$project_id = $uri->segment(2);
+$task_id = $uri->segment(3);
+
 if($usuario_id > 0){
 	$teams = getResult("
 		SELECT team_id, team_nombre, team_privado
@@ -25,6 +29,18 @@ if($usuario_id > 0){
 	");
 
 	$data['teams'] = $teams;
+	
+	$projects = getResult("
+		SELECT proyecto_id, proyecto_nombre, proyecto_privado, rel_teamusuario.fk_team_id
+		FROM proyecto
+		JOIN rel_proyectoteam ON rel_proyectoteam.fk_proyecto_id = proyecto.proyecto_id
+		JOIN rel_teamusuario ON rel_teamusuario.fk_team_id = rel_proyectoteam.fk_team_id
+		WHERE rel_teamusuario.fk_usuario_id = '$usuario_id'
+		GROUP BY proyecto.proyecto_id
+		ORDER BY proyecto.proyecto_nombre ASC
+	");
+	
+	$data['projects'] = $projects;
 }
 
 /*
@@ -128,15 +144,6 @@ if($uri->segment(1) == 'ajax'){
 			WHERE rel_teamusuario.fk_team_id IN (SELECT fk_team_id FROM rel_teamusuario WHERE rel_teamusuario.fk_usuario_id = '$usuario_id')
 			ORDER BY usuario.usuario_nombre ASC
 		");
-		$proyects = getResult("
-			SELECT proyecto_id, proyecto_nombre, proyecto_privado, rel_teamusuario.fk_team_id
-			FROM proyecto
-			JOIN rel_proyectoteam ON rel_proyectoteam.fk_proyecto_id = proyecto.proyecto_id
-			JOIN rel_teamusuario ON rel_teamusuario.fk_team_id = rel_proyectoteam.fk_team_id
-			WHERE rel_teamusuario.fk_usuario_id = '$usuario_id'
-			GROUP BY proyecto.proyecto_id
-			ORDER BY proyecto.proyecto_nombre ASC
-		");
 		$sidebar = array();
 		// SE LISTA EN EL INDEX GENERAL
 		foreach($teams as $team){
@@ -145,9 +152,9 @@ if($uri->segment(1) == 'ajax'){
 					$team['usuarios'][] = $user;
 				}
 			}
-			foreach($proyects as $proyect){
-				if($team['team_id'] == $proyect['fk_team_id']){
-					$team['proyectos'][] = $proyect;
+			foreach($projects as $project){
+				if($team['team_id'] == $project['fk_team_id']){
+					$team['proyectos'][] = $project;
 				}
 			}
 			$sidebar[] = $team;
@@ -155,13 +162,25 @@ if($uri->segment(1) == 'ajax'){
 		$data['sidebar'] = $sidebar;
 	}
 	if($uri->segment(2) == 'getMembers'){
-		$users = getResult("
-			SELECT usuario_id, usuario_nombre, usuario_apellido, usuario_email
-			FROM usuario
-			JOIN rel_usuariousuario ON rel_usuariousuario.fk_contacto_id = usuario.usuario_id
-			WHERE rel_usuariousuario.fk_usuario_id = '$usuario_id'
-			ORDER BY usuario.usuario_nombre ASC
-		");
+		if($_GET['project']){
+			$users = getResult("
+				SELECT usuario_id, usuario_nombre, usuario_apellido, usuario_email
+				FROM usuario
+				JOIN rel_teamusuario ON rel_teamusuario.fk_usuario_id = usuario.usuario_id
+				JOIN rel_proyectoteam ON rel_proyectoteam.fk_team_id = rel_teamusuario.fk_team_id
+				WHERE rel_proyectoteam.fk_proyecto_id = '".intval($_GET['project'])."'
+				ORDER BY usuario.usuario_nombre ASC
+			");
+		}
+		else{
+			$users = getResult("
+				SELECT usuario_id, usuario_nombre, usuario_apellido, usuario_email
+				FROM usuario
+				JOIN rel_usuariousuario ON rel_usuariousuario.fk_contacto_id = usuario.usuario_id
+				WHERE rel_usuariousuario.fk_usuario_id = '$usuario_id'
+				ORDER BY usuario.usuario_nombre ASC
+			");
+		}
 		$result = array();
 		foreach($users as $user){
 			$result[] = array(
@@ -172,6 +191,32 @@ if($uri->segment(1) == 'ajax'){
 		}
 		die(json_encode($result));
 	}
+	if($uri->segment(2) == 'getTasks'){
+		$project_id = intval($_GET['project']);
+		$tareas = getResult("
+			SELECT tarea_id, tarea_nombre
+			FROM tarea
+			WHERE fk_proyecto_id = '$project_id' AND fk_tarea_id = '0'
+			ORDER BY tarea_creado ASC
+		");
+
+		$result = array();
+		foreach($tareas as $tarea){
+			$result[] = array(
+				'id' => $tarea['tarea_id'],
+				'nombre' => $tarea['tarea_nombre']
+			);
+		}
+		die(json_encode($result));
+	}
+}
+
+if($uri->segment(1) == '' && $usuario_id == 0){
+	$template = abs_path('templates/index.php');
+}
+
+if(is_numeric($uri->segment(1))){
+	$template = abs_path('templates/dashboard.php');
 }
 
 $output->load($template, $data, false);
