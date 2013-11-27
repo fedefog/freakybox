@@ -35,6 +35,12 @@ var Core = (function() {
         _socket.emit('createProject', data);
     };
 	
+	Core.prototype.createTask = function(data) {
+		//@TODO: Actualizar en algun lado.
+		//createTask(data);
+        _socket.emit('createTask', data);
+    };
+	
 	var createTeam = function(data) {
 		var html = '<div id="team-'+data.uid+'" class="team-wrapper">';
 		html = html + '<div class="team-name"><a title="Team Name" href="#">'+data.nombre+'</a></div>';
