@@ -13,6 +13,20 @@ $data['uri'] = $uri;
 // @TODO
 $usuario_id = '1';
 
+if($usuario_id > 0){
+	$teams = getResult("
+		SELECT team_id, team_nombre, team_privado
+		FROM team
+		JOIN rel_teamusuario ON rel_teamusuario.fk_team_id = team.team_id
+		WHERE rel_teamusuario.fk_usuario_id = '$usuario_id' 
+		OR team.fk_usuario_id = '$usuario_id'
+		GROUP BY team.team_id
+		ORDER BY team.team_nombre ASC
+	");
+
+	$data['teams'] = $teams;
+}
+
 /*
 * Composicion de la url: dominio.com/team_id/proyecto_id/ticket_id
 */
@@ -107,15 +121,6 @@ if($uri->segment(1) == 'ajax'){
 		die(json_encode($response));
 	}
 	if($uri->segment(2) == 'sidebar'){
-		$teams = getResult("
-			SELECT team_id, team_nombre, team_privado
-			FROM team
-			JOIN rel_teamusuario ON rel_teamusuario.fk_team_id = team.team_id
-			WHERE rel_teamusuario.fk_usuario_id = '$usuario_id' 
-			OR team.fk_usuario_id = '$usuario_id'
-			GROUP BY team.team_id
-			ORDER BY team.team_nombre ASC
-		");
 		$users = getResult("
 			SELECT usuario_id, usuario_nombre, usuario_apellido, usuario_email, fk_team_id
 			FROM usuario
@@ -124,14 +129,16 @@ if($uri->segment(1) == 'ajax'){
 			ORDER BY usuario.usuario_nombre ASC
 		");
 		$proyects = getResult("
-			SELECT proyecto_id, proyecto_nombre, proyecto_privado, fk_team_id
+			SELECT proyecto_id, proyecto_nombre, proyecto_privado, rel_teamusuario.fk_team_id
 			FROM proyecto
-			JOIN rel_proyectousuario ON rel_proyectousuario.fk_proyecto_id = proyecto.proyecto_id
-			WHERE rel_proyectousuario.fk_usuario_id = '$usuario_id'
+			JOIN rel_proyectoteam ON rel_proyectoteam.fk_proyecto_id = proyecto.proyecto_id
+			JOIN rel_teamusuario ON rel_teamusuario.fk_team_id = rel_proyectoteam.fk_team_id
+			WHERE rel_teamusuario.fk_usuario_id = '$usuario_id'
 			GROUP BY proyecto.proyecto_id
 			ORDER BY proyecto.proyecto_nombre ASC
 		");
 		$sidebar = array();
+		// SE LISTA EN EL INDEX GENERAL
 		foreach($teams as $team){
 			foreach($users as $user){
 				if($team['team_id'] == $user['fk_team_id']){
@@ -160,15 +167,10 @@ if($uri->segment(1) == 'ajax'){
 			$result[] = array(
 				'id' => $user['usuario_id'],
 				'nombre' => $user['usuario_nombre'].' '.$user['usuario_apellido'],
-				'avatar' => md5(strtolower( $user['usuario_email']))
+				'avatar' => md5(strtolower($user['usuario_email']))
 			);
 		}
 		die(json_encode($result));
-	}
-}
-
-if($uri->segment(1) == 'index'){
-	if($_POST['register']){
 	}
 }
 

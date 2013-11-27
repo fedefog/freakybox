@@ -15,13 +15,13 @@
 		</div><!-- / team people -->
 		<span class="clearfix"></span>
 
-		<a class="add-project" data-toggle="modal" data-team="1" href="#projectModal" role="menuitem" tabindex="-1">
+		<a class="add-project" data-toggle="modal" data-team="1" href="#modal-create-project" role="menuitem" tabindex="-1">
 			PROJECT
 		</a>
 		<ul id="team-<?php echo $team['team_id']; ?>" class="projects-team">
 		<?php foreach($team['proyectos'] as $proyecto){ ?>
 			<li>
-				<a href="" title=""><?php echo $proyecto['proyecto_nombre']; ?></a>
+				<a href="/<?php echo $team['team_id']; ?>/<?php echo $proyecto['proyecto_id']; ?>" title=""><?php echo $proyecto['proyecto_nombre']; ?></a>
 				<div class="dropdown project-options">
 					<a data-toggle="dropdown" class="options-arrow" href="#"></a>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
