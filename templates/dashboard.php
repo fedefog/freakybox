@@ -10,13 +10,15 @@
     <title>Freakybox</title>
 
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-	<link href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
+	<link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900,300italic,400italic,900italic' rel='stylesheet' type='text/css'>
 
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="/js/colorpicker.js"></script>
 	<script type="text/javascript" src="/js/freakybox.js"></script>
 	
 	<script src="http://192.168.0.107:5000/socket.io/socket.io.js"></script>
@@ -55,11 +57,11 @@
                           <a data-toggle="dropdown" class="btn" href="#">Add New<span></span></a>
                           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                          	 <span class="caret"></span>
-                            <li role="presentation"><a data-toggle="modal" href="#teamModal" role="menuitem" tabindex="-1">Create a Team</a></li>
+                            <li role="presentation"><a data-toggle="modal" href="#modal-create-team" role="menuitem" tabindex="-1">Crear Equipo</a></li>
                             <li class="divider"></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Create a Project</a></li>
+                            <li role="presentation"><a data-toggle="modal" href="#modal-create-project" role="menuitem" tabindex="-1">Crear Proyecto</a></li>
                             <li class="divider"></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Create a Task</a></li>
+                            <li role="presentation"><a data-toggle="modal" href="#modal-create-task" role="menuitem" tabindex="-1">Crear Tarea</a></li>
                           </ul>
                         </div><!-- / dropdown -->
                         
@@ -794,7 +796,7 @@
             
             </div><!-- / row footer -->  
             
-              <div class="modal fade" id="teamModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal fade" id="modal-create-team" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -893,10 +895,10 @@
 										return false;
 									});
 
-									$("div#teamModal button.btn-submit").click(function(e){
+									$("div#modal-create-team button.btn-submit").click(function(e){
 										e.preventDefault();
 										var members = [];
-										$("div#teamModal span.tag").each(function(index, value){
+										$("div#modal-create-team span.tag").each(function(index, value){
 											var member = {
 												id: $(this).data("id"),
 												nombre: $(this).data("nombre"),
@@ -905,17 +907,18 @@
 											};
 											members.push(member);
 										});
+										
 										var team = {
-											nombre: $("div#teamModal input[name=team]").val(),
-											privado: $("div#teamModal input[name=private]:checked").val(),
+											nombre: $("div#modal-create-team input[name=team]").val(),
+											privado: $("div#modal-create-team input[name=private]:checked").val(),
 											members: members
 										};
 
 										Frontend.createTeam(team);
 										
-										$("div#teamModal input[name=team]").val('');
-										$("div#teamModal div.tagholder").html('');
-										$('div#teamModal').modal('hide');
+										$("div#modal-create-team input[name=team]").val('');
+										$("div#modal-create-team div.tagholder").html('');
+										$('div#modal-create-team').modal('hide');
 									});		
 								});
 							</script>
@@ -947,70 +950,127 @@
                 </div><!-- /.modal-dialog -->
               </div><!-- /.modal -->
 			  
-			  <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal fade" id="modal-create-project" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title">Create Project</h4>
+                      <h4 class="modal-title">Crear Proyecto</h4>
                     </div>
                     <div class="modal-body">
                       <form class="form-horizontal" role="form">
-						  <input type="hidden" name="team" value=""/>
                           <div class="form-group">
-                            <label for="project-name" class="col-lg-3 control-label">Project Name</label>
+                            <label for="project-name" class="col-lg-3 control-label">Nombre Proyecto</label>
                             <div class="col-lg-9">
-                              <input type="text" name="name" class="form-control" id="project-name" placeholder="Project Name">
+                              <input type="text" class="form-control" id="project-name" name="nombre" placeholder="Nombre del Proyecto">
                             </div>
                           </div>
-                          <div class="form-group">
-                          	<label for="team-privacy" class="col-lg-3 control-label">Project Privacy</label>
+						  <div class="form-group">
+                            <label for="subtask" class="col-lg-3 control-label">Equipo</label>
                             <div class="col-lg-9">
-                              <div class="radio">
-                              	<label>
-                                <input type="radio" id="project-private" name="private" value="0" checked>
-                                Public
-                                </label>
+                            <select name="team" class="form-control">
+								<option></option>
+								<?php foreach($teams as $team){ ?>
+									<option value="<?php echo $team['team_id']; ?>"><?php echo $team['team_nombre']; ?></option>
+								<? } ?>
+                            </select>
+							  <div class="tagholder">
+							  </div>
+                            </div>
+                          </div>
+						  <div class="form-group date">
+                            <label for="start-date" class="col-lg-3 control-label">Inicio</label>
+                            <div class="col-lg-3">
+                              <input type="text" class="datepicker form-control" name="inicio" value="02-16-2012" id="dp1">
+							  <div class="tagholder">
+							  </div>
+                            </div>
+                            <label for="due-date" class="col-lg-3 control-label due-date">Fin</label>
+                            <div class="col-lg-3">
+                              <input type="text" class="datepicker form-control" name="fin" value="02-16-2012" id="dp1">
+							  <div class="tagholder">
+							  </div>
+                            </div>
+                          </div>		
+                          <div class="form-group color-project">
+                            <label for="project-color" class="col-lg-3 control-label">Color</label>
+                            <div class="col-lg-9">
+                              <span class="color-1"></span>
+                              <span class="color-2"></span>
+                              <span class="color-3"></span>
+                              <span class="color-4"></span>
+                              <span class="color-5"></span>
+                            </div>
+                          </div>
+							<div class="form-group">
+                                <label for="project-description" class="col-lg-3 control-label">Descripcion</label>
+                                <div class="col-lg-9">
+                                  <textarea id="project-description" class="form-control" name="descripcion" placeholder="Descripcion" rows="3"></textarea>
                                 </div>
-                                <div class="radio">
-                                <label>
-                                <input type="radio" id="project-private" name="private" value="1">
-                                Private
-                                </label>
-                              </div>
                             </div>
-                          </div>
+							<div class="form-group">
+								<label for="team-privacy" class="col-lg-3 control-label">Privado</label>
+								<div class="col-lg-9">
+								  <div class="radio">
+									<label>
+									<input type="radio" id="project-private" name="private" value="0" checked>
+									Public
+									</label>
+									</div>
+									<div class="radio">
+									<label>
+									<input type="radio" id="project-private" name="private" value="1">
+									Private
+									</label>
+								  </div>
+								</div>
+							  </div>
                           <div class="form-group">
                             <div class="col-lg-offset-3 col-lg-9">
-                              <button type="submit" class="btn btn-default btn-submit">Create New Project</button>
+                              <button type="submit" class="btn btn-default add-submit">Crear nuevo Proyecto</button>
                             </div>
                           </div>
                     </form>
-						<script type="text/javascript">
+					<script type="text/javascript">
 							$(document).ready(function(){
 								$(document).on("click", ".add-project", function () {
 									 var teamId = $(this).data('team');
-									 $("div#projectModal input[name=team]").val(teamId);
+									 $("div#modal-create-project select[name=team]").val(teamId);
 								});
 
-								$("div#projectModal button.btn-submit").click(function(e){
+								$("div#modal-create-project button.add-submit").click(function(e){
 									e.preventDefault();
 									var proyecto = {
-										team_id: $("div#projectModal input[name=team]").val(),
-										nombre: $("div#projectModal input[name=name]").val(),
-										privado: $("div#projectModal input[name=private]:checked").val()
+										
+										nombre: $("div#modal-create-project input[name=nombre]").val(),
+										team_id: $("div#modal-create-project select[name=team]").val(),
+										inicio: $("div#modal-create-project input[name=inicio]").val(),
+										fin: $("div#modal-create-project input[name=fin]").val(),
+										color: $("div#modal-create-project input[name=color]").val(),
+										privado: $("div#modal-create-project input[name=private]:checked").val(),
+										descripcion: $("div#modal-create-project textarea[name=descripcion]").val()
 									};
 									Frontend.createProject(proyecto);
 									$('input#project-name').val('');
-									$('div#projectModal').modal('hide');
-								});								
+									$('div#modal-create-project').modal('hide');
+								});
+
+								$("div#modal-create-project button.close").click(function(e){
+									$("div#modal-create-project input[name=nombre]").val('');
+									$("div#modal-create-project select[name=team]").val(0);
+									$("div#modal-create-project input[name=inicio]").val('');
+									$("div#modal-create-project input[name=fin]").val('');
+									$("div#modal-create-project input[name=color]").val('');
+									$("div#modal-create-project :radio[name=private]").prop('checked', false);
+									$("div#modal-create-project textarea[name=descripcion]").val('');
+								});
 							});
 						</script>
                     </div>
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
               </div><!-- /.modal -->
-              
+			                
               <div class="modal fade" id="modal-task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
