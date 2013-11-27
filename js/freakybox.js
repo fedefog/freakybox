@@ -27,7 +27,9 @@ $(document).ready(function() {
 	
 	/* DATAPICKER */
 	
-	$('.datepicker').datepicker()
+	$('.datepicker').datepicker({
+		format: 'dd/mm/yyyy'
+	});
 	
 	/* COLOR PICKER */
 	
