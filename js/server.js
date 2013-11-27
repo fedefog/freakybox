@@ -106,6 +106,46 @@ io.sockets.on('connection', function (socket) {
 			});
 		});
     });
+	
+	socket.on('createTask', function(data){		
+		//@TODO: Cambiar el 1 por el fk de usuario creador.
+		var usuario_id = 1;
+			
+		var ini = data.inicio.split('/');
+		var fin = data.fin.split('/');
+		
+		var tarea = {
+			fk_proyecto_id: data.proyecto_id,
+			fk_tarea_id: data.tarea_id,
+			fk_usuario_id: usuario_id,
+			fk_responsable_id : data.responsable_id,
+			tarea_nombre: data.nombre,
+			tarea_inicio: ini[2]+'-'+ini[1]+'-'+ini[0],
+			tarea_fin: fin[2]+'-'+fin[1]+'-'+fin[0]
+		};
+		
+		console.log(tarea);
+		
+		connection.query('INSERT INTO tarea SET ?', tarea, function(err, result) {
+			if (err) throw err;
+			
+			var id = result.insertId;
+						
+			for (var key in data.followers) {
+				var user = data.followers[key];
+				var follower_id = user.id;
+				
+				var rel_tareausuario = {
+					fk_tarea_id: id,
+					fk_usuario_id: follower_id
+				};
+				
+				connection.query('INSERT INTO rel_tareausuario SET ?', rel_tareausuario, function(err, result) {
+					if (err) throw err;
+				});
+			}
+		});
+    });
 });
 
 /*
