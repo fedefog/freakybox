@@ -1083,33 +1083,37 @@
                           <div class="form-group">
                             <label for="task-name" class="col-lg-3 control-label">Tarea</label>
                             <div class="col-lg-9">
-                              <input type="text" class="form-control" id="task-name" placeholder="Nombre de la tarea">
+                              <input type="text" class="form-control" id="task-name" name="nombre" placeholder="Nombre de la tarea">
                             </div>
                           </div>
 						  <div class="form-group">
                             <label for="project-name" class="col-lg-3 control-label">Proyecto</label>
                             <div class="col-lg-9">
-                              <input type="text" class="form-control" id="project-name" placeholder="Proyecto">
+								<select name="proyecto" class="form-control">
+									<option></option>
+									<?php foreach($projects as $project){ ?>
+										<option value="<?php echo $project['proyecto_id']; ?>"><?php echo $project['proyecto_nombre']; ?></option>
+									<?php } ?>
+								</select>
                             </div>
                           </div>
                           <div class="form-group">
                             <label for="user-name" class="col-lg-3 control-label">Responsable</label>
                             <div class="col-lg-9">
-                              <input type="text" class="form-control tagsearch" id="user-name" placeholder="Usuario o E-mail">
-							  <div class="tagholder">
-							  </div>
+								<select name="responsable" class="form-control">
+								</select>
                             </div>
                           </div>
 						  <div class="form-group date">
                             <label for="start-date" class="col-lg-3 control-label">Inicio</label>
                             <div class="col-lg-3">
-                              <input type="text" class="datepicker form-control" value="02-16-2012" id="dp1">
+                              <input type="text" class="datepicker form-control" name="inicio" value="02-16-2012" id="dp1">
 							  <div class="tagholder">
 							  </div>
                             </div>
                             <label for="due-date" class="col-lg-3 control-label due-date">Fin</label>
                             <div class="col-lg-3">
-                              <input type="text" class="datepicker form-control" value="02-16-2012" id="dp1">
+                              <input type="text" class="datepicker form-control" name="fin" value="02-16-2012" id="dp1">
 							  <div class="tagholder">
 							  </div>
                             </div>
@@ -1125,7 +1129,7 @@
                           <div class="form-group">
                             <label for="followers" class="col-lg-3 control-label">Seguidores</label>
                             <div class="col-lg-9">
-                              <input type="text" class="form-control tagsearch" id="followers" placeholder="Seguidores">
+                              <input type="text" class="form-control members" id="followers" placeholder="Seguidores">
 							  <div class="tagholder">
 							  </div>
                             </div>
@@ -1139,23 +1143,117 @@
                           <div class="form-group">
                             <label for="subtask" class="col-lg-3 control-label">Subtarea de</label>
                             <div class="col-lg-9">
-                            <select class="form-control">
-                              <option>Tarea1</option>
-                              <option>Tarea2</option>
-                              <option>Tarea3</option>
-                              <option>Tarea4</option>
-                              <option>Tarea5</option>
-                            </select>
-							  <div class="tagholder">
-							  </div>
+								<select name="maintask" class="form-control subtasks">
+								</select>
                             </div>
                           </div>		
                           <div class="form-group">
                             <div class="col-lg-offset-3 col-lg-9">
-                              <button type="submit" class="btn btn-default">Crear nueva tarea</button>
+                              <button type="submit" class="btn btn-default add-submit">Crear nueva tarea</button>
                             </div>
                           </div>
                     </form>
+					<script type="text/javascript">
+						$(document).ready(function(){						
+							$(document).on("click", ".add-task", function () {
+								var teamId = $(this).data('team');
+								$("div#modal-create-task select[name=team]").val(teamId);
+							});
+							
+							$("input.members").each(function() {
+								var el = $(this);
+								el.autocomplete({
+									source: function(request, response) {
+										$.getJSON("/ajax/getMembers", {project: $('div#modal-create-task select[name=proyecto]').val()},response);
+									},
+									minLength: 3,
+									select: function(event, ui) {
+										var tag = '<span class="tag" data-id="'+ui.item.id+'" data-nombre="'+ui.item.nombre+'" data-avatar="'+ui.item.avatar+'"><img src="http://www.gravatar.com/avatar/'+ui.item.avatar+'?d=identicon&s=22" title="'+ui.item.nombre+'" alt="'+ui.item.nombre+'" /><a href="#" class="removetag" title="Quitar">x</a></span>';
+										el.val("");
+										el.next().append(tag);
+										return false;
+									},
+									messages: {
+										noResults: '',
+										results: function() {}
+									},
+									create: function () {
+										$(this).data('ui-autocomplete')._renderItem = function (ul, item) {
+											return $('<li>')
+											.data( "item.autocomplete", item )
+											.append( '<a><img src="http://www.gravatar.com/avatar/'+item.avatar+'?d=identicon&s=22" title="'+item.nombre+'" alt="'+item.nombre+'" />' + item.nombre + '</a>' )
+											.appendTo(ul);
+										};
+									}
+								});
+							});
+							
+							$("div#modal-create-task select[name=proyecto]").change(function(){
+								$.getJSON("/ajax/getMembers", {project: $(this).val()},function(data){
+									var options = '<option></option>';
+									$.each( data, function(key, item) {
+										options += '<option value="'+item.id+'">'+item.nombre+'</option>'
+									});
+									$("div#modal-create-task select[name=responsable]").html(options);
+								});
+								
+								$.getJSON("/ajax/getTasks", {project: $(this).val()},function(data){
+									var options = '<option></option>';
+									$.each( data, function(key, item) {
+										options += '<option value="'+item.id+'">'+item.nombre+'</option>'
+									});
+									$("div#modal-create-task .subtasks").html(options);
+								});
+							});
+
+							$("div#modal-create-task button.add-submit").click(function(e){
+								e.preventDefault();
+								
+								var members = [];
+								$("div#modal-create-team span.tag").each(function(index, value){
+									var member = {
+										id: $(this).data("id"),
+										nombre: $(this).data("nombre"),
+										avatar: $(this).data("avatar"),
+										email: $(this).data("email")
+									};
+									members.push(member);
+								});
+								
+								var tarea = {
+									nombre: $("div#modal-create-task input[name=nombre]").val(),
+									proyecto_id: $("div#modal-create-task select[name=proyecto]").val(),
+									responsable_id: $("div#modal-create-task select[name=responsable]").val(),
+									inicio: $("div#modal-create-task input[name=inicio]").val(),
+									fin: $("div#modal-create-task input[name=fin]").val(),
+									followers: members,
+									tarea_id: $("div#modal-create-task select[name=maintask]").val()
+								};
+								
+								Frontend.createTask(tarea);
+								
+								$("div#modal-create-task input[name=nombre]").val('');
+								$("div#modal-create-task select[name=proyecto]").val(0);
+								$("div#modal-create-task select[name=responsable]").val(0);
+								$("div#modal-create-task input[name=inicio]").val('');
+								$("div#modal-create-task input[name=fin]").val('');
+								$("div#modal-create-task div.tagholder").html('');
+								$("div#modal-create-task select[name=maintask]").val(0);
+								
+								$('div#modal-create-task').modal('hide');
+							});
+
+							$("div#modal-create-task button.close").click(function(e){
+								$("div#modal-create-task input[name=nombre]").val('');
+								$("div#modal-create-task select[name=proyecto]").val(0);
+								$("div#modal-create-task select[name=responsable]").val(0);
+								$("div#modal-create-task input[name=inicio]").val('');
+								$("div#modal-create-task input[name=fin]").val('');
+								$("div#modal-create-task div.tagholder").html('');
+								$("div#modal-create-task select[name=subtasks]").val(0);
+							});
+						});
+						</script>
                     </div>
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
