@@ -1070,6 +1070,96 @@
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
               </div><!-- /.modal -->
+			  
+			  <div class="modal fade" id="modal-create-task" tabindex="-1" role="dialog" aria-labelledby="modal-create-teamLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">Crear Tarea</h4>
+                    </div>
+                    <div class="modal-body">
+                      <form class="form-horizontal" role="form">
+                          <div class="form-group">
+                            <label for="task-name" class="col-lg-3 control-label">Tarea</label>
+                            <div class="col-lg-9">
+                              <input type="text" class="form-control" id="task-name" placeholder="Nombre de la tarea">
+                            </div>
+                          </div>
+						  <div class="form-group">
+                            <label for="project-name" class="col-lg-3 control-label">Proyecto</label>
+                            <div class="col-lg-9">
+                              <input type="text" class="form-control" id="project-name" placeholder="Proyecto">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="user-name" class="col-lg-3 control-label">Responsable</label>
+                            <div class="col-lg-9">
+                              <input type="text" class="form-control tagsearch" id="user-name" placeholder="Usuario o E-mail">
+							  <div class="tagholder">
+							  </div>
+                            </div>
+                          </div>
+						  <div class="form-group date">
+                            <label for="start-date" class="col-lg-3 control-label">Inicio</label>
+                            <div class="col-lg-3">
+                              <input type="text" class="datepicker form-control" value="02-16-2012" id="dp1">
+							  <div class="tagholder">
+							  </div>
+                            </div>
+                            <label for="due-date" class="col-lg-3 control-label due-date">Fin</label>
+                            <div class="col-lg-3">
+                              <input type="text" class="datepicker form-control" value="02-16-2012" id="dp1">
+							  <div class="tagholder">
+							  </div>
+                            </div>
+                          </div>		
+                          <div class="form-group">
+                            <label for="tags" class="col-lg-3 control-label">Tags</label>
+                            <div class="col-lg-9">
+                              <input type="text" class="form-control tagsearch" id="tags" placeholder="Tags">
+							  <div class="tagholder">
+							  </div>
+                            </div>
+                          </div>		
+                          <div class="form-group">
+                            <label for="followers" class="col-lg-3 control-label">Seguidores</label>
+                            <div class="col-lg-9">
+                              <input type="text" class="form-control tagsearch" id="followers" placeholder="Seguidores">
+							  <div class="tagholder">
+							  </div>
+                            </div>
+                          </div>		
+                          <div class="form-group">
+                            <label for="exampleInputFile" class="col-lg-3">Adjuntar Archivo</label>
+                            <div class="col-lg-9">
+                            <input type="file" id="exampleInputFile">
+                            </div>
+                          </div>	  
+                          <div class="form-group">
+                            <label for="subtask" class="col-lg-3 control-label">Subtarea de</label>
+                            <div class="col-lg-9">
+                            <select class="form-control">
+                              <option>Tarea1</option>
+                              <option>Tarea2</option>
+                              <option>Tarea3</option>
+                              <option>Tarea4</option>
+                              <option>Tarea5</option>
+                            </select>
+							  <div class="tagholder">
+							  </div>
+                            </div>
+                          </div>		
+                          <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-9">
+                              <button type="submit" class="btn btn-default">Crear nueva tarea</button>
+                            </div>
+                          </div>
+                    </form>
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
 			                
               <div class="modal fade" id="modal-task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
