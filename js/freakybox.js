@@ -29,6 +29,10 @@ $(document).ready(function() {
 	
 	$('.datepicker').datepicker()
 	
+	/* COLOR PICKER */
+	
+	$('.colorpicker-control').colorpicker();
+	
 	/* END */
 		
 });

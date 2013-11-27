@@ -1095,20 +1095,20 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title">Create Team</h4>
+                      <h4 class="modal-title">Crear Equipo</h4>
                     </div>
                     <div class="modal-body">
                       <form class="form-horizontal" role="form">
                           <div class="form-group">
-                            <label for="team-name" class="col-lg-3 control-label">Team Name</label>
+                            <label for="team-name" class="col-lg-3 control-label">Nombre equipo</label>
                             <div class="col-lg-9">
                               <input type="text" class="form-control" id="team-name" placeholder="Team Name">
                             </div>
                           </div>
                           <div class="form-group">
-                            <label for="team-name" class="col-lg-3 control-label">Team Name</label>
+                            <label for="team-name" class="col-lg-3 control-label">Usuarios</label>
                             <div class="col-lg-9">
-                              <input type="text" class="form-control tagsearch" id="user-name" placeholder="User or E-mail">
+                              <input type="text" class="form-control tagsearch" id="user-name" placeholder="Usuarios o E-mail">
 							  <div class="tagholder">
 							  </div>
                             </div>
@@ -1194,25 +1194,95 @@
 								});
 							</script>
                           <div class="form-group">
-                          	<label for="team-privacy" class="col-lg-3 control-label">Team Privacy</label>
+                          	<label for="team-privacy" class="col-lg-3 control-label">Privacidad</label>
                             <div class="col-lg-9">
                               <div class="radio">
                               	<label>
                                 <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                Public
+                                Publico
                                 </label>
                                 </div>
                                 <div class="radio">
                                 <label>
                                 <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                                Private
+                                Privado
                                 </label>
                               </div>
                             </div>
                           </div>
                           <div class="form-group">
                             <div class="col-lg-offset-3 col-lg-9">
-                              <button type="submit" class="btn btn-default">Create New Team</button>
+                              <button type="submit" class="btn btn-default">Crear nuevo equipo</button>
+                            </div>
+                          </div>
+                    </form>
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
+              
+              <div class="modal fade" id="modal-create-project" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">Crear Proyecto</h4>
+                    </div>
+                    <div class="modal-body">
+                      <form class="form-horizontal" role="form">
+                          <div class="form-group">
+                            <label for="project-name" class="col-lg-3 control-label">Nombre Proyecto</label>
+                            <div class="col-lg-9">
+                              <input type="text" class="form-control" id="project-name" placeholder="Nombre del Proyecto">
+                            </div>
+                          </div>
+						  <div class="form-group">
+                            <label for="subtask" class="col-lg-3 control-label">Equipo</label>
+                            <div class="col-lg-9">
+                            <select class="form-control">
+                              <option>Equipo1</option>
+                              <option>Equipo2</option>
+                              <option>Equipo3</option>
+                              <option>Equipo4</option>
+                              <option>Equipo5</option>
+                            </select>
+							  <div class="tagholder">
+							  </div>
+                            </div>
+                          </div>
+						  <div class="form-group date">
+                            <label for="start-date" class="col-lg-3 control-label">Inicio</label>
+                            <div class="col-lg-3">
+                              <input type="text" class="datepicker form-control" value="02-16-2012" id="dp1">
+							  <div class="tagholder">
+							  </div>
+                            </div>
+                            <label for="due-date" class="col-lg-3 control-label due-date">Fin</label>
+                            <div class="col-lg-3">
+                              <input type="text" class="datepicker form-control" value="02-16-2012" id="dp1">
+							  <div class="tagholder">
+							  </div>
+                            </div>
+                          </div>		
+                          <div class="form-group color-project">
+                            <label for="project-color" class="col-lg-3 control-label">Color</label>
+                            <div class="col-lg-9">
+                              <span class="color-1"></span>
+                              <span class="color-2"></span>
+                              <span class="color-3"></span>
+                              <span class="color-4"></span>
+                              <span class="color-5"></span>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                                <label for="project-description" class="col-lg-3 control-label">Descripcion</label>
+                                <div class="col-lg-9">
+                                  <textarea id="project-description" class="form-control" placeholder="Descripcion" rows="3"></textarea>
+                                </div>
+                              </div>
+                          <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-9">
+                              <button type="submit" class="btn btn-default">Crear nuevo Proyecto</button>
                             </div>
                           </div>
                     </form>
@@ -1231,7 +1301,7 @@
                     <div class="modal-body">
                       <form class="form-horizontal" role="form">
                           <div class="form-group">
-                            <label for="task-name" class="col-lg-3 control-label">Nombre de la tarea</label>
+                            <label for="task-name" class="col-lg-3 control-label">Tarea</label>
                             <div class="col-lg-9">
                               <input type="text" class="form-control" id="task-name" placeholder="Nombre de la tarea">
                             </div>
@@ -1250,42 +1320,59 @@
 							  </div>
                             </div>
                           </div>
-						  <div class="form-group">
-                            <label for="start-date" class="col-lg-3 control-label">Fecha de Inicio</label>
-                            <div class="col-lg-9">
-                              <input type="text" class="datepicker" value="02-16-2012" id="dp1">
+						  <div class="form-group date">
+                            <label for="start-date" class="col-lg-3 control-label">Inicio</label>
+                            <div class="col-lg-3">
+                              <input type="text" class="datepicker form-control" value="02-16-2012" id="dp1">
 							  <div class="tagholder">
 							  </div>
                             </div>
-                          </div>	
-						  <div class="form-group">
-                            <label for="due-date" class="col-lg-3 control-label">Fecha de Fin</label>
-                            <div class="col-lg-9">
-                              <input type="text" class="datepicker" value="02-16-2012" id="dp1">
+                            <label for="due-date" class="col-lg-3 control-label due-date">Fin</label>
+                            <div class="col-lg-3">
+                              <input type="text" class="datepicker form-control" value="02-16-2012" id="dp1">
 							  <div class="tagholder">
 							  </div>
                             </div>
-                          </div>						  
+                          </div>		
                           <div class="form-group">
-                          	<label for="team-privacy" class="col-lg-3 control-label">Team Privacy</label>
+                            <label for="tags" class="col-lg-3 control-label">Tags</label>
                             <div class="col-lg-9">
-                              <div class="radio">
-                              	<label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                Public
-                                </label>
-                                </div>
-                                <div class="radio">
-                                <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                                Private
-                                </label>
-                              </div>
+                              <input type="text" class="form-control tagsearch" id="tags" placeholder="Tags">
+							  <div class="tagholder">
+							  </div>
                             </div>
-                          </div>
+                          </div>		
+                          <div class="form-group">
+                            <label for="followers" class="col-lg-3 control-label">Seguidores</label>
+                            <div class="col-lg-9">
+                              <input type="text" class="form-control tagsearch" id="followers" placeholder="Seguidores">
+							  <div class="tagholder">
+							  </div>
+                            </div>
+                          </div>		
+                          <div class="form-group">
+                            <label for="exampleInputFile" class="col-lg-3">Adjuntar Archivo</label>
+                            <div class="col-lg-9">
+                            <input type="file" id="exampleInputFile">
+                            </div>
+                          </div>	  
+                          <div class="form-group">
+                            <label for="subtask" class="col-lg-3 control-label">Subtarea de</label>
+                            <div class="col-lg-9">
+                            <select class="form-control">
+                              <option>Tarea1</option>
+                              <option>Tarea2</option>
+                              <option>Tarea3</option>
+                              <option>Tarea4</option>
+                              <option>Tarea5</option>
+                            </select>
+							  <div class="tagholder">
+							  </div>
+                            </div>
+                          </div>		
                           <div class="form-group">
                             <div class="col-lg-offset-3 col-lg-9">
-                              <button type="submit" class="btn btn-default">Create New Team</button>
+                              <button type="submit" class="btn btn-default">Crear nueva tarea</button>
                             </div>
                           </div>
                     </form>
