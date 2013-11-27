@@ -145,6 +145,8 @@ io.sockets.on('connection', function (socket) {
 				});
 			}
 		});
+		
+		socket.broadcast.emit('createTask', data);
     });
 });
 
