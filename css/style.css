@@ -303,20 +303,34 @@ ul li {
 	background:#D4D4D4;
 }
 
-.company a {
+.company #company-name {
 	padding-left: 15px;
-	width: 100%;
+	width: 92%;
 	display: block;
-	background:url(images/pencil-icon.png) no-repeat right center;
 	font-weight:bold;
 	color:#535353;
 	padding: 10px 0 10px 15px;
 	font-size: 13px;
 	text-transform:uppercase;
+	border:none;
+	background:none;
+	float:left;
 }
 
-.company a:hover {
-	text-decoration:none;
+#company-name-edit {
+	background:url(images/pencil-icon.png) no-repeat center;
+	height:38px;
+	width:15px;
+	float:right;
+}
+
+.row.company-wrapper.active {
+	background:#ccc;
+}
+
+.company #company-name:focus {
+	border:none;
+	outline:none;
 }
 
 .row.workspace-wrapper {

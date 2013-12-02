@@ -139,7 +139,8 @@
                     <div class="row company-wrapper">
                     
                         <div class="company">
-                          <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">Company Name</a>
+                          <input name="company-name" id="company-name" value="Nombre de la empresa" >
+                          <a href="#" id="company-name-edit"></a>
                         </div><!-- / company -->
                     
                     </div><!-- / row -->
@@ -179,12 +180,12 @@
                                      <a href="" class="">
                                         <img src="../images/thumb-user.jpg" alt="User" title="User Name">
                                      </a> 
-                                     <a class="add-user" data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1"></a>
+                                     <a class="add-user" data-toggle="modal" href="#modal-add-user" role="menuitem" tabindex="-1"></a>
                                 </div><!-- / team people -->
                                 
 								<span class="clearfix"></span>
 								
-                                <a class="add-project" data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
+                                <a class="add-project" data-toggle="modal" href="#modal-add-project" role="menuitem" tabindex="-1">
                                     PROJECT
                                 </a>
                                 
@@ -1373,6 +1374,82 @@
                           <div class="form-group">
                             <div class="col-lg-offset-3 col-lg-9">
                               <button type="submit" class="btn btn-default">Crear nueva tarea</button>
+                            </div>
+                          </div>
+                    </form>
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
+              
+              <div class="modal fade" id="modal-add-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">Agregar Usuario</h4>
+                    </div>
+                    <div class="modal-body">
+                      <form class="form-horizontal" role="form">
+                          <div class="form-group">
+                            <label for="new-user-name" class="col-lg-3 control-label">Nombre</label>
+                            <div class="col-lg-9">
+                              <input type="text" class="form-control" id="new-user-name" placeholder="Nombre del Usuario">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="new-user-team" class="col-lg-3 control-label">Equipo</label>
+                            <div class="col-lg-9">
+                              <input type="text" class="form-control" id="new-user-team" placeholder="Nombre del Equipo">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                                <label for="new-user-message" class="col-lg-3 control-label">Mensaje</label>
+                                <div class="col-lg-9">
+                                  <textarea id="new-user-message" class="form-control" placeholder="Te invitamos a participar en este proyecto." rows="3"></textarea>
+                                </div>
+                              </div>
+                          <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-9">
+                              <button type="submit" class="btn btn-default">Agregar nuevo Usuario</button>
+                            </div>
+                          </div>
+                    </form>
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
+              
+              <div class="modal fade" id="modal-add-project" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">Agregar Usuario</h4>
+                    </div>
+                    <div class="modal-body">
+                      <form class="form-horizontal" role="form">
+                          <div class="form-group">
+                            <label for="new-project-name" class="col-lg-3 control-label">Nombre</label>
+                            <div class="col-lg-9">
+                              <input type="text" class="form-control" id="new-project-name" placeholder="Nombre del Proyecto">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="new-user-team" class="col-lg-3 control-label">Equipo</label>
+                            <div class="col-lg-9">
+                              <input type="text" class="form-control" id="new-user-team" placeholder="Aca el equipo ya esta seleccionado">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                                <label for="new-user-message" class="col-lg-3 control-label">Mensaje</label>
+                                <div class="col-lg-9">
+                                  <textarea id="new-user-message" class="form-control" placeholder="Te invitamos a participar en este proyecto." rows="3"></textarea>
+                                </div>
+                              </div>
+                          <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-9">
+                              <button type="submit" class="btn btn-default">Agregar nuevo Proyecto</button>
                             </div>
                           </div>
                     </form>
