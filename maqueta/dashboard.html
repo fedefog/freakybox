@@ -476,7 +476,7 @@
                                 <a class="right all-projects-states" href="#" title="All Projects States">All Projects States</a>
                             </div><!-- / title -->
                             
-                            <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
+                            <a data-toggle="modal" href="#modal-project-state" role="menuitem" tabindex="-1">
 								<div class="project-state color-1">
 									<span class="name left">Project Name Here</span>
 									<span class="percentage right">78%</span>
@@ -488,7 +488,7 @@
 								</div><!-- / project State -->
 							</a>
                             
-							<a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
+							<a data-toggle="modal" href="#modal-project-state" role="menuitem" tabindex="-1">
                             <div class="project-state color-2">
                                 <span class="name left">Project Name Here</span>
                                 <span class="percentage right">78%</span>
@@ -500,7 +500,7 @@
                             </div><!-- / project State -->
 							</a>
                             
-							<a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
+							<a data-toggle="modal" href="#modal-project-state" role="menuitem" tabindex="-1">
                             <div class="project-state color-3">
                                 <span class="name left">Project Name Here</span>
                                 <span class="percentage right">78%</span>
@@ -512,7 +512,7 @@
                             </div><!-- / project State -->
 							</a>
                             
-							<a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
+							<a data-toggle="modal" href="#modal-project-state" role="menuitem" tabindex="-1">
                             <div class="project-state color-4">
                                 <span class="name left">Project Name Here</span>
                                 <span class="percentage right">78%</span>
@@ -524,7 +524,7 @@
                             </div><!-- / project State -->
 							</a>
                             
-							<a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
+							<a data-toggle="modal" href="#modal-project-state" role="menuitem" tabindex="-1">
                             <div class="project-state color-5 last">
                                 <span class="name left">Project Name Here</span>
                                 <span class="percentage right">78%</span>
@@ -1420,6 +1420,229 @@
                 </div><!-- /.modal-dialog -->
               </div><!-- /.modal -->
               
+              <div class="modal fade full" id="modal-project-state" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">Nombre del Proyecto</h4>
+                    </div>
+                    <div class="modal-body">
+                    
+                    	<div class="col-md-6">
+                          <form class="form-horizontal" role="form">
+                          	  <div class="form-group">
+                              	  <label for="percentaje-project" class="col-lg-3 control-label">Porcentaje</label>
+                                  <div class="col-lg-9">
+                                  <div class="progress">
+                                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                        <span class="sr-only">60% Complete</span>
+                                      </div><!-- / progress bar -->
+                                    </div>
+                                    </div>
+                                </div>
+                              <div class="form-group">
+                                <label for="description-project" class="col-lg-3 control-label">Descripcion</label>
+                                <div class="col-lg-9">
+                                  <textarea id="description-project" class="form-control" placeholder="Descripcion del proyecto" rows="3"></textarea>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="project-team" class="col-lg-3 control-label">Equipo</label>
+                                <div class="col-lg-9">
+                                  <input type="text" class="form-control" id="project-team" placeholder="Nombre del Equipo">
+                                </div>
+                              </div>
+                              <div class="form-group date">
+                                <label for="start-date" class="col-lg-3 control-label">Inicio</label>
+                                <div class="col-lg-3">
+                                  <input type="text" class="datepicker form-control" value="02-16-2012" id="dp1">
+                                  <div class="tagholder">
+                                  </div>
+                                </div>
+                                <label for="due-date" class="col-lg-3 control-label due-date">Fin</label>
+                                <div class="col-lg-3">
+                                  <input type="text" class="datepicker form-control" value="02-16-2012" id="dp1">
+                                  <div class="tagholder">
+                                  </div>
+                                </div>
+                              </div>	
+                              <div class="form-group all-tasks">
+                                <label for="tasks-project" class="col-lg-3 control-label">Tareas</label>
+                                <div class="col-lg-9">
+                                  <div class="task-state"><span>30</span>Totales</div>
+                                  <div class="task-state"><span>15</span>Finalizadas</div>
+                                  <div class="task-state"><span>15</span>Pendientes</div>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="messages-project" class="col-lg-3 control-label">Mensajes</label>
+                                <div class="col-lg-9">
+                                  <div class="task-state"><span>250</span>Totales</div>
+                                </div>
+                              </div>
+                        </form>
+                        
+                     </div><!-- / col 6 -->   
+                     
+                     <div class="col-md-6 teams-update-wrapper">
+                     	
+                        <div class="teams-updates">
+                            
+                            <div class="task-update">
+                                
+                                <div class="task-update-header">
+                                    
+                                    <div class="task-update-title left">
+                                        Actividad del Proyecto
+                                    </div><!-- / task update title -->
+                                    
+                                </div><!-- task update header -->
+                                
+                                <div class="update-notification">
+                                
+                                    <div class="user left">
+                                        <img src="../images/fed.jpg" alt="Fede">
+                                    </div><!-- / user -->
+                                    
+                                    <div class="update-body right">
+                                    
+                                        <div class="name">
+                                            Federico <span class="task-completed-message">completed this task.</span>
+                                        </div><!-- / name -->
+                                        
+                                        <div class="update-content">
+                                            <p>Marce mucho mejor que en el otro me parece mejor organado pero.</p>
+                                        </div><!-- / update content -->
+                                        
+                                        <div class="date-update">Monday at 12:22 pm &middot;</div><!-- / date update -->
+                                        <div class="like-update"><a href="" title="like"></a></div><!-- / like update -->
+                                        <div class="follow-task right"><a href="" title="Follow Task">Follow Task</a></div>
+                                        
+                                    </div><!-- / update body -->
+                                    
+                                </div><!-- / update notification -->
+                                
+                                <div class="update-notification">
+                                
+                                    <div class="user left">
+                                        <img src="../images/marce.jpg" alt="Marce">
+                                    </div><!-- / user -->
+                                    
+                                    <div class="update-body right">
+                                    
+                                        <div class="name">
+                                            Federico <span class="task-completed-message">completed this task.</span>
+                                        </div><!-- / name -->
+                                        
+                                        <div class="update-content">
+                                            <p>Marce mucho mejor que en el otro me parece mejor organado pero seguimos sin tener subpages? tenemos que teenr subpages, yo pensaba que ibas a dejar.</p>
+                                        </div><!-- / update content -->
+                                        
+                                        <div class="date-update">Monday at 12:22 pm &middot;</div><!-- / date update -->
+                                        <div class="like-update"><a href="" title="like"></a></div><!-- / like update -->
+                                        <div class="follow-task right"><a href="" title="Follow Task">Follow Task</a></div>
+                                        
+                                    </div><!-- / update body -->
+                                    
+                                </div><!-- / update notification -->
+                                
+                                <div class="update-notification">
+                                
+                                    <div class="user left">
+                                        <img src="../images/marce.jpg" alt="Marce">
+                                    </div><!-- / user -->
+                                    
+                                    <div class="update-body right">
+                                    
+                                        <div class="name">
+                                            Federico <span class="task-completed-message">completed this task.</span>
+                                        </div><!-- / name -->
+                                        
+                                        <div class="update-content">
+                                            <p>Marce mucho mejor que en el otro me parece mejor organado pero seguimos sin tener subpages? tenemos que teenr subpages, yo pensaba que ibas a dejar.</p>
+                                        </div><!-- / update content -->
+                                        
+                                        <div class="date-update">Monday at 12:22 pm &middot;</div><!-- / date update -->
+                                        <div class="like-update"><a href="" title="like"></a></div><!-- / like update -->
+                                        <div class="follow-task right"><a href="" title="Follow Task">Follow Task</a></div>
+                                        
+                                    </div><!-- / update body -->
+                                    
+                                </div><!-- / update notification -->
+                                
+                                <div class="update-notification">
+                                
+                                    <div class="user left">
+                                        <img src="../images/marce.jpg" alt="Marce">
+                                    </div><!-- / user -->
+                                    
+                                    <div class="update-body right">
+                                    
+                                        <div class="name">
+                                            Federico <span class="task-completed-message">completed this task.</span>
+                                        </div><!-- / name -->
+                                        
+                                        <div class="update-content">
+                                            <p>Marce mucho mejor que en el otro me parece mejor organado pero seguimos sin tener subpages? tenemos que teenr subpages, yo pensaba que ibas a dejar.</p>
+                                        </div><!-- / update content -->
+                                        
+                                        <div class="date-update">Monday at 12:22 pm &middot;</div><!-- / date update -->
+                                        <div class="like-update"><a href="" title="like"></a></div><!-- / like update -->
+                                        <div class="follow-task right"><a href="" title="Follow Task">Follow Task</a></div>
+                                        
+                                    </div><!-- / update body -->
+                                    
+                                </div><!-- / update notification -->
+                                
+                                <div class="update-notification">
+                                
+                                    <div class="user left">
+                                        <img src="../images/marce.jpg" alt="Marce">
+                                    </div><!-- / user -->
+                                    
+                                    <div class="update-body right">
+                                    
+                                        <div class="name">
+                                            Federico <span class="task-completed-message">completed this task.</span>
+                                        </div><!-- / name -->
+                                        
+                                        <div class="update-content">
+                                            <p>Marce mucho mejor que en el otro me parece mejor organado pero seguimos sin tener subpages? tenemos que teenr subpages, yo pensaba que ibas a dejar.</p>
+                                        </div><!-- / update content -->
+                                        
+                                        <div class="date-update">Monday at 12:22 pm &middot;</div><!-- / date update -->
+                                        <div class="like-update"><a href="" title="like"></a></div><!-- / like update -->
+                                        <div class="follow-task right"><a href="" title="Follow Task">Follow Task</a></div>
+                                        
+                                    </div><!-- / update body -->
+                                    
+                                </div><!-- / update notification -->
+                                
+                                </div><!-- / task update -->
+                                
+                               <div class="clear"></div>
+                        
+                        </div><!-- / teams updates -->
+                        
+                        <div class="reply-notification">
+                                	
+                            <form>
+                                <textarea class="form-control reply-message" placeholder="Mensaje de respuesta" rows="1"></textarea>
+                                <input class="btn btn-default enviar-mensaje"  type="submit" value="Enviar">
+                            </form>
+                            
+                        </div><!-- / reply notification -->
+                        
+                     </div><!-- / col 6 -->
+                     
+                     <div class="clear"></div>
+                     
+                    </div><!-- / modal body -->
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
+              
               <div class="modal fade" id="modal-add-project" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -1458,7 +1681,7 @@
                 </div><!-- /.modal-dialog -->
               </div><!-- /.modal -->
               
-              <div class="modal fade" id="modal-task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal fade full" id="modal-task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
