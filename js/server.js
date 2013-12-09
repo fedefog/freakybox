@@ -11,12 +11,23 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
+function Client(socket) {
+	this.id = null;
+	this.name = null;
+	this.socket = socket;
+}
+
 var clients = {};
 
 io.sockets.on('connection', function (socket) {
 		
 	socket.on('connect', function(data){
-		clients[data.nickname] = socket.id;
+		var client = new Client(socket);
+		clients[socket.id] = client;
+	});
+	
+	socket.on('register', function(data){
+		clients[socket.id].id = data;
 	});
 	
 	socket.on('createTeam', function(data){

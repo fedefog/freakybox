@@ -25,7 +25,7 @@
 	<script type="text/javascript" src="/js/frontend.js"></script>
 	<script>
 		var Frontend = new Core();
-		Frontend.init('192.168.0.107:5000');
+		Frontend.init('192.168.0.107:5000', <?php echo $_SESSION['uid']; ?>);
 	</script>
 	
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->

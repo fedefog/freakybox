@@ -9,9 +9,11 @@ var Core = (function() {
 	
     function Core(){};	
 			
-	Core.prototype.init = function(url) {
+	Core.prototype.init = function(url, id) {
 		_host = url;
 		_socket = io.connect(_host);
+		
+		_socket.emit('register', id);
 		
 		_socket.on('createTeam', createTeam);
 		_socket.on('createProject', createProject);
