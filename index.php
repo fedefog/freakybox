@@ -115,10 +115,10 @@ if($uri->segment(1) == 'ajax'){
 			}
 				
 			$usuario_email = mysql_real_escape_string(strtolower($_POST['email']));
-			$exists = getRow("SELECT usuario_id FROM usuario WHERE LOWER(usuario_email) = '$usuario_email'");
+			$exists = getRow("SELECT usuario_id, usuario_pass FROM usuario WHERE LOWER(usuario_email) = '$usuario_email'");
 			
 			if($exists){
-				if(empty($exists['usuario_pass'])){
+				if(!empty($exists['usuario_pass'])){
 					$encoded = encrypt($_POST['password'], $config->get('encode_key'));
 				
 					if($exists['usuario_pass'] == $encoded){
@@ -128,6 +128,9 @@ if($uri->segment(1) == 'ajax'){
 					else{
 						$response = array("error" => 1, "msg" => "La contraseña no concuerda.");
 					}
+				}
+				else{
+					$response = array("error" => 1, "msg" => "El usuario no existe.");
 				}
 			}
 			else{
