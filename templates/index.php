@@ -294,7 +294,7 @@ You can try every plan 15-day free. <span>Enjoy it!</span></div>
 										alert(data.msg);
 									}
 									else{
-										window.location = '/dashboard';
+										window.parent.location = '/dashboard';
 									}
 								}									
 							});
