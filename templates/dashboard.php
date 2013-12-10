@@ -174,264 +174,27 @@
                 
                     <div class="row">
                     
-                        <div class="module states">
+                        <div class="module states projects-summary">
                         
                             <div class="title">
                                 <strong>Featured</strong> Projects States
                                 <a class="right all-projects-states" href="#" title="All Projects States">All Projects States</a>
                             </div><!-- / title -->
-                            
-                            <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-								<div class="project-state color-1">
-									<span class="name left">Project Name Here</span>
-									<span class="percentage right">78%</span>
-									<div class="progress">
-									  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-										<span class="sr-only">60% Complete</span>
-									  </div><!-- / progress bar -->
-									</div><!-- / progress -->
-								</div><!-- / project State -->
-							</a>
-                            
-							<a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                            <div class="project-state color-2">
-                                <span class="name left">Project Name Here</span>
-                                <span class="percentage right">78%</span>
-                                <div class="progress">
-                                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                    <span class="sr-only">60% Complete</span>
-                                  </div><!-- / progress bar -->
-                                </div><!-- / progress -->
-                            </div><!-- / project State -->
-							</a>
-                            
-							<a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                            <div class="project-state color-3">
-                                <span class="name left">Project Name Here</span>
-                                <span class="percentage right">78%</span>
-                                <div class="progress">
-                                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                    <span class="sr-only">60% Complete</span>
-                                  </div><!-- / progress bar -->
-                                </div><!-- / progress -->
-                            </div><!-- / project State -->
-							</a>
-                            
-							<a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                            <div class="project-state color-4">
-                                <span class="name left">Project Name Here</span>
-                                <span class="percentage right">78%</span>
-                                <div class="progress">
-                                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                    <span class="sr-only">60% Complete</span>
-                                  </div><!-- / progress bar -->
-                                </div><!-- / progress -->
-                            </div><!-- / project State -->
-							</a>
-                            
-							<a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                            <div class="project-state color-5 last">
-                                <span class="name left">Project Name Here</span>
-                                <span class="percentage right">78%</span>
-                                <div class="progress">
-                                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                    <span class="sr-only">60% Complete</span>
-                                  </div><!-- / progress bar -->
-                                </div><!-- / progress -->
-                            </div><!-- / project State -->
-							</a>
-                            
-                            <div id="other-projects-states">
-                            
-                                <div class="clearfix"></div>
-                                
-                                <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                                    <div class="project-state">
-                                        <span class="name left">Project Name Here</span>
-                                        <span class="percentage right">78%</span>
-                                        <div class="progress">
-                                          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                            <span class="sr-only">60% Complete</span>
-                                          </div><!-- / progress bar -->
-                                        </div><!-- / progress -->
-                                    </div><!-- / project State -->
-                                </a>
-                                
-                                <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                                <div class="project-state">
-                                    <span class="name left">Project Name Here</span>
-                                    <span class="percentage right">78%</span>
-                                    <div class="progress">
-                                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                        <span class="sr-only">60% Complete</span>
-                                      </div><!-- / progress bar -->
-                                    </div><!-- / progress -->
-                                </div><!-- / project State -->
-                                </a>
-                                
-                                <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                                <div class="project-state">
-                                    <span class="name left">Project Name Here</span>
-                                    <span class="percentage right">78%</span>
-                                    <div class="progress">
-                                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                        <span class="sr-only">60% Complete</span>
-                                      </div><!-- / progress bar -->
-                                    </div><!-- / progress -->
-                                </div><!-- / project State -->
-                                </a>
-                                
-                                <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                                <div class="project-state">
-                                    <span class="name left">Project Name Here</span>
-                                    <span class="percentage right">78%</span>
-                                    <div class="progress">
-                                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                        <span class="sr-only">60% Complete</span>
-                                      </div><!-- / progress bar -->
-                                    </div><!-- / progress -->
-                                </div><!-- / project State -->
-                                </a>
-                                
-                                <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                                <div class="project-state last">
-                                    <span class="name left">Project Name Here</span>
-                                    <span class="percentage right">78%</span>
-                                    <div class="progress">
-                                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                        <span class="sr-only">60% Complete</span>
-                                      </div><!-- / progress bar -->
-                                    </div><!-- / progress -->
-                                </div><!-- / project State -->
-                                </a>
-                                
-                                <div class="clearfix"></div>
-                                
-                                <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                                    <div class="project-state">
-                                        <span class="name left">Project Name Here</span>
-                                        <span class="percentage right">78%</span>
-                                        <div class="progress">
-                                          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                            <span class="sr-only">60% Complete</span>
-                                          </div><!-- / progress bar -->
-                                        </div><!-- / progress -->
-                                    </div><!-- / project State -->
-                                </a>
-                                
-                                <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                                <div class="project-state">
-                                    <span class="name left">Project Name Here</span>
-                                    <span class="percentage right">78%</span>
-                                    <div class="progress">
-                                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                        <span class="sr-only">60% Complete</span>
-                                      </div><!-- / progress bar -->
-                                    </div><!-- / progress -->
-                                </div><!-- / project State -->
-                                </a>
-                                
-                                <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                                <div class="project-state">
-                                    <span class="name left">Project Name Here</span>
-                                    <span class="percentage right">78%</span>
-                                    <div class="progress">
-                                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                        <span class="sr-only">60% Complete</span>
-                                      </div><!-- / progress bar -->
-                                    </div><!-- / progress -->
-                                </div><!-- / project State -->
-                                </a>
-                                
-                                <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                                <div class="project-state">
-                                    <span class="name left">Project Name Here</span>
-                                    <span class="percentage right">78%</span>
-                                    <div class="progress">
-                                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                        <span class="sr-only">60% Complete</span>
-                                      </div><!-- / progress bar -->
-                                    </div><!-- / progress -->
-                                </div><!-- / project State -->
-                                </a>
-                                
-                                <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                                <div class="project-state last">
-                                    <span class="name left">Project Name Here</span>
-                                    <span class="percentage right">78%</span>
-                                    <div class="progress">
-                                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                        <span class="sr-only">60% Complete</span>
-                                      </div><!-- / progress bar -->
-                                    </div><!-- / progress -->
-                                </div><!-- / project State -->
-                                </a>
-                                
-                                <div class="clearfix"></div>
-                                
-                                <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                                    <div class="project-state">
-                                        <span class="name left">Project Name Here</span>
-                                        <span class="percentage right">78%</span>
-                                        <div class="progress">
-                                          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                            <span class="sr-only">60% Complete</span>
-                                          </div><!-- / progress bar -->
-                                        </div><!-- / progress -->
-                                    </div><!-- / project State -->
-                                </a>
-                                
-                                <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                                <div class="project-state">
-                                    <span class="name left">Project Name Here</span>
-                                    <span class="percentage right">78%</span>
-                                    <div class="progress">
-                                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                        <span class="sr-only">60% Complete</span>
-                                      </div><!-- / progress bar -->
-                                    </div><!-- / progress -->
-                                </div><!-- / project State -->
-                                </a>
-                                
-                                <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                                <div class="project-state">
-                                    <span class="name left">Project Name Here</span>
-                                    <span class="percentage right">78%</span>
-                                    <div class="progress">
-                                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                        <span class="sr-only">60% Complete</span>
-                                      </div><!-- / progress bar -->
-                                    </div><!-- / progress -->
-                                </div><!-- / project State -->
-                                </a>
-                                
-                                <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                                <div class="project-state">
-                                    <span class="name left">Project Name Here</span>
-                                    <span class="percentage right">78%</span>
-                                    <div class="progress">
-                                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                        <span class="sr-only">60% Complete</span>
-                                      </div><!-- / progress bar -->
-                                    </div><!-- / progress -->
-                                </div><!-- / project State -->
-                                </a>
-                                
-                                <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-                                <div class="project-state last">
-                                    <span class="name left">Project Name Here</span>
-                                    <span class="percentage right">78%</span>
-                                    <div class="progress">
-                                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                        <span class="sr-only">60% Complete</span>
-                                      </div><!-- / progress bar -->
-                                    </div><!-- / progress -->
-                                </div><!-- / project State -->
-                                </a>
-                                
-                       		</div><!-- / other projects states -->         
+							
                         
                         </div><!-- / module -->
+						
+						<script type="">
+							$(document).ready(function(){
+								$.ajax({
+									url: '/ajax/projects/summary',
+									dataType: 'html',
+									success: function(data){
+										$('.projects-summary').append(data);
+									}									
+								});
+							});
+						</script>
                         
                     </div><!-- / row -->
                     
@@ -539,7 +302,7 @@
                                 </div><!-- / tasks -->
                                 
                                   <div class="add-new-task-btn">
-                                  	<a class="add-new-task" data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">ADD NEW TASK</a>
+                                  	<a class="add-new-task" data-toggle="modal" href="#modal-create-task" role="menuitem" tabindex="-1">ADD NEW TASK</a>
                                   </div><!-- / add new task btn -->  
                                 
                             </div><!-- / row -->    

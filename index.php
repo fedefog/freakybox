@@ -11,7 +11,7 @@ $data['uri'] = $uri;
 
 // SESSION A LA FUERZA
 // @TODO
-$usuario_id = '1';
+$usuario_id = intval($_SESSION['uid']);
 
 $team_id = $uri->segment(1);
 $project_id = $uri->segment(2);
@@ -31,7 +31,7 @@ if($usuario_id > 0){
 	$data['teams'] = $teams;
 	
 	$projects = getResult("
-		SELECT proyecto_id, proyecto_nombre, proyecto_privado, rel_teamusuario.fk_team_id
+		SELECT proyecto_id, proyecto_nombre, proyecto_privado, rel_teamusuario.fk_team_id, (SELECT COUNT(tarea_id) FROM tarea WHERE tarea.fk_proyecto_id = proyecto.proyecto_id AND tarea_activo = '1') AS tasks_open, (SELECT COUNT(tarea_id) FROM tarea WHERE tarea.fk_proyecto_id = proyecto.proyecto_id) AS tasks
 		FROM proyecto
 		JOIN rel_proyectoteam ON rel_proyectoteam.fk_proyecto_id = proyecto.proyecto_id
 		JOIN rel_teamusuario ON rel_teamusuario.fk_team_id = rel_proyectoteam.fk_team_id
@@ -163,6 +163,12 @@ if($uri->segment(1) == 'ajax'){
 			$sidebar[] = $team;
 		}
 		$data['sidebar'] = $sidebar;
+	}
+	if($uri->segment(2) == 'projects'){
+		if($uri->segment(3) == 'summary'){
+			// SE USA LA CONSULTA DE MAIN
+			$template = abs_path('templates/ajax/percents.php');
+		}
 	}
 	if($uri->segment(2) == 'getMembers'){
 		if($_GET['project']){

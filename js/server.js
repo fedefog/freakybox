@@ -19,20 +19,22 @@ function Client(socket) {
 
 var clients = {};
 
+var usuario_id = 0;
+
 io.sockets.on('connection', function (socket) {
 		
 	socket.on('connect', function(data){
-		var client = new Client(socket);
-		clients[socket.id] = client;
+		
 	});
 	
 	socket.on('register', function(data){
-		clients[socket.id].id = data;
+		var client = new Client(socket);
+		client.id = data;
+		clients[data] = client;
+		usuario_id = data;
 	});
 	
-	socket.on('createTeam', function(data){
-		//@TODO: Cambiar el 1 por el fk de usuario creador.
-		var usuario_id = 1;
+	socket.on('createTeam', function(data){	
 		
 		var team = {
 			fk_usuario_id: usuario_id,
@@ -118,10 +120,7 @@ io.sockets.on('connection', function (socket) {
 		});
     });
 	
-	socket.on('createTask', function(data){		
-		//@TODO: Cambiar el 1 por el fk de usuario creador.
-		var usuario_id = 1;
-			
+	socket.on('createTask', function(data){					
 		var ini = data.inicio.split('/');
 		var fin = data.fin.split('/');
 		
