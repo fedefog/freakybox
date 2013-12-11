@@ -33,7 +33,7 @@ $(document).ready(function() {
 	
 	/* COLOR PICKER */
 	
-	$('.colorpicker-control').colorpicker();
+	/*$('.colorpicker-control').colorpicker();*/
 	
 	/* END */
 		
