@@ -31,9 +31,21 @@ $(document).ready(function() {
 		format: 'dd/mm/yyyy'
 	});
 	
-	/* COLOR PICKER */
+	/* COMPANY NAME */
 	
-	$('.colorpicker-control').colorpicker();
+	/* DESPLEGABLE PARA SUBTASKS */
+	
+	$('#company-name-edit').click(function (e) {
+	  e.stopPropagation();
+	  e.preventDefault();
+	  /*$('#company-name').removeAttr('disabled');*/
+	  $('.company-wrapper').addClass("active");
+    });
+	
+	/*$('html').click(function() {
+		$('#company-name').attr('disabled','disabled');
+	  	$('.company-wrapper').removeClass("active");
+	});*/
 	
 	/* END */
 		
