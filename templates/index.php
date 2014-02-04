@@ -37,7 +37,7 @@
 
 	<section id="home" class="scrollsections">
         <div class="section-content">
-            <div class="description">Freakybox es simple, fast, powerful project  management application for creative teams.</div>
+            <div class="description">Freakybox es simple, rapido, potente project  management application for creative teams.</div>
             <div class="title">Online Project Management <br>The Right Way</div>
             <div class="quick-start">
             	<form>
