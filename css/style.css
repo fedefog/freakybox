@@ -303,20 +303,34 @@ ul li {
 	background:#D4D4D4;
 }
 
-.company a {
+.company #company-name {
 	padding-left: 15px;
-	width: 100%;
+	width: 92%;
 	display: block;
-	background:url(images/pencil-icon.png) no-repeat right center;
 	font-weight:bold;
 	color:#535353;
 	padding: 10px 0 10px 15px;
 	font-size: 13px;
 	text-transform:uppercase;
+	border:none;
+	background:none;
+	float:left;
 }
 
-.company a:hover {
-	text-decoration:none;
+#company-name-edit {
+	background:url(images/pencil-icon.png) no-repeat center;
+	height:38px;
+	width:15px;
+	float:right;
+}
+
+.row.company-wrapper.active {
+	background:#ccc;
+}
+
+.company #company-name:focus {
+	border:none;
+	outline:none;
 }
 
 .row.workspace-wrapper {
@@ -825,29 +839,49 @@ a.remove-task-btn {
 
 /* Modal TASK */
 
-#modal-task .modal-dialog {
+.modal.full .modal-dialog {
 	width:70%;
 }
 
-#modal-task .modal-body {
+.modal.full .modal-body {
 	padding:20px 0;
 }
 
-#modal-task .teams-update-wrapper {
+.modal.full .teams-update-wrapper {
 	border-left:1px solid #CCC;
 }
 
-#modal-task .teams-update-wrapper .update-body {
+.modal.full .teams-update-wrapper .update-body {
 	width: 89%
 }
 
-#modal-task .teams-update-wrapper .teams-update {
+.modal.full .teams-update-wrapper .teams-update {
 	padding-bottom:0;
 }
 
-#modal-task .teams-update-wrapper .task-update {
+.modal.full .teams-update-wrapper .task-update {
 	margin-bottom:0;
 	border-bottom:none;
+}
+
+.modal.full .progress {
+	height:10px;
+	margin-top: 12px;
+}
+
+.modal.full .progress-bar  {
+	background:#EC6F67;
+}
+
+.modal.full .task-state {
+	float: left;
+	width: 112px;
+	text-align: left;
+	margin-top: 7px;
+}
+
+.modal.full .task-state span {
+	padding-right:5px;
 }
 
 /* Teams Updates */
