@@ -1,27 +1,7 @@
 <?php
-
-if(!function_exists('e')){
-    /**
-     * Retorna el valor de la key provista para el idioma actual.
-     * @param string $key
-     * @return string 
-     */
-    function e($key) {
-        $lang = new Lang();
-        return $lang->get($key);
-    }
-}
-
-if(!function_exists('_e')){
-    /**
-     * Imprime el valor de la key provista para el idioma actual.
-     * @param string $key
-     * @return string 
-     */
-    function _e($key) {
-        $lang = new Lang();
-        echo $lang->get($key);
-    }
+// Echo
+function _e($string){
+	echo $string;
 }
 
 function sortParent($array, $id, $parent){
