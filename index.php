@@ -19,6 +19,8 @@ $project_id = $uri->segment(2);
 $task_id = $uri->segment(3);
 
 if($usuario_id > 0){
+	$data['usuario'] = getRow("SELECT *, CONCAT_WS(' ', usuario_nombre, usuario_apellido) AS usuario_nombrecompleto FROM usuario WHERE usuario_id = $usuario_id");
+	
 	$teams = getResult("
 		SELECT team_id, team_nombre, team_privado
 		FROM team
