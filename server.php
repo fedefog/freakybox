@@ -20,10 +20,10 @@ define("PAGE_TITLE","Administra - Panel de Administracion");
 define("SYSTEM_NAME","Administra");
 
 /* DB */
-define("DBHOST","192.168.0.107");
+define("DBHOST","localhost");
 define("DBNAME","freakybox");
-define("DBUSER","pablo");
-define("DBPASS","Asturias1357");
+define("DBUSER","root");
+define("DBPASS","franlo1904");
 
 /* conexion a la base  */
 $GLOBALS['mysql_connection']=mysql_connect(DBHOST,DBUSER,DBPASS);
