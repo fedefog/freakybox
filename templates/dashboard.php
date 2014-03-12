@@ -73,8 +73,8 @@
                     <div class="nav right">
                         
                         <div class="user-profile dropdown">
-                            <img src="../images/marcelo.png" alt="Marcelo" title="Marcelo">
-                            <a data-toggle="dropdown" class="btn" href="#">Marcelo Angel</a>
+                            <img src="<?php echo gravatar($usuario['usuario_email'], 33); ?>" alt="<?php _e($usuario['usuario_nombrecompleto']); ?>" title="<?php _e($usuario['usuario_nombrecompleto']); ?>">
+                            <a data-toggle="dropdown" class="btn" href="#"><?php _e($usuario['usuario_nombrecompleto']); ?></a>
                               <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                               	<span class="caret"></span>
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Settings</a></li>
