@@ -6,10 +6,9 @@
 	
 	<div class="team-content">
 		<div class="team-people">
-			<?php foreach($team['usuarios'] as $usuario){ ?>
-			<?php $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $usuario['usuario_email'] ) ) ) . "?d=identicon&s=22"; ?>
+			<?php foreach($team['usuarios'] as $usuario_temp){ ?>
 			<a href="" class="">
-				<img src="<?php echo $grav_url; ?>" alt="User" title="<?php echo (!empty($usuario['usuario_nombre']) || !empty($usuario['usuario_apellido']))?$usuario['usuario_nombre'].' '.$usuario['usuario_apellido']:$usuario['usuario_email']; ?>">
+				<img src="<?php echo gravatar($usuario_temp['usuario_email'], 22); ?>" alt="User" title="<?php echo (!empty($usuario_temp['usuario_nombre']) || !empty($usuario_temp['usuario_apellido']))?$usuario_temp['usuario_nombre'].' '.$usuario_temp['usuario_apellido']:$usuario_temp['usuario_email']; ?>">
 			</a>
 			<?php } ?>
 		</div><!-- / team people -->
