@@ -11,6 +11,7 @@ $data['uri'] = $uri;
 
 // SESSION A LA FUERZA
 // @TODO
+$_SESSION['uid'] = 1;
 $usuario_id = intval($_SESSION['uid']);
 
 $team_id = $uri->segment(1);

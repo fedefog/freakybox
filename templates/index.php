@@ -37,11 +37,11 @@
 
 	<section id="home" class="scrollsections">
         <div class="section-content">
-            <div class="description">Freakybox es simple, rapido, potente project  management application for creative teams.</div>
+            <div class="description">Freakybox is a simple, fast, powerful project  management application for creative teams.</div>
             <div class="title">Online Project Management <br>The Right Way</div>
             <div class="quick-start">
             	<form>
-                	<input type="text" class="email" name="email" placeholder="name@company.com">
+                	<input id="mainMail" type="text" class="email" name="email" placeholder="name@company.com">
                     <a data-toggle="modal" href="#modal-register" role="menuitem" tabindex="-1" id="start" title="Comenzar">Comenzar</a>
                     <div id="free"></div>
                 </form>
@@ -214,8 +214,8 @@ You can try every plan 15-day free. <span>Enjoy it!</span></div>
                     <div class="modal-body">
                       	<form role="form">
                           <div class="form-group">
-                            <label for="exampleInputEmail">Email</label>
-                            <input name="email" type="email" class="form-control" id="exampleInputEmail" placeholder="Email">
+                            <label for="registerMail">Email</label>
+                            <input name="email" type="email" class="form-control" id="registerMail" placeholder="Email">
                           </div>
                           <div class="form-group">
                             <label for="exampleInputPassword">Contraseña</label>
@@ -232,7 +232,14 @@ You can try every plan 15-day free. <span>Enjoy it!</span></div>
                 </div><!-- /.modal-dialog -->
 				<script type="text/javascript">
 					$(document).ready(function(){
-						$("#modal-register button").click(function(e){
+						$("a#start").click(function(e){
+							var mail = $("#mainMail").val();
+							if(mail.length > 0){
+								$("#registerMail").val(mail);
+							}
+						});
+						
+						$("#modal-register button[type='submit']").click(function(e){
 							e.preventDefault();
 							$.ajax({
 								url: '/ajax/register',

@@ -11,6 +11,7 @@
 
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 	<link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
+	<link href="/css/colorpicker.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900,300italic,400italic,900italic' rel='stylesheet' type='text/css'>
 
@@ -25,9 +26,9 @@
 	<script type="text/javascript" src="/js/frontend.js"></script>
 	<script>
 		var Frontend = new Core();
-		Frontend.init('192.168.0.107:5000', <?php echo $_SESSION['uid']; ?>);
+		Frontend.init('192.168.0.107:5000', <?php echo ($_SESSION['uid'])?$_SESSION['uid']:0; ?>);
 	</script>
-	
+		
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="../../assets/js/html5shiv.js"></script>
@@ -138,7 +139,7 @@
                         <div class="search-form">
                             
                             <form role="form">
-                                <input type="text" class="form-control" id="search-imput" placeholder="Search">
+                                <input type="text" class="form-control" id="search-imput" placeholder="BUSCAR TAREAS">
                             </form>
                             
                         </div><!-- / search form -->
@@ -758,12 +759,33 @@
                           <div class="form-group color-project">
                             <label for="project-color" class="col-lg-3 control-label">Color</label>
                             <div class="col-lg-9">
-                              <span class="color-1"></span>
-                              <span class="color-2"></span>
-                              <span class="color-3"></span>
-                              <span class="color-4"></span>
-                              <span class="color-5"></span>
+								<span style="background-color:#fec755;" data-hex="fec755" data-field="create-project-color" class="itemcolor"></span>
+								<span style="background-color:#cf2441;" data-hex="cf2441" data-field="create-project-color" class="itemcolor"></span>
+								<span style="background-color:#27aae1;" data-hex="27aae1" data-field="create-project-color" class="itemcolor"></span>
+								<span style="background-color:#30495c;" data-hex="30495c" data-field="create-project-color" class="itemcolor"></span>
+								<span style="background-color:#8bcf30;" data-hex="8bcf30" data-field="create-project-color" class="itemcolor"></span>
+								<span style="background-color:#b4bbbf;" data-hex="b4bbbf" data-field="create-project-color" class="itemcolor"></span>
+								<span style="background-color:#ffffff;" data-hex="ffffff" data-field="create-project-color" class="colorpicker"></span>
+								<input id="create-project-color" type="hidden" name="color" value=""/>
                             </div>
+							<script>
+								$(document).ready(function(){
+									$('.colorpicker').click(function(){
+										var el = $(this);
+										el.ColorPicker({
+											color: '#0000ff',
+											onChange: function (hsb, hex, rgb) {
+												el.css('background', '#' + hex);
+												$("#"+el.data('field')).val(hex);
+											}
+										});
+									});
+									$('.itemcolor').click(function(){
+										var hex = $(this).data('hex');
+										$('#create-project-color').val(hex);
+									});
+								});
+							</script>
                           </div>
 							<div class="form-group">
                                 <label for="project-description" class="col-lg-3 control-label">Descripcion</label>

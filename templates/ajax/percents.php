@@ -1,5 +1,6 @@
-<?php foreach($i = 0; $i < 5; $i++){ ?>
-<?php $project = $projects[$i];
+<?php if(count($projects) > 0){ ?>
+<?php for($i = 0; $i < 5; $i++){ ?>
+<?php $project = $projects[$i]; ?>
 <?php $terminado = round(100 - (($project['tasks_open'] / $project['tasks']) * 100));?>
 <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
 	<div class="project-state color-1">
@@ -15,8 +16,8 @@
 <?php } ?>
 <?php if(count($projects)>5){ ?>
 	<div class="other-projects-states">
-	<?php foreach($i = 5; $i < count($projects); $i++){ ?>
-	<?php $project = $projects[$i];
+	<?php for($i = 5; $i < count($projects); $i++){ ?>
+	<?php $project = $projects[$i]; ?>
 	<?php $terminado = round(100 - (($project['tasks_open'] / $project['tasks']) * 100));?>
 	<a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
 		<div class="project-state color-1">
@@ -31,4 +32,5 @@
 	</a>
 	<?php } ?>
 	</div>
+<?php } ?>
 <?php } ?>
