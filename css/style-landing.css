@@ -382,7 +382,7 @@ section {
 /* TEam Builder */
 
 #team-builder {
-	background:url(images-landing/bg-team-bulder.jpg) no-repeat;
+	background:url(images-landing/bg-team-builder.jpg) no-repeat;
 	background-size:cover;
 }
 
@@ -397,17 +397,44 @@ section {
 }
 
 #team-builder .title {
-	color:#FFF;
+	color: #2CABCE;
 	font-family: 'SohoStd-Bold', Helvetica;
-	font-size:42px;
-	line-height: 60%;
-	margin-top:80px;
-	text-align:left;
+	font-size: 42px;
+	text-align: left;
+	line-height: 145%%;
+	margin-top: 50px;
+	text-align: center;
+}
+
+#team-builder .description {
+	color: #6B6B6B;
+	font-size: 18px;
+	text-align: left;
+	margin-bottom: 30px;
+	line-height: 125%;
+	font-family: 'SohoStd-Light', Helvetica;
+	width: 700px;
+	margin: auto;
+}
+
+#team-builder .step-content {
+	width: 1057px;
+	margin: auto;
+	position: relative;
+}
+
+#team-builder .text .step-title {
+	color: #2CABCC;
+	font-family: 'SohoStd-Bold', Helvetica;
+}
+
+#team-builder .text p {
+	color: #333;
 }
 
 #steps {
 	position:relative;
-	margin-top: 20px;
+	margin-top: 45px;
 	height:565px;
 }
 
@@ -420,8 +447,8 @@ section {
 
 .steps-navigation a {
 	display:block;
-	width:68px;
-	height:68px;
+	width:59px;
+	height:60px;
 	position:absolute;
 }
 
@@ -443,13 +470,21 @@ section {
 	float:left;
 }
 
+#steps .step-content.first .text {
+	top: 140px;
+}
+
 #steps .text {
 	font-size: 21px;
 	float: left;
-	width: 410px;
+	width: 330px;
 	position: absolute;
-	right: 146px;
+	left: 25px;
 	top: 119px;
+}
+
+#steps .text p {
+	font-size: 18px;
 }
 
 #price {
@@ -636,7 +671,7 @@ section {
 
 #video-footer {
 	background:url(images-landing/video2.jpg);
-	height:420px;
+	height:400px;
 	width:100%;
 	position:relative;
 }
@@ -708,6 +743,40 @@ section {
 	max-width:100%;
 }
 
+.super-footer {
+	background: #53647A;
+	color: #FFF;
+	clear: both;
+	font-size: 13px;
+	padding: 7px 0;
+}
+
+.super-footer .copy {
+	float: left;
+}
+
+.super-footer .developed {
+	float: right;
+	margin-top: -2px;
+}
+
+.super-footer .developed a {
+	width: 13px;
+	height: 19px;
+	display: inline-block;
+	background:url(images-landing/h.png) no-repeat;
+}
+
+.super-footer .developed span {
+	float: left;
+	margin-top: 2px;
+	margin-right: 12px;
+}
+
+.super-footer .clear {
+	clear: both;
+}
+
 /* HEADER */
 
 header {
@@ -765,4 +834,98 @@ a#inicio-sesion {
 	color:#FFF;
 	text-align: center;
 	line-height: 65px;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1440px) {
+}
+
+
+@media (max-width: 1280px) {
+
+	#responsive .title {
+		margin-top: 90px;
+	}
+
+	#responsive img {
+		max-width: 86%;
+	}
+
+	#features .title {
+		margin-top: 90px;
+	}
+
+	#features .feature .icon {
+		margin-bottom: 20px;
+		height: 88px;
+		width: 140px;
+		margin: auto;
+	}
+
+	#features .feature .icon img {
+		width: 70%;
+	}
+
+	#features .feature .icon.second img, #features .feature .icon.third img  {
+		width: 62%;
+	}
+
+	.feature-title {
+		margin-bottom: 15px;
+		margin-top: 15px;
+	}
+
+	#steps {
+		margin-top: 20px;
+	}
+
+	#project-states .title {
+		margin-top: 120px;
+	}
+
+	#project-states .image-tablet {
+		bottom: -34px;
+	}
+
+	#team-builder .title {
+		margin-top: 100px;
+	}
+
+	#price .title {
+		margin-top: 70px;
+	}
+
+	#price .plan {
+		height:332px;
+	}
+
+	#price .plan .number {
+		margin-top: 10px;
+		font-size: 61px;
+		height: 100px;
+	}
+	#price .plan .number img {
+		max-width: 36%;
+		margin-top: -20px;
+	}
+
+	#price .plan .description {
+		margin-bottom: 5px;
+		padding-bottom: 2px;
+	}
+
+	#price .plan .peso {
+		left: 52px;
+	}
+
+	#price .sign-up-free {
+		font-size: 28px;
+		padding: 10px;
+	}
+
+	#video-footer {
+		height: 302px;
+	}
+
 }
