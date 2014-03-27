@@ -47,28 +47,28 @@ if($usuario_id > 0){
 	
 	if($project_id){
 		$tasks = getResult("
-			SELECT tarea_id, tarea_nombre, tarea_due, tarea_activo, proyecto_id, proyecto_nombre, proyecto_color
+			SELECT tarea_id, tarea_nombre, tarea_due, tarea_completada, proyecto_id, proyecto_nombre, proyecto_color
 			FROM tarea 
 			JOIN proyecto ON proyecto.proyecto_id = tarea.fk_proyecto_id 
 			LEFT JOIN rel_tareausuario ON rel_tareausuario.fk_tarea_id = tarea.tarea_id 
 			WHERE tarea.fk_tarea_id = 0 
 			AND fk_proyecto_id = '$project_id' 
 			GROUP BY tarea.tarea_id 
-			ORDER BY tarea_activo, tarea_due ASC
+			ORDER BY tarea_completada DESC, tarea_due ASC
 		");
 	}
 	else{
 		$tasks = getResult("
-			SELECT tarea_id, tarea_nombre, tarea_due, tarea_activo, proyecto_id, proyecto_nombre, proyecto_color 
+			SELECT tarea_id, tarea_nombre, tarea_due, tarea_completada, proyecto_id, proyecto_nombre, proyecto_color 
 			FROM tarea 
 			JOIN proyecto ON proyecto.proyecto_id = tarea.fk_proyecto_id 
 			LEFT JOIN rel_tareausuario ON rel_tareausuario.fk_tarea_id = tarea.tarea_id 
 			WHERE tarea.fk_tarea_id = 0 
 			GROUP BY tarea.tarea_id 
-			ORDER BY tarea_activo, tarea_due ASC
+			ORDER BY tarea_completada DESC, tarea_due ASC
 		");
 	}
-		
+
 	$data['tasks'] = $tasks;
 }
 
@@ -246,6 +246,41 @@ if($uri->segment(1) == 'ajax'){
 			);
 		}
 		die(json_encode($result));
+	}
+	if($uri->segment(2) == 'tasks'){
+		$where = "WHERE tarea.fk_tarea_id = 0 ";
+		if($uri->segment(3) == 'me'){
+			$where .= "AND tarea.fk_responsable_id = '$usuario_id' AND tarea.tarea_completada = '0'";
+		}
+		if($uri->segment(3) == 'completed'){
+			$where .= "AND tarea.tarea_completada = '1'";
+		}
+		$tasks = getResult("
+			SELECT tarea_id, tarea_nombre, tarea_due, tarea_completada, proyecto_id, proyecto_nombre, proyecto_color 
+			FROM tarea 
+			JOIN proyecto ON proyecto.proyecto_id = tarea.fk_proyecto_id 
+			$where
+			GROUP BY tarea.tarea_id 
+			ORDER BY tarea_completada, tarea_due ASC
+		");
+		
+		$data['tasks'] = $tasks;
+		$template = abs_path('templates/ajax/tasks.php');
+	}
+	if($uri->segment(2) == 'task'){
+		$task_id = $uri->segment(3);
+		
+		$tasks = getResult("
+			SELECT tarea_id, tarea_nombre, tarea_due, tarea_completada, proyecto_id, proyecto_nombre, proyecto_color, CONCAT_WS(' ', usuario_nombre, usuario_apellido) AS usuario_nombrecompleto, CONCAT_WS(' ', follower.usuario_nombre, follower.usuario_apellido) as follower_nombrecompleto, follower.usuario_email as follower_email
+			FROM tarea 
+			JOIN proyecto ON proyecto.proyecto_id = tarea.fk_proyecto_id 
+			LEFT JOIN rel_tareausuario ON rel_tareausuario.fk_tarea_id = tarea.tarea_id
+			LEFT JOIN usuario AS follower ON follower.usuario_id = rel_tareausuario.fk_usuario_id
+			WHERE tarea.tarea_id = '$task_id' 
+			ORDER BY tarea_completada, tarea_due ASC
+		");
+		$data['tasks'] = $tasks;
+		$template = abs_path('templates/ajax/task-detail.php');
 	}
 }
 
