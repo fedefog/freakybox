@@ -5,7 +5,7 @@ $(document).ready(function() {
 	/* Slider */
 	
 		$('#steps').cycle({
-			fx:      'scrollRight',
+			fx:      'scrollHorz',
 			next:   '#right-step', 
 			prev:   '#left-step',
 			 timeout: 4000
