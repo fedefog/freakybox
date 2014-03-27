@@ -75,3 +75,161 @@
     </div><!-- / row -->    
 
 </div><!-- / col 6 -->
+
+<div class="modal fade" id="modal-task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">Modal Task</h4>
+                    </div>
+                    <div class="modal-body">
+                                         
+                     <div class="col-md-12 teams-update-wrapper">
+                     	
+                        <div class="teams-updates">
+                            
+                            <div class="task-update">
+                                
+                                <div class="task-update-header">
+                                    
+                                    <div class="task-update-title left">
+                                        Task Title
+                                    </div><!-- / task update title -->
+                                    
+                                </div><!-- task update header -->
+                                
+                                <div class="update-notification">
+                                
+                                    <div class="user left">
+                                        <img src="../images/fed.jpg" alt="Fede">
+                                    </div><!-- / user -->
+                                    
+                                    <div class="update-body right">
+                                    
+                                        <div class="name">
+                                            Federico <span class="task-completed-message">completed this task.</span>
+                                        </div><!-- / name -->
+                                        
+                                        <div class="update-content">
+                                            <p>Marce mucho mejor que en el otro me parece mejor organado pero.</p>
+                                        </div><!-- / update content -->
+                                        
+                                        <div class="date-update">Monday at 12:22 pm &middot;</div><!-- / date update -->
+                                        <div class="like-update"><a href="" title="like"></a></div><!-- / like update -->
+                                        <div class="follow-task right"><a href="" title="Follow Task">Follow Task</a></div>
+                                        
+                                    </div><!-- / update body -->
+                                    
+                                </div><!-- / update notification -->
+                                
+                                <div class="update-notification">
+                                
+                                    <div class="user left">
+                                        <img src="../images/marce.jpg" alt="Marce">
+                                    </div><!-- / user -->
+                                    
+                                    <div class="update-body right">
+                                    
+                                        <div class="name">
+                                            Federico <span class="task-completed-message">completed this task.</span>
+                                        </div><!-- / name -->
+                                        
+                                        <div class="update-content">
+                                            <p>Marce mucho mejor que en el otro me parece mejor organado pero seguimos sin tener subpages? tenemos que teenr subpages, yo pensaba que ibas a dejar.</p>
+                                        </div><!-- / update content -->
+                                        
+                                        <div class="date-update">Monday at 12:22 pm &middot;</div><!-- / date update -->
+                                        <div class="like-update"><a href="" title="like"></a></div><!-- / like update -->
+                                        <div class="follow-task right"><a href="" title="Follow Task">Follow Task</a></div>
+                                        
+                                    </div><!-- / update body -->
+                                    
+                                </div><!-- / update notification -->
+                                
+                                <div class="update-notification">
+                                
+                                    <div class="user left">
+                                        <img src="../images/marce.jpg" alt="Marce">
+                                    </div><!-- / user -->
+                                    
+                                    <div class="update-body right">
+                                    
+                                        <div class="name">
+                                            Federico <span class="task-completed-message">completed this task.</span>
+                                        </div><!-- / name -->
+                                        
+                                        <div class="update-content">
+                                            <p>Marce mucho mejor que en el otro me parece mejor organado pero seguimos sin tener subpages? tenemos que teenr subpages, yo pensaba que ibas a dejar.</p>
+                                        </div><!-- / update content -->
+                                        
+                                        <div class="date-update">Monday at 12:22 pm &middot;</div><!-- / date update -->
+                                        <div class="like-update"><a href="" title="like"></a></div><!-- / like update -->
+                                        <div class="follow-task right"><a href="" title="Follow Task">Follow Task</a></div>
+                                        
+                                    </div><!-- / update body -->
+                                    
+                                </div><!-- / update notification -->
+                                
+                                <div class="update-notification">
+                                
+                                    <div class="user left">
+                                        <img src="../images/marce.jpg" alt="Marce">
+                                    </div><!-- / user -->
+                                    
+                                    <div class="update-body right">
+                                    
+                                        <div class="name">
+                                            Federico <span class="task-completed-message">completed this task.</span>
+                                        </div><!-- / name -->
+                                        
+                                        <div class="update-content">
+                                            <p>Marce mucho mejor que en el otro me parece mejor organado pero seguimos sin tener subpages? tenemos que teenr subpages, yo pensaba que ibas a dejar.</p>
+                                        </div><!-- / update content -->
+                                        
+                                        <div class="date-update">Monday at 12:22 pm &middot;</div><!-- / date update -->
+                                        <div class="like-update"><a href="" title="like"></a></div><!-- / like update -->
+                                        <div class="follow-task right"><a href="" title="Follow Task">Follow Task</a></div>
+                                        
+                                    </div><!-- / update body -->
+                                    
+                                </div><!-- / update notification -->
+                                
+                                <div class="update-notification">
+                                
+                                    <div class="user left">
+                                        <img src="../images/marce.jpg" alt="Marce">
+                                    </div><!-- / user -->
+                                    
+                                    <div class="update-body right">
+                                    
+                                        <div class="name">
+                                            Federico <span class="task-completed-message">completed this task.</span>
+                                        </div><!-- / name -->
+                                        
+                                        <div class="update-content">
+                                            <p>Marce mucho mejor que en el otro me parece mejor organado pero seguimos sin tener subpages? tenemos que teenr subpages, yo pensaba que ibas a dejar.</p>
+                                        </div><!-- / update content -->
+                                        
+                                        <div class="date-update">Monday at 12:22 pm &middot;</div><!-- / date update -->
+                                        <div class="like-update"><a href="" title="like"></a></div><!-- / like update -->
+                                        <div class="follow-task right"><a href="" title="Follow Task">Follow Task</a></div>
+                                        
+                                    </div><!-- / update body -->
+                                    
+                                </div><!-- / update notification -->
+                                
+                                </div><!-- / task update -->
+                                
+                               <div class="clear"></div>
+                        
+                        </div><!-- / teams updates -->
+                        
+                     </div><!-- / col 6 -->
+                     
+                     <div class="clear"></div>
+                     
+                    </div><!-- / modal body -->
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
