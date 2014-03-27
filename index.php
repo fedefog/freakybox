@@ -15,7 +15,7 @@ $_SESSION['uid'] = 1;
 $usuario_id = intval($_SESSION['uid']);
 
 $team_id = $uri->segment(1);
-$project_id = $uri->segment(2);
+$project_id = intval($uri->segment(2));
 $task_id = $uri->segment(3);
 
 if($usuario_id > 0){
@@ -34,7 +34,7 @@ if($usuario_id > 0){
 	$data['teams'] = $teams;
 	
 	$projects = getResult("
-		SELECT proyecto_id, proyecto_nombre, proyecto_privado, rel_teamusuario.fk_team_id, (SELECT COUNT(tarea_id) FROM tarea WHERE tarea.fk_proyecto_id = proyecto.proyecto_id AND tarea_activo = '1') AS tasks_open, (SELECT COUNT(tarea_id) FROM tarea WHERE tarea.fk_proyecto_id = proyecto.proyecto_id) AS tasks
+		SELECT proyecto_id, proyecto_nombre, proyecto_color, proyecto_privado, rel_teamusuario.fk_team_id, (SELECT COUNT(tarea_id) FROM tarea WHERE tarea.fk_proyecto_id = proyecto.proyecto_id AND tarea_activo = '1') AS tasks_open, (SELECT COUNT(tarea_id) FROM tarea WHERE tarea.fk_proyecto_id = proyecto.proyecto_id) AS tasks
 		FROM proyecto
 		JOIN rel_proyectoteam ON rel_proyectoteam.fk_proyecto_id = proyecto.proyecto_id
 		JOIN rel_teamusuario ON rel_teamusuario.fk_team_id = rel_proyectoteam.fk_team_id
@@ -44,6 +44,32 @@ if($usuario_id > 0){
 	");
 	
 	$data['projects'] = $projects;
+	
+	if($project_id){
+		$tasks = getResult("
+			SELECT tarea_id, tarea_nombre, tarea_due, tarea_activo, proyecto_id, proyecto_nombre, proyecto_color
+			FROM tarea 
+			JOIN proyecto ON proyecto.proyecto_id = tarea.fk_proyecto_id 
+			LEFT JOIN rel_tareausuario ON rel_tareausuario.fk_tarea_id = tarea.tarea_id 
+			WHERE tarea.fk_tarea_id = 0 
+			AND fk_proyecto_id = '$project_id' 
+			GROUP BY tarea.tarea_id 
+			ORDER BY tarea_due ASC
+		");
+	}
+	else{
+		$tasks = getResult("
+			SELECT tarea_id, tarea_nombre, tarea_due, tarea_activo, proyecto_id, proyecto_nombre, proyecto_color 
+			FROM tarea 
+			JOIN proyecto ON proyecto.proyecto_id = tarea.fk_proyecto_id 
+			LEFT JOIN rel_tareausuario ON rel_tareausuario.fk_tarea_id = tarea.tarea_id 
+			WHERE tarea.fk_tarea_id = 0 
+			GROUP BY tarea.tarea_id 
+			ORDER BY tarea_due ASC
+		");
+	}
+		
+	$data['tasks'] = $tasks;
 }
 
 /*

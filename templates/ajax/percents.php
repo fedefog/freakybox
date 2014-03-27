@@ -3,7 +3,7 @@
 <?php $project = $projects[$i]; ?>
 <?php $terminado = round(100 - (($project['tasks_open'] / $project['tasks']) * 100));?>
 <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">
-	<div class="project-state color-1">
+	<div class="project-state color-1" <?php echo ($project['proyecto_color'])?'style="background:#'.$project['proyecto_color'].';"':''?>>
 		<span class="name left"><?php echo $project['proyecto_nombre']; ?></span>
 		<span class="percentage right"><?php echo $terminado; ?></span>
 		<div class="progress">
