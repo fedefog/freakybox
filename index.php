@@ -54,7 +54,7 @@ if($usuario_id > 0){
 			WHERE tarea.fk_tarea_id = 0 
 			AND fk_proyecto_id = '$project_id' 
 			GROUP BY tarea.tarea_id 
-			ORDER BY tarea_due ASC
+			ORDER BY tarea_activo, tarea_due ASC
 		");
 	}
 	else{
@@ -65,7 +65,7 @@ if($usuario_id > 0){
 			LEFT JOIN rel_tareausuario ON rel_tareausuario.fk_tarea_id = tarea.tarea_id 
 			WHERE tarea.fk_tarea_id = 0 
 			GROUP BY tarea.tarea_id 
-			ORDER BY tarea_due ASC
+			ORDER BY tarea_activo, tarea_due ASC
 		");
 	}
 		
