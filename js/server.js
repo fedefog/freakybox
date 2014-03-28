@@ -21,6 +21,8 @@ var clients = {};
 
 var usuario_id = 0;
 
+var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
 io.sockets.on('connection', function (socket) {
 		
 	socket.on('connect', function(data){
@@ -125,6 +127,7 @@ io.sockets.on('connection', function (socket) {
 		var fin = data.fin.split('/');
 		
 		var tarea = {
+			tarea_id: 0,
 			fk_proyecto_id: data.proyecto_id,
 			fk_tarea_id: data.tarea_id,
 			fk_usuario_id: usuario_id,
@@ -134,13 +137,12 @@ io.sockets.on('connection', function (socket) {
 			tarea_fin: fin[2]+'-'+fin[1]+'-'+fin[0]
 		};
 		
-		console.log(tarea);
-		
 		connection.query('INSERT INTO tarea SET ?', tarea, function(err, result) {
 			if (err) throw err;
 			
 			var id = result.insertId;
-						
+			tarea.tarea_id = id;
+			
 			for (var key in data.followers) {
 				var user = data.followers[key];
 				var follower_id = user.id;
@@ -154,9 +156,24 @@ io.sockets.on('connection', function (socket) {
 					if (err) throw err;
 				});
 			}
-		});
+			
+			//console.log(tarea);
+			
+			var tobroad = {
+				tarea_id: tarea.tarea_id,
+				fk_proyecto_id: data.proyecto_id,
+				fk_tarea_id: data.tarea_id,
+				fk_usuario_id: usuario_id,
+				fk_responsable_id : data.responsable_id,
+				tarea_nombre: data.nombre,
+				tarea_inicio: ini[2]+'-'+ini[1]+'-'+ini[0],
+				tarea_fin: fin[2]+'-'+fin[1]+'-'+fin[0],
+				tarea_fin_str: fin[0] + ' ' + months[Number(fin[1] - 1)]
+			};
 		
-		socket.broadcast.emit('createTask', data);
+			socket.emit('createTask', tobroad);
+			socket.broadcast.emit('createTask', tobroad);
+		});
     });
 });
 

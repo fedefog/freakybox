@@ -17,6 +17,7 @@ var Core = (function() {
 		
 		_socket.on('createTeam', createTeam);
 		_socket.on('createProject', createProject);
+		_socket.on('createTask', createTask);
     };
 	
     Core.prototype.doAction = function(event, data) {
@@ -81,6 +82,22 @@ var Core = (function() {
 		
         $('ul#team-'+data.team_id).append(html);
     };
+	
+	var createTask = function(data){
+		console.log("Create Task:");
+		console.log(data);
+		var html = '<div class="task">';
+		html = html + '<div class="task-number">' + data.tarea_id + '</div>';
+        html = html + '<div class="task-state"><input type="checkbox" class="complete-task" value="' + data.tarea_id + '"></div>';
+        html = html + '<div class="task-title">' + data.tarea_nombre + '</div>';
+        html = html + '<div class="view-task"><a class="view-task-btn showtask" href="/ajax/task/' + data.tarea_id + '" role="menuitem" tabindex="-1" title="View Task"></a><a class="remove-task-btn" href="" title="Remove Task"></a></div>';
+        html = html + '<div class="task-due-date">' + data.tarea_fin_str + '</div>';
+        html = html + '<div class="task-project"><span class="label label-default"><a class="color-1" style="background:#A8C77B;" data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">Freaky Box</a></span></div>';
+        html = html + '</div>';
+		
+		$('div.list-tasks-generic').append(html);
+		$('div.list-tasks-pr'+data.fk_proyecto_id).append(html);
+	}
 	
     return Core;
 })();
