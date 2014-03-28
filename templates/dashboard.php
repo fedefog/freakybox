@@ -907,7 +907,7 @@
 									tarea_id: $("div#modal-create-task select[name=maintask]").val()
 								};
 								
-								Frontend.createTask(tarea);
+								Frontend.createTaskcreateTask(tarea);
 								
 								$("div#modal-create-task input[name=nombre]").val('');
 								$("div#modal-create-task select[name=proyecto]").val(0);

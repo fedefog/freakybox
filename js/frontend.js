@@ -34,7 +34,7 @@ var Core = (function() {
     };
 	
 	Core.prototype.createProject = function(data) {
-		createProject(data);
+		//createProject(data);
         _socket.emit('createProject', data);
     };
 	
@@ -81,6 +81,21 @@ var Core = (function() {
 		html = html +'</li>';
 		
         $('ul#team-'+data.team_id).append(html);
+		
+		var percent = '';
+		percent = percent + '<a href="/dashboard/' + data.proyecto_id + '" tabindex="-1">';
+		percent = percent + '	<div class="project-state color-1" style="background:#' + data.proyecto_color + ';">';
+		percent = percent + '		<span class="name left">' + data.proyecto_nombre + '</span>';
+		percent = percent + '		<span class="percentage right">100</span>';
+		percent = percent + '		<div class="progress">';
+		percent = percent + '			<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">';
+		percent = percent + '				<span class="sr-only"><?php echo $terminado; ?>100% Complete</span>';
+		percent = percent + '			</div><!-- / progress bar -->';
+		percent = percent + '		</div><!-- / progress -->';
+		percent = percent + '	</div><!-- / project State -->';
+		percent = percent + '</a>';
+		
+		$('.projects-summary').append(percent);
     };
 	
 	var createTask = function(data){

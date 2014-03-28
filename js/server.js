@@ -90,18 +90,18 @@ io.sockets.on('connection', function (socket) {
 	});
 		
 	socket.on('createProject', function(data){
-		if(data.privado == 0){
-			socket.broadcast.emit('createProject', data);
-		}
+		
 		
 		var ini = data.inicio.split('/');
 		var fin = data.fin.split('/');
 		
 		var proyecto = {
+			proyecto_id: 0,
 			fk_team_id: data.team_id,
 			proyecto_nombre: data.nombre,
 			proyecto_inicio: ini[2]+'-'+ini[1]+'-'+ini[0],
 			proyecto_fin: fin[2]+'-'+fin[1]+'-'+fin[0],
+			proyecto_color: data.color,
 			proyecto_privado: data.privado,
 			proyecto_descripcion: data.descripcion
 		};
@@ -110,6 +110,7 @@ io.sockets.on('connection', function (socket) {
 			if (err) throw err;
 			
 			var id = result.insertId;
+			proyecto.proyecto_id = id;
 			
 			var rel_proyectoteam = {
 				fk_proyecto_id: id,
@@ -119,6 +120,11 @@ io.sockets.on('connection', function (socket) {
 			connection.query('INSERT INTO rel_proyectoteam SET ?', rel_proyectoteam, function(err, result) {
 				if (err) throw err;
 			});
+			
+			socket.emit('createProject', proyecto);
+			if(data.privado == 0){
+				socket.broadcast.emit('createProject', proyecto);
+			}
 		});
     });
 	
