@@ -1,7 +1,7 @@
 <?php foreach($sidebar as $team){ ?>
 <div class="team-wrapper">
 	<div class="team-name">
-		<a href="/<?php echo $team['team_id']; ?>" title="Team Name"><?php echo $team['team_nombre']; ?></a>
+		<a href="/dashboard/<?php echo $team['team_id']; ?>" title="Team Name"><?php echo $team['team_nombre']; ?></a>
 	</div><!-- / Team Name -->
 	
 	<div class="team-content">
@@ -20,7 +20,7 @@
 		<ul id="team-<?php echo $team['team_id']; ?>" class="projects-team">
 		<?php foreach($team['proyectos'] as $proyecto){ ?>
 			<li>
-				<a href="/<?php echo $team['team_id']; ?>/<?php echo $proyecto['proyecto_id']; ?>" title=""><?php echo $proyecto['proyecto_nombre']; ?></a>
+				<a href="/dashboard/<?php echo $team['team_id']; ?>/<?php echo $proyecto['proyecto_id']; ?>" title=""><?php echo $proyecto['proyecto_nombre']; ?></a>
 				<div class="dropdown project-options">
 					<a data-toggle="dropdown" class="options-arrow" href="#"></a>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">

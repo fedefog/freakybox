@@ -83,7 +83,7 @@ var Core = (function() {
         $('ul#team-'+data.team_id).append(html);
 		
 		var percent = '';
-		percent = percent + '<a href="/dashboard/' + data.proyecto_id + '" tabindex="-1">';
+		percent = percent + '<a href="/' + data.team_id + '/' + data.proyecto_id + '" tabindex="-1">';
 		percent = percent + '	<div class="project-state color-1" style="background:#' + data.proyecto_color + ';">';
 		percent = percent + '		<span class="name left">' + data.proyecto_nombre + '</span>';
 		percent = percent + '		<span class="percentage right">100</span>';

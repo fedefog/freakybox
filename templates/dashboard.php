@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+    <link rel="shortcut icon" href="//assets/ico/favicon.png">
 
     <title>Freakybox</title>
 
@@ -31,8 +31,8 @@
 		
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="../../assets/js/html5shiv.js"></script>
-      <script src="../../assets/js/respond.min.js"></script>
+      <script src="//assets/js/html5shiv.js"></script>
+      <script src="//assets/js/respond.min.js"></script>
     <![endif]-->
   </head>
 
@@ -46,7 +46,7 @@
                 
                 <div class="col-md-2 main-logo">
                     
-                   <h1><a href="#" title="Freakybox"><img src="../images/freaky-logo.png" alt="Freakybox Logo" title="Freakybox"></a></h1>
+                   <h1><a href="#" title="Freakybox"><img src="/images/freaky-logo.png" alt="Freakybox Logo" title="Freakybox"></a></h1>
                     
                 </div><!-- / col 2 -->
                 
@@ -91,7 +91,7 @@
                               	<span class="caret"></span>
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1" href="#">
-                                    	<img src="../images/fed.jpg" alt="Fede">
+                                    	<img src="/images/fed.jpg" alt="Fede">
                                         <div class="notification excerpt"><div class="name">Federico:</div>the lightweight, feature-rich and easy to use..</div>
                                         <div class="date-update">Monday at 12:22 pm</div>
                                     </a>
@@ -99,7 +99,7 @@
                                 <li class="divider"></li>
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1" href="#">
-                                    	<img src="../images/fed.jpg" alt="Fede">
+                                    	<img src="/images/fed.jpg" alt="Fede">
                                         <div class="notification excerpt"><div class="name">Federico:</div>the lightweight, feature-rich and easy to use..</div>
                                         <div class="date-update">Monday at 12:22 pm</div>
                                     </a>
@@ -107,7 +107,7 @@
                                 <li class="divider"></li>
                                 <li role="presentation">
                                     <a role="menuitem" tabindex="-1" href="#">
-                                    	<img src="../images/fed.jpg" alt="Fede">
+                                    	<img src="/images/fed.jpg" alt="Fede">
                                         <div class="notification excerpt"><div class="name">Federico:</div>the lightweight, feature-rich and easy to use..</div>
                                         <div class="date-update">Monday at 12:22 pm</div>
                                     </a>
@@ -256,7 +256,7 @@
                                         <div class="update-notification">
                                         
                                             <div class="user left">
-                                                <img src="../images/fed.jpg" alt="Fede">
+                                                <img src="/images/fed.jpg" alt="Fede">
                                             </div><!-- / user -->
                                             
                                             <div class="update-body right">
@@ -298,7 +298,7 @@
                                         <div class="update-notification">
                                         
                                             <div class="user left">
-                                                <img src="../images/fed.jpg" alt="Fede">
+                                                <img src="/images/fed.jpg" alt="Fede">
                                             </div><!-- / user -->
                                             
                                             <div class="update-body right">
@@ -322,7 +322,7 @@
                                         <div class="update-notification">
                                         
                                             <div class="user left">
-                                                <img src="../images/marce.jpg" alt="Marce">
+                                                <img src="/images/marce.jpg" alt="Marce">
                                             </div><!-- / user -->
                                             
                                             <div class="update-body right">
@@ -364,7 +364,7 @@
                                         <div class="update-notification">
                                         
                                             <div class="user left">
-                                                <img src="../images/fed.jpg" alt="Fede">
+                                                <img src="/images/fed.jpg" alt="Fede">
                                             </div><!-- / user -->
                                             
                                             <div class="update-body right">
@@ -388,7 +388,7 @@
                                         <div class="update-notification">
                                         
                                             <div class="user left">
-                                                <img src="../images/marce.jpg" alt="Marce">
+                                                <img src="/images/marce.jpg" alt="Marce">
                                             </div><!-- / user -->
                                             
                                             <div class="update-body right">

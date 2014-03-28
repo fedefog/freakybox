@@ -14,9 +14,9 @@ $data['uri'] = $uri;
 $_SESSION['uid'] = 1;
 $usuario_id = intval($_SESSION['uid']);
 
-$team_id = $uri->segment(1);
-$project_id = intval($uri->segment(2));
-$task_id = $uri->segment(3);
+$team_id = $uri->segment(2);
+$project_id = intval($uri->segment(3));
+$task_id = $uri->segment(4);
 
 if($usuario_id > 0){
 	$data['usuario'] = getRow("SELECT *, CONCAT_WS(' ', usuario_nombre, usuario_apellido) AS usuario_nombrecompleto FROM usuario WHERE usuario_id = $usuario_id");
@@ -47,34 +47,43 @@ if($usuario_id > 0){
 		
 	if($project_id){
 		$tasks = getResult("
-			SELECT tarea_id, tarea_nombre, tarea_fin, tarea_due, tarea_completada, proyecto_id, proyecto_nombre, proyecto_color
+			SELECT tarea_id, tarea_nombre, tarea_fin, tarea_due, tarea_completada, proyecto_id, proyecto_nombre, proyecto_color, rel_proyectoteam.fk_team_id
 			FROM tarea 
 			JOIN proyecto ON proyecto.proyecto_id = tarea.fk_proyecto_id 
 			LEFT JOIN rel_tareausuario ON rel_tareausuario.fk_tarea_id = tarea.tarea_id 
+			LEFT JOIN rel_proyectoteam ON rel_proyectoteam.fk_proyecto_id = proyecto.proyecto_id 
+			LEFT JOIN rel_teamusuario ON rel_teamusuario.fk_team_id = rel_proyectoteam.fk_team_id 
 			WHERE tarea.fk_tarea_id = 0 
-			AND fk_proyecto_id = '$project_id' 
+			AND tarea.fk_proyecto_id = '$project_id' 
 			GROUP BY tarea.tarea_id 
 			ORDER BY tarea_completada DESC, tarea_due ASC
 		");
 		// Se usa en el listado de tasks del dashboard para escribir la clase.
 		$data['cp'] = 'list-tasks-pr'.$project_id;
+		
+		$_proyecto = getRow("SELECT * FROM proyecto WHERE proyecto_id = '$project_id' ");
+		
+		$data['pn'] = $_proyecto['proyecto_nombre'];
 	}
 	else{
 		$tasks = getResult("
-			SELECT tarea_id, tarea_nombre, tarea_fin, tarea_due, tarea_completada, proyecto_id, proyecto_nombre, proyecto_color 
+			SELECT tarea_id, tarea_nombre, tarea_fin, tarea_due, tarea_completada, proyecto_id, proyecto_nombre, proyecto_color, rel_proyectoteam.fk_team_id 
 			FROM tarea 
 			JOIN proyecto ON proyecto.proyecto_id = tarea.fk_proyecto_id 
 			LEFT JOIN rel_tareausuario ON rel_tareausuario.fk_tarea_id = tarea.tarea_id 
+			LEFT JOIN rel_proyectoteam ON rel_proyectoteam.fk_proyecto_id = proyecto.proyecto_id 
+			LEFT JOIN rel_teamusuario ON rel_teamusuario.fk_team_id = rel_proyectoteam.fk_team_id 
 			WHERE tarea.fk_tarea_id = 0 
 			GROUP BY tarea.tarea_id 
 			ORDER BY tarea_completada DESC, tarea_due ASC
 		");
 		// Se usa en el listado de tasks del dashboard para escribir la clase.
 		$data['cp'] = 'list-tasks-generic';
+		
+		$data['pn'] = $data['usuario']['usuario_nombre'];
 	}
 
 	$data['tasks'] = $tasks;
-	
 }
 
 /*
@@ -276,9 +285,10 @@ if($uri->segment(1) == 'ajax'){
 		$task_id = $uri->segment(3);
 		
 		$tasks = getResult("
-			SELECT tarea_id, tarea_nombre, tarea_fin, tarea_due, tarea_completada, proyecto_id, proyecto_nombre, proyecto_color, CONCAT_WS(' ', usuario_nombre, usuario_apellido) AS usuario_nombrecompleto, CONCAT_WS(' ', follower.usuario_nombre, follower.usuario_apellido) as follower_nombrecompleto, follower.usuario_email as follower_email
+			SELECT tarea_id, tarea_nombre, tarea_fin, tarea_due, tarea_completada, proyecto_id, proyecto_nombre, proyecto_color, CONCAT_WS(' ', usuario.usuario_nombre, usuario.usuario_apellido) AS usuario_nombrecompleto, usuario.usuario_email, CONCAT_WS(' ', follower.usuario_nombre, follower.usuario_apellido) as follower_nombrecompleto, follower.usuario_email as follower_email
 			FROM tarea 
 			JOIN proyecto ON proyecto.proyecto_id = tarea.fk_proyecto_id 
+			LEFT JOIN usuario ON usuario.usuario_id = tarea.fk_usuario_id
 			LEFT JOIN rel_tareausuario ON rel_tareausuario.fk_tarea_id = tarea.tarea_id
 			LEFT JOIN usuario AS follower ON follower.usuario_id = rel_tareausuario.fk_usuario_id
 			WHERE tarea.tarea_id = '$task_id' 
@@ -293,9 +303,7 @@ if($uri->segment(1) == '' && $usuario_id == 0){
 	$template = abs_path('templates/index.php');
 }
 
-if(is_numeric($uri->segment(1))){
-	$template = abs_path('templates/dashboard.php');
-}
+
 
 $output->load($template, $data, false);
 $output->display();

@@ -1,7 +1,7 @@
 <div class="col-md-6 module">
     <div class="row">
         <div class="title">
-            <strong><?php echo $usuario['usuario_nombre']; ?>'s</strong> Tasks
+            <strong><?php echo $pn; ?>'s</strong> Tasks
              <div class="options dropdown">
                 <a data-toggle="dropdown" class="btn" href="#"></a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -49,7 +49,7 @@
                 <div class="task-title"><?php echo $task['tarea_nombre']; ?></div>
                 <div class="view-task"><a class="view-task-btn showtask" href="/ajax/task/<?php echo $task['tarea_id']; ?>" role="menuitem" tabindex="-1" title="View Task"></a><a class="remove-task-btn" href="" title="Remove Task"></a></div>
                 <div class="task-due-date"><?php echo date('d M', strtotime($task['tarea_fin'])); ?></div>
-                <div class="task-project"><span class="label label-default"><a class="color-1" <?php echo ($task['proyecto_color'])?'style="background:#'.$task['proyecto_color'].';"':''?> data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1"><?php echo $task['proyecto_nombre']; ?></a></span></div>
+                <div class="task-project"><span class="label label-default"><a class="color-1" <?php echo ($task['proyecto_color'])?'style="background:#'.$task['proyecto_color'].';"':''?> href="/dashboard/<?php echo $task['fk_team_id']; ?>/<?php echo $task['proyecto_id']; ?>" tabindex="-1"><?php echo $task['proyecto_nombre']; ?></a></span></div>
             </div><!-- / task -->
 			<?php } ?>
             
