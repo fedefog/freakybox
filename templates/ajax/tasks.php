@@ -41,14 +41,14 @@
     
      <div class="row">
      
-     	<div id="tasks">
+     	<div id="tasks" class="<?php echo $cp; ?>">
 			<?php foreach($tasks as $task){ ?>
         	<div class="task <?php echo ($task['tarea_completada'])?'completed':'';?>">
                 <div class="task-number">1</div>
                 <div class="task-state"><input type="checkbox" class="complete-task" value="<?php echo $task['tarea_id']; ?>"></div>
                 <div class="task-title"><?php echo $task['tarea_nombre']; ?></div>
                 <div class="view-task"><a class="view-task-btn showtask" href="/ajax/task/<?php echo $task['tarea_id']; ?>" role="menuitem" tabindex="-1" title="View Task"></a><a class="remove-task-btn" href="" title="Remove Task"></a></div>
-                <div class="task-due-date"><?php echo date('d M', strtotime($task['tarea_due'])); ?></div>
+                <div class="task-due-date"><?php echo date('d M', strtotime($task['tarea_fin'])); ?></div>
                 <div class="task-project"><span class="label label-default"><a class="color-1" <?php echo ($task['proyecto_color'])?'style="background:#'.$task['proyecto_color'].';"':''?> data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1"><?php echo $task['proyecto_nombre']; ?></a></span></div>
             </div><!-- / task -->
 			<?php } ?>
