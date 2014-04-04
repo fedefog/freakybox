@@ -84,6 +84,47 @@ if($usuario_id > 0){
 	}
 
 	$data['tasks'] = $tasks;
+	
+	if($project_id){
+		$updates = getResult("
+			SELECT actualizacion.*, tarea.tarea_id, tarea.tarea_nombre, proyecto_id, proyecto_nombre, proyecto_color, CONCAT_WS(' ', usuario.usuario_nombre, usuario.usuario_apellido) AS usuario_nombrecompleto, usuario.usuario_email
+			FROM actualizacion 
+			LEFT JOIN team ON team.team_id = actualizacion.fk_team_id 
+			LEFT JOIN proyecto ON proyecto.proyecto_id = actualizacion.fk_proyecto_id 
+			LEFT JOIN tarea ON tarea.tarea_id = actualizacion.fk_tarea_id 
+			LEFT JOIN usuario ON usuario.usuario_id = actualizacion.fk_usuario_id 	
+			WHERE actualizacion.fk_proyecto_id = '$project_id' 
+			ORDER BY actualizacion.actualizacion_fecha ASC 
+			LIMIT 25
+		");
+	}
+	elseif($team_id){
+		$updates = getResult("
+			SELECT actualizacion.*, tarea.tarea_id, tarea.tarea_nombre, proyecto_id, proyecto_nombre, proyecto_color, CONCAT_WS(' ', usuario.usuario_nombre, usuario.usuario_apellido) AS usuario_nombrecompleto, usuario.usuario_email
+			FROM actualizacion 
+			LEFT JOIN team ON team.team_id = actualizacion.fk_team_id 
+			LEFT JOIN proyecto ON proyecto.proyecto_id = actualizacion.fk_proyecto_id 
+			LEFT JOIN tarea ON tarea.tarea_id = actualizacion.fk_tarea_id 
+			LEFT JOIN usuario ON usuario.usuario_id = actualizacion.fk_usuario_id 	
+			WHERE actualizacion.fk_team_id = '$team_id' 
+			ORDER BY actualizacion.actualizacion_fecha ASC 
+			LIMIT 25
+		");
+	}
+	else{
+		$updates = getResult("
+			SELECT actualizacion.*, tarea.tarea_id, tarea.tarea_nombre, proyecto_id, proyecto_nombre, proyecto_color, CONCAT_WS(' ', usuario.usuario_nombre, usuario.usuario_apellido) AS usuario_nombrecompleto, usuario.usuario_email 
+			FROM actualizacion 
+			LEFT JOIN team ON team.team_id = actualizacion.fk_team_id 
+			LEFT JOIN proyecto ON proyecto.proyecto_id = actualizacion.fk_proyecto_id 
+			LEFT JOIN tarea ON tarea.tarea_id = actualizacion.fk_tarea_id 
+			LEFT JOIN usuario ON usuario.usuario_id = actualizacion.fk_usuario_id 	
+			ORDER BY actualizacion.actualizacion_fecha DESC 
+			LIMIT 25
+		");
+	}
+	
+	$data['updates'] = $updates;
 }
 
 /*
@@ -285,7 +326,7 @@ if($uri->segment(1) == 'ajax'){
 		$task_id = $uri->segment(3);
 		
 		$tasks = getResult("
-			SELECT tarea_id, tarea_nombre, tarea_fin, tarea_due, tarea_completada, proyecto_id, proyecto_nombre, proyecto_color, CONCAT_WS(' ', usuario.usuario_nombre, usuario.usuario_apellido) AS usuario_nombrecompleto, usuario.usuario_email, CONCAT_WS(' ', follower.usuario_nombre, follower.usuario_apellido) as follower_nombrecompleto, follower.usuario_email as follower_email
+			SELECT tarea_id, tarea_nombre, tarea_inicio, tarea_fin, tarea_due, tarea_completada, fk_responsable_id, proyecto_id, proyecto_nombre, proyecto_color, CONCAT_WS(' ', usuario.usuario_nombre, usuario.usuario_apellido) AS usuario_nombrecompleto, usuario.usuario_email, CONCAT_WS(' ', follower.usuario_nombre, follower.usuario_apellido) as follower_nombrecompleto, follower.usuario_email as follower_email
 			FROM tarea 
 			JOIN proyecto ON proyecto.proyecto_id = tarea.fk_proyecto_id 
 			LEFT JOIN usuario ON usuario.usuario_id = tarea.fk_usuario_id
@@ -293,6 +334,17 @@ if($uri->segment(1) == 'ajax'){
 			LEFT JOIN usuario AS follower ON follower.usuario_id = rel_tareausuario.fk_usuario_id
 			WHERE tarea.tarea_id = '$task_id' 
 			ORDER BY tarea_completada, tarea_due ASC
+		");
+		$tasks['stream'] = getResult("
+			SELECT actualizacion.*, tarea.tarea_id, tarea.tarea_nombre, fk_responsable_id, proyecto_id, proyecto_nombre, proyecto_color, CONCAT_WS(' ', usuario.usuario_nombre, usuario.usuario_apellido) AS usuario_nombrecompleto, usuario.usuario_email 
+			FROM actualizacion 
+			LEFT JOIN team ON team.team_id = actualizacion.fk_team_id 
+			LEFT JOIN proyecto ON proyecto.proyecto_id = actualizacion.fk_proyecto_id 
+			LEFT JOIN tarea ON tarea.tarea_id = actualizacion.fk_tarea_id 
+			LEFT JOIN usuario ON usuario.usuario_id = actualizacion.fk_usuario_id 	
+			WHERE actualizacion.fk_tarea_id = '$task_id'
+			ORDER BY actualizacion.actualizacion_fecha ASC 
+			LIMIT 25
 		");
 		$data['tasks'] = $tasks;
 		$template = abs_path('templates/ajax/task-detail.php');
@@ -302,8 +354,6 @@ if($uri->segment(1) == 'ajax'){
 if($uri->segment(1) == '' && $usuario_id == 0){
 	$template = abs_path('templates/index.php');
 }
-
-
 
 $output->load($template, $data, false);
 $output->display();

@@ -18,6 +18,8 @@ var Core = (function() {
 		_socket.on('createTeam', createTeam);
 		_socket.on('createProject', createProject);
 		_socket.on('createTask', createTask);
+		_socket.on('updateTask', updateTask);
+		_socket.on('commentTask', commentTask);
     };
 	
     Core.prototype.doAction = function(event, data) {
@@ -42,6 +44,18 @@ var Core = (function() {
 		//@TODO: Actualizar en algun lado.
 		//createTask(data);
         _socket.emit('createTask', data);
+    };
+	
+	Core.prototype.updateTask = function(data) {
+		//@TODO: Actualizar en algun lado.
+		//updateTask(data);
+        _socket.emit('updateTask', data);
+    };
+	
+	Core.prototype.commentTask = function(data) {
+		//@TODO: Actualizar en algun lado.
+		//commentTask(data);
+        _socket.emit('commentTask', data);
     };
 	
 	var createTeam = function(data) {
@@ -112,6 +126,16 @@ var Core = (function() {
 		
 		$('div.list-tasks-generic').append(html);
 		$('div.list-tasks-pr'+data.fk_proyecto_id).append(html);
+	}
+	
+	var updateTask = function(data){
+		console.log("Updated Task:");
+		console.log(data);
+	}
+	
+	var commentTask = function(data){
+		console.log("Commented Task:");
+		console.log(data);
 	}
 	
     return Core;

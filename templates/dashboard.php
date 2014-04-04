@@ -22,17 +22,17 @@
 	<script type="text/javascript" src="/js/colorpicker.js"></script>
 	<script type="text/javascript" src="/js/freakybox.js"></script>
 	
-	<script src="http://192.168.0.107:5000/socket.io/socket.io.js"></script>
+	<script src="http://190.16.165.20:5000/socket.io/socket.io.js"></script>
 	<script type="text/javascript" src="/js/frontend.js"></script>
 	<script>
 		var Frontend = new Core();
-		Frontend.init('192.168.0.107:5000', <?php echo ($_SESSION['uid'])?$_SESSION['uid']:0; ?>);
+		Frontend.init('190.16.165.20:5000', <?php echo ($_SESSION['uid'])?$_SESSION['uid']:0; ?>);
 	</script>
 		
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="//assets/js/html5shiv.js"></script>
-      <script src="//assets/js/respond.min.js"></script>
+      <script src="/js/html5shiv.js"></script>
+      <script src="/js/respond.min.js"></script>
     <![endif]-->
   </head>
 
@@ -235,185 +235,7 @@
                             
                             <div class="row">
                             
-                                <div class="teams-updates">
-                                
-                                    <div class="task-update">
-                                        
-                                        <div class="task-update-header">
-                                            
-                                            <div class="task-update-title left">
-                                                Task Title
-                                            </div><!-- / task update title -->
-                                            
-                                            <a class="view-task-btn right" data-toggle="modal" href="#modal-task" role="menuitem" tabindex="-1"></a>
-                                            
-                                            <div class="project-name-update right">
-                                                <span class="label label-default"><a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">Project Name</a></span>
-                                            </div><!-- / project name update -->
-                                            
-                                        </div><!-- task update header -->
-                                        
-                                        <div class="update-notification">
-                                        
-                                            <div class="user left">
-                                                <img src="/images/fed.jpg" alt="Fede">
-                                            </div><!-- / user -->
-                                            
-                                            <div class="update-body right">
-                                            
-                                                <div class="name">
-                                                    Federico <span class="task-completed-message">completed this task.</span>
-                                                </div><!-- / name -->
-                                                
-                                                <div class="update-content">
-                                                    <p>Marce mucho mejor que en el otro me parece mejor organado pero seguimos sin tener subpages? tenemos que teenr subpages, yo pensaba que ibas a dejar los main menus arriba como estaban y las subsecciiones a la izquierda.</p>
-                                                </div><!-- / update content -->
-                                                
-                                                <div class="date-update">Monday at 12:22 pm &middot;</div><!-- / date update -->
-                                                <div class="like-update"><a href="" title="like"></a></div><!-- / like update -->
-                                                <div class="follow-task right"><a href="" title="Follow Task">Follow Task</a></div>
-                                                
-                                            </div><!-- / update body -->
-                                            
-                                        </div><!-- / update notification -->
-                                        
-                                    </div><!-- / task update -->
-                                    
-                                    <div class="task-update">
-                                        
-                                        <div class="task-update-header">
-                                            
-                                            <div class="task-update-title left">
-                                                Task Title
-                                            </div><!-- / task update title -->
-                                            
-                                            <a class="view-task-btn right" data-toggle="modal" href="#modal-task" role="menuitem" tabindex="-1"></a>
-                                            
-                                            <div class="project-name-update right">
-                                                <span class="label label-default"><a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">Project Name</a></span>
-                                            </div><!-- / project name update -->
-                                            
-                                        </div><!-- task update header -->
-                                        
-                                        <div class="update-notification">
-                                        
-                                            <div class="user left">
-                                                <img src="/images/fed.jpg" alt="Fede">
-                                            </div><!-- / user -->
-                                            
-                                            <div class="update-body right">
-                                            
-                                                <div class="name">
-                                                    Federico <span class="task-completed-message">completed this task.</span>
-                                                </div><!-- / name -->
-                                                
-                                                <div class="update-content">
-                                                    <p>Marce mucho mejor que en el otro me parece mejor organado pero seguimos sin tener subpages? tenemos que teenr subpages, yo pensaba que ibas a dejar los main menus arriba como estaban y las subsecciiones a la izquierda.</p>
-                                                </div><!-- / update content -->
-                                                
-                                                <div class="date-update">Monday at 12:22 pm &middot;</div><!-- / date update -->
-                                                <div class="like-update"><a href="" title="like"></a></div><!-- / like update -->
-                                                <div class="follow-task right"><a href="" title="Follow Task">Follow Task</a></div>
-                                                
-                                            </div><!-- / update body -->
-                                            
-                                        </div><!-- / update notification -->
-                                        
-                                        <div class="update-notification">
-                                        
-                                            <div class="user left">
-                                                <img src="/images/marce.jpg" alt="Marce">
-                                            </div><!-- / user -->
-                                            
-                                            <div class="update-body right">
-                                            
-                                                <div class="name">
-                                                    Federico <span class="task-completed-message">completed this task.</span>
-                                                </div><!-- / name -->
-                                                
-                                                <div class="update-content">
-                                                    <p>Marce mucho mejor que en el otro me parece mejor organado pero seguimos sin tener subpages? tenemos que teenr subpages, yo pensaba que ibas a dejar los main menus arriba como estaban y las subsecciiones a la izquierda.</p>
-                                                </div><!-- / update content -->
-                                                
-                                                <div class="date-update">Monday at 12:22 pm &middot;</div><!-- / date update -->
-                                                <div class="like-update"><a href="" title="like"></a></div><!-- / like update -->
-                                                <div class="follow-task right"><a href="" title="Follow Task">Follow Task</a></div>
-                                                
-                                            </div><!-- / update body -->
-                                            
-                                        </div><!-- / update notification -->
-										
-										</div><!-- / task update -->
-										
-										<div class="task-update">
-                                        
-                                        <div class="task-update-header">
-                                            
-                                            <div class="task-update-title left">
-                                                Task Title
-                                            </div><!-- / task update title -->
-                                            
-                                            <a class="view-task-btn right" data-toggle="modal" href="#modal-task" role="menuitem" tabindex="-1"></a>
-                                            
-                                            <div class="project-name-update right">
-                                                <span class="label label-default"><a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">Project Name</a></span>
-                                            </div><!-- / project name update -->
-                                            
-                                        </div><!-- task update header -->
-                                        
-                                        <div class="update-notification">
-                                        
-                                            <div class="user left">
-                                                <img src="/images/fed.jpg" alt="Fede">
-                                            </div><!-- / user -->
-                                            
-                                            <div class="update-body right">
-                                            
-                                                <div class="name">
-                                                    Federico <span class="task-completed-message">completed this task.</span>
-                                                </div><!-- / name -->
-                                                
-                                                <div class="update-content">
-                                                    <p>Marce mucho mejor que en el otro me parece mejor organado pero seguimos sin tener subpages? tenemos que teenr subpages, yo pensaba que ibas a dejar los main menus arriba como estaban y las subsecciiones a la izquierda.</p>
-                                                </div><!-- / update content -->
-                                                
-                                                <div class="date-update">Monday at 12:22 pm &middot;</div><!-- / date update -->
-                                                <div class="like-update"><a href="" title="like"></a></div><!-- / like update -->
-                                                <div class="follow-task right"><a href="" title="Follow Task">Follow Task</a></div>
-                                                
-                                            </div><!-- / update body -->
-                                            
-                                        </div><!-- / update notification -->
-                                        
-                                        <div class="update-notification">
-                                        
-                                            <div class="user left">
-                                                <img src="/images/marce.jpg" alt="Marce">
-                                            </div><!-- / user -->
-                                            
-                                            <div class="update-body right">
-                                            
-                                                <div class="name">
-                                                    Federico <span class="task-completed-message">completed this task.</span>
-                                                </div><!-- / name -->
-                                                
-                                                <div class="update-content">
-                                                    <p>Marce mucho mejor que en el otro me parece mejor organado pero seguimos sin tener subpages? tenemos que teenr subpages, yo pensaba que ibas a dejar los main menus arriba como estaban y las subsecciiones a la izquierda.</p>
-                                                </div><!-- / update content -->
-                                                
-                                                <div class="date-update">Monday at 12:22 pm &middot;</div><!-- / date update -->
-                                                <div class="like-update"><a href="" title="like"></a></div><!-- / like update -->
-                                                <div class="follow-task right"><a href="" title="Follow Task">Follow Task</a></div>
-                                                
-                                            </div><!-- / update body -->
-                                            
-                                        </div><!-- / update notification -->
-										
-										</div><!-- / task update -->
-                                        
-                                       <div class="clear"></div>
-                                
-                                </div><!-- / teams updates -->
+                                <?php include_once('ajax/stream.php'); ?>
                             
                             </div><!-- / row -->    
                         
@@ -907,7 +729,7 @@
 									tarea_id: $("div#modal-create-task select[name=maintask]").val()
 								};
 								
-								Frontend.createTaskcreateTask(tarea);
+								Frontend.createTask(tarea);
 								
 								$("div#modal-create-task input[name=nombre]").val('');
 								$("div#modal-create-task select[name=proyecto]").val(0);

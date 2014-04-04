@@ -181,6 +181,59 @@ io.sockets.on('connection', function (socket) {
 			socket.broadcast.emit('createTask', tobroad);
 		});
     });
+	
+	socket.on('updateTask', function(data){					
+		var ini = data.inicio.split('/');
+		var fin = data.fin.split('/');
+		
+		var tarea = {
+			fk_proyecto_id: data.proyecto_id,
+			fk_tarea_id: data.fk_tarea_id,
+			fk_responsable_id : data.responsable_id,
+			tarea_nombre: data.nombre,
+			tarea_inicio: ini[2]+'-'+ini[1]+'-'+ini[0],
+			tarea_fin: fin[2]+'-'+fin[1]+'-'+fin[0]
+		};
+
+		connection.query('UPDATE tarea SET ? WHERE tarea_id = ?', [tarea, data.tarea_id], function(err, result) {
+			if (err) throw err;
+			
+			var actualizacion = {
+				fk_proyecto_id: data.proyecto_id,
+				fk_tarea_id : data.tarea_id,
+				fk_usuario_id: data.usuario_id,
+				actualizacion_contenido: 'Updated task information'
+			};
+			
+			connection.query('INSERT INTO actualizacion SET ?', actualizacion, function(err, result) {
+				if (err) throw err;
+						
+				socket.emit('commentTask', data);
+				socket.broadcast.emit('commentTask', data);
+			});
+					
+			//socket.emit('updateTask', data);
+			socket.broadcast.emit('updateTask', data);
+		});
+    });
+	
+	socket.on('commentTask', function(data){					
+		
+		var actualizacion = {
+			fk_team_id: data.team_id,
+			fk_proyecto_id: data.proyecto_id,
+			fk_tarea_id : data.tarea_id,
+			fk_usuario_id: usuario_id,
+			actualizacion_contenido: data.comentario
+		};
+		
+		connection.query('INSERT INTO actualizacion SET ?', actualizacion, function(err, result) {
+			if (err) throw err;
+					
+			socket.emit('commentTask', data);
+			socket.broadcast.emit('commentTask', data);
+		});
+    });
 });
 
 /*
