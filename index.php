@@ -349,6 +349,16 @@ if($uri->segment(1) == 'ajax'){
 		$data['tasks'] = $tasks;
 		$template = abs_path('templates/ajax/task-detail.php');
 	}
+	if($uri->segment(2) == 'complete'){
+		$task_id = $uri->segment(3);
+		mysql_query("UPDATE tarea SET tarea_completada = 1 WHERE tarea_id = '".intval($task_id)."'");
+		die("ok");
+	}
+	if($uri->segment(2) == 'incomplete'){
+		$task_id = $uri->segment(3);
+		mysql_query("UPDATE tarea SET tarea_completada = 0 WHERE tarea_id = '".intval($task_id)."'");
+		die("ok");
+	}
 }
 
 if($uri->segment(1) == '' && $usuario_id == 0){
