@@ -112,6 +112,8 @@
 					else{
 						el.closest('.task').removeClass('completed');
 					}
+					var html = $('<li><a href="" class="btn btn-primary">Undo</a></li>').fadeIn('slow').delay(5000).fadeOut('slow');
+					$(".notify").append(html);
 				}
 			});
 		});

@@ -760,6 +760,8 @@
     
         </div> <!-- /container -->
         
-     </div><!-- / wrap -->   
+     </div><!-- / wrap --> 
+	<ul class="notify">
+	</ul>
   </body>
 </html>

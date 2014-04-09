@@ -1082,3 +1082,10 @@ input.datepicker {
 	margin-top: 5px;
 	margin-right: 8px;
 }
+
+.notify{
+	position: fixed;
+	bottom: 55px;
+	right: 0px;
+	display: block;
+}
