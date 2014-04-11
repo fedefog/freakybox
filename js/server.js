@@ -128,6 +128,28 @@ io.sockets.on('connection', function (socket) {
 		});
     });
 	
+	socket.on('updateProject', function(data){					
+		var ini = data.inicio.split('/');
+		var fin = data.fin.split('/');
+		
+		var proyecto = {
+			fk_team_id: data.team_id,
+			proyecto_nombre: data.nombre,
+			proyecto_inicio: ini[2]+'-'+ini[1]+'-'+ini[0],
+			proyecto_fin: fin[2]+'-'+fin[1]+'-'+fin[0],
+			proyecto_color: data.color,
+			proyecto_privado: data.privado,
+			proyecto_descripcion: data.descripcion
+		};
+
+		connection.query('UPDATE proyecto SET ? WHERE proyecto_id = ?', [proyecto, data.proyecto_id], function(err, result) {
+			if (err) throw err;
+								
+			socket.emit('updateProject', data);
+			socket.broadcast.emit('updateProject', data);
+		});
+    });
+	
 	socket.on('createTask', function(data){					
 		var ini = data.inicio.split('/');
 		var fin = data.fin.split('/');

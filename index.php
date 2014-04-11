@@ -367,6 +367,17 @@ if($uri->segment(1) == 'ajax'){
 		mysql_query("UPDATE tarea SET tarea_completada = 0 WHERE tarea_id = '".intval($task_id)."'");
 		die("ok");
 	}
+	if($uri->segment(2) == 'project'){
+		$project_id = $uri->segment(3);
+		
+		$projects = getResult("
+			SELECT *
+			FROM proyecto 
+			WHERE proyecto_id = '$project_id'
+		");
+		$data['projects'] = $projects;
+		$template = abs_path('templates/ajax/project-detail.php');
+	}
 }
 
 if($uri->segment(1) == '' && $usuario_id == 0){

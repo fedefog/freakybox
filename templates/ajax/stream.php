@@ -11,7 +11,7 @@
 			<a class="view-task-btn right" data-toggle="modal" href="#modal-task" role="menuitem" tabindex="-1"></a>
 			
 			<div class="project-name-update right">
-				<span class="label label-default" <?php echo ($update['proyecto_color'])?'style="background:#'.$update['proyecto_color'].';"':''?>><a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1"><?php echo $update['proyecto_nombre']; ?></a></span>
+				<span class="label label-default" <?php echo ($update['proyecto_color'])?'style="background:#'.$update['proyecto_color'].';"':''?>><a class="edit-project" href="/ajax/project/<?php echo $update['proyecto_id']; ?>" role="menuitem" tabindex="-1"><?php echo $update['proyecto_nombre']; ?></a></span>
 			</div><!-- / project name update -->
 			
 		</div><!-- task update header -->

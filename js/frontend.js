@@ -41,6 +41,12 @@ var Core = (function() {
         _socket.emit('createProject', data);
     };
 	
+	Core.prototype.updateProject = function(data) {
+		//@TODO: Actualizar en algun lado.
+		//updateTask(data);
+        _socket.emit('updateProject', data);
+    };
+	
 	Core.prototype.createTask = function(data) {
 		//@TODO: Actualizar en algun lado.
 		//createTask(data);
@@ -118,6 +124,11 @@ var Core = (function() {
 		
 		$('.projects-summary').append(percent);
     };
+	
+	var updateProject = function(data){
+		console.log("Updated Project:");
+		console.log(data);
+	}
 	
 	var createTask = function(data){
 		console.log("Create Task:");
