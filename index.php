@@ -11,7 +11,7 @@ $data['uri'] = $uri;
 
 // SESSION A LA FUERZA
 // @TODO
-//$_SESSION['uid'] = 1;
+$_SESSION['uid'] = 1;
 $usuario_id = intval($_SESSION['uid']);
 if($usuario_id == 0){
 	redirect('');
