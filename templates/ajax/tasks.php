@@ -13,9 +13,9 @@
 									<div class="filter dropdown">
                 <a data-toggle="dropdown" class="btn" href="#"></a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <li role="presentation"><a class="switchtasks" role="menuitem" tabindex="-1" href="/ajax/tasks/me">Mis Tareas</a></li>
+                    <li role="presentation"><a class="switchtasks" role="menuitem" tabindex="-1" href="/ajax/tasks/me<?php echo (!empty($project_id))?'/'.$project_id:''; ?>">Mis Tareas</a></li>
 					<li class="divider"></li>
-                    <li role="presentation"><a class="switchtasks" role="menuitem" tabindex="-1" href="/ajax/tasks/completed">Ver completadas</a></li>										
+                    <li role="presentation"><a class="switchtasks" role="menuitem" tabindex="-1" href="/ajax/tasks/completed<?php echo (!empty($project_id))?'/'.$project_id:''; ?>">Ver completadas</a></li>										
                   </ul>
             </div><!-- / filter -->
         </div><!-- / title -->
@@ -47,7 +47,7 @@
                 <div class="task-number"><?php echo $task['tarea_id']; ?></div>
                 <div class="task-state"><input type="checkbox" class="complete-task" value="<?php echo $task['tarea_id']; ?>" <?php echo ($task['tarea_completada'])?'checked="checked"':'';?>></div>
                 <div class="task-title"><?php echo $task['tarea_nombre']; ?></div>
-                <div class="view-task"><a class="view-task-btn showtask" href="/ajax/task/<?php echo $task['tarea_id']; ?>" role="menuitem" tabindex="-1" title="View Task"></a><a class="remove-task-btn" href="" title="Remove Task"></a></div>
+                <div class="view-task"><a class="view-task-btn showtask" href="/ajax/task/<?php echo $task['tarea_id']; ?>" role="menuitem" tabindex="-1" title="View Task"></a><a class="remove-task-btn" data-id="<?php echo $task['tarea_id']; ?>" title="Remove Task"></a></div>
                 <div class="task-due-date"><?php echo date('d M', strtotime($task['tarea_fin'])); ?></div>
                 <div class="task-project"><span class="label label-default"><a class="color-1" <?php echo ($task['proyecto_color'])?'style="background:#'.$task['proyecto_color'].';"':''?> href="/dashboard/<?php echo $task['fk_team_id']; ?>/<?php echo $task['proyecto_id']; ?>" tabindex="-1"><?php echo $task['proyecto_nombre']; ?></a></span></div>
             </div><!-- / task -->
@@ -94,7 +94,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('.complete-task').click(function(e){
+		$('body').on('click', '.complete-task', function(e){
 			var el = $(this);
 			
 			var action = 'incomplete';
@@ -118,7 +118,7 @@
 			});
 		});
 	
-		$('.showtask').click(function(e){
+		$('body').on('click', '.showtask', function(e){
 			e.preventDefault();
 			var el = $(this);
 			$.ajax({
@@ -129,6 +129,20 @@
 					$('#modal-task').modal('show')
 				}
 			});
+		});
+		
+		$('body').on('click', '.remove-task-btn', function(e){
+			e.preventDefault();
+			var el = $(this);
+			var id = $(this).data('id');
+			var tarea = {
+				tarea_id: id
+			};
+			var ask = confirm("Are you sure you want to delete this task?");
+			if (ask == true){
+				Frontend.deleteTask(tarea);
+				el.closest('.task').hide('slow');
+			}			
 		});
 	});
 </script>

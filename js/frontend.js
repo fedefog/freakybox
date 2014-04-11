@@ -20,6 +20,7 @@ var Core = (function() {
 		_socket.on('createTask', createTask);
 		_socket.on('updateTask', updateTask);
 		_socket.on('commentTask', commentTask);
+		_socket.on('deleteTask', deleteTask);
     };
 	
     Core.prototype.doAction = function(event, data) {
@@ -56,6 +57,12 @@ var Core = (function() {
 		//@TODO: Actualizar en algun lado.
 		//commentTask(data);
         _socket.emit('commentTask', data);
+    };
+	
+	Core.prototype.deleteTask = function(data) {
+		//@TODO: Actualizar en algun lado.
+		//commentTask(data);
+        _socket.emit('deleteTask', data);
     };
 	
 	var createTeam = function(data) {
@@ -119,9 +126,9 @@ var Core = (function() {
 		html = html + '<div class="task-number">' + data.tarea_id + '</div>';
         html = html + '<div class="task-state"><input type="checkbox" class="complete-task" value="' + data.tarea_id + '"></div>';
         html = html + '<div class="task-title">' + data.tarea_nombre + '</div>';
-        html = html + '<div class="view-task"><a class="view-task-btn showtask" href="/ajax/task/' + data.tarea_id + '" role="menuitem" tabindex="-1" title="View Task"></a><a class="remove-task-btn" href="" title="Remove Task"></a></div>';
+        html = html + '<div class="view-task"><a class="view-task-btn showtask" href="/ajax/task/' + data.tarea_id + '" role="menuitem" tabindex="-1" title="View Task"></a><a class="remove-task-btn" href="" data-id="' + data.tarea_id + '" title="Remove Task"></a></div>';
         html = html + '<div class="task-due-date">' + data.tarea_fin_str + '</div>';
-        html = html + '<div class="task-project"><span class="label label-default"><a class="color-1" style="background:#A8C77B;" data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">Freaky Box</a></span></div>';
+        html = html + '<div class="task-project"><span class="label label-default"><a class="color-1" style="background:#'+data.proyecto_color+';" data-toggle="modal" href="#" role="menuitem" tabindex="-1">'+data.proyecto_nombre+'</a></span></div>';
         html = html + '</div>';
 		
 		$('div.list-tasks-generic').append(html);
@@ -135,6 +142,11 @@ var Core = (function() {
 	
 	var commentTask = function(data){
 		console.log("Commented Task:");
+		console.log(data);
+	}
+	
+	var deleteTask = function(data){
+		console.log("Delete Task:");
 		console.log(data);
 	}
 	

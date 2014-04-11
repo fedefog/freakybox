@@ -165,20 +165,43 @@ io.sockets.on('connection', function (socket) {
 			
 			//console.log(tarea);
 			
-			var tobroad = {
-				tarea_id: tarea.tarea_id,
-				fk_proyecto_id: data.proyecto_id,
-				fk_tarea_id: data.tarea_id,
-				fk_usuario_id: usuario_id,
-				fk_responsable_id : data.responsable_id,
-				tarea_nombre: data.nombre,
-				tarea_inicio: ini[2]+'-'+ini[1]+'-'+ini[0],
-				tarea_fin: fin[2]+'-'+fin[1]+'-'+fin[0],
-				tarea_fin_str: fin[0] + ' ' + months[Number(fin[1] - 1)]
-			};
-		
-			socket.emit('createTask', tobroad);
-			socket.broadcast.emit('createTask', tobroad);
+			connection.query('SELECT proyecto_nombre, proyecto_color FROM proyecto WHERE proyecto_id = ?', data.proyecto_id, function(err, results, fields) {
+				if (err) throw err;
+				// Si el email existe lo vinculamos directamente
+				var numRows = results.length;
+				if(numRows > 0){
+					var proyecto = results[0];
+					
+					var actualizacion = {
+						fk_team_id: data.team_id,
+						fk_proyecto_id: data.proyecto_id,
+						fk_tarea_id : data.tarea_id,
+						fk_usuario_id: usuario_id,
+						actualizacion_contenido: 'Created this task'
+					};
+					
+					socket.emit('commentTask', data);
+					socket.broadcast.emit('commentTask', data);
+					
+					var tobroad = {
+						tarea_id: tarea.tarea_id,
+						fk_proyecto_id: data.proyecto_id,
+						proyecto_nombre: proyecto.proyecto_nombre,
+						proyecto_color: proyecto.proyecto_color,
+						fk_tarea_id: data.tarea_id,
+						fk_usuario_id: usuario_id,
+						fk_responsable_id : data.responsable_id,
+						tarea_nombre: data.nombre,
+						tarea_inicio: ini[2]+'-'+ini[1]+'-'+ini[0],
+						tarea_fin: fin[2]+'-'+fin[1]+'-'+fin[0],
+						tarea_fin_str: fin[0] + ' ' + months[Number(fin[1] - 1)]
+					};
+				
+					socket.emit('createTask', tobroad);
+					socket.broadcast.emit('createTask', tobroad);
+					
+				}
+			});
 		});
     });
 	
@@ -232,6 +255,16 @@ io.sockets.on('connection', function (socket) {
 					
 			socket.emit('commentTask', data);
 			socket.broadcast.emit('commentTask', data);
+		});
+    });
+	
+	socket.on('deleteTask', function(data){					
+				
+		connection.query('DELETE FROM tarea WHERE tarea_id = ?', data.tarea_id, function(err, result) {
+			if (err) throw err;
+					
+			socket.emit('deleteTask', data);
+			socket.broadcast.emit('deleteTask', data);
 		});
     });
 });
