@@ -103,13 +103,13 @@ if($usuario_id > 0){
 	}
 	elseif($team_id){
 		$updates = getResult("
-			SELECT actualizacion.*, tarea.tarea_id, tarea.tarea_nombre, proyecto_id, proyecto_nombre, proyecto_color, CONCAT_WS(' ', usuario.usuario_nombre, usuario.usuario_apellido) AS usuario_nombrecompleto, usuario.usuario_email
+			SELECT actualizacion.*, tarea.tarea_id, tarea.tarea_nombre, proyecto_id, proyecto.fk_team_id, proyecto_nombre, proyecto_color, CONCAT_WS(' ', usuario.usuario_nombre, usuario.usuario_apellido) AS usuario_nombrecompleto, usuario.usuario_email
 			FROM actualizacion 
 			LEFT JOIN team ON team.team_id = actualizacion.fk_team_id 
 			LEFT JOIN proyecto ON proyecto.proyecto_id = actualizacion.fk_proyecto_id 
 			LEFT JOIN tarea ON tarea.tarea_id = actualizacion.fk_tarea_id 
 			LEFT JOIN usuario ON usuario.usuario_id = actualizacion.fk_usuario_id 	
-			WHERE actualizacion.fk_team_id = '$team_id' 
+			WHERE proyecto.fk_team_id = '$team_id' 
 			ORDER BY actualizacion.actualizacion_fecha ASC 
 			LIMIT 25
 		");
