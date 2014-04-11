@@ -898,6 +898,7 @@ a.remove-task-btn {
 	margin-bottom:10px;
 	float:left;
 	border-bottom: 1px solid #CCC;
+	width: 100%;
 }
 
 .task-update-header{
@@ -1081,11 +1082,4 @@ input.datepicker {
 	float:left;
 	margin-top: 5px;
 	margin-right: 8px;
-}
-
-.notify{
-	position: fixed;
-	bottom: 55px;
-	right: 0px;
-	display: block;
 }
