@@ -557,8 +557,8 @@
 								$("div#modal-create-project button.close").click(function(e){
 									$("div#modal-create-project input[name=nombre]").val('');
 									$("div#modal-create-project select[name=team]").val(0);
-									$("div#modal-create-project input[name=inicio]").val('');
-									$("div#modal-create-project input[name=fin]").val('');
+									$("div#modal-create-project input[name=inicio]").val('<?php echo date('d/m/Y'); ?>');
+									$("div#modal-create-project input[name=fin]").val('<?php echo date('d/m/Y'); ?>');
 									$("div#modal-create-project input[name=color]").val('');
 									$("div#modal-create-project :radio[name=private]").prop('checked', false);
 									$("div#modal-create-project textarea[name=descripcion]").val('');
@@ -734,8 +734,8 @@
 								$("div#modal-create-task input[name=nombre]").val('');
 								$("div#modal-create-task select[name=proyecto]").val(0);
 								$("div#modal-create-task select[name=responsable]").val(0);
-								$("div#modal-create-task input[name=inicio]").val('');
-								$("div#modal-create-task input[name=fin]").val('');
+								$("div#modal-create-task input[name=inicio]").val('<?php echo date('d/m/Y'); ?>');
+								$("div#modal-create-task input[name=fin]").val('<?php echo date('d/m/Y'); ?>');
 								$("div#modal-create-task div.tagholder").html('');
 								$("div#modal-create-task select[name=maintask]").val(0);
 								
@@ -746,8 +746,8 @@
 								$("div#modal-create-task input[name=nombre]").val('');
 								$("div#modal-create-task select[name=proyecto]").val(0);
 								$("div#modal-create-task select[name=responsable]").val(0);
-								$("div#modal-create-task input[name=inicio]").val('');
-								$("div#modal-create-task input[name=fin]").val('');
+								$("div#modal-create-task input[name=inicio]").val('<?php echo date('d/m/Y'); ?>');
+								$("div#modal-create-task input[name=fin]").val('<?php echo date('d/m/Y'); ?>');
 								$("div#modal-create-task div.tagholder").html('');
 								$("div#modal-create-task select[name=subtasks]").val(0);
 							});
