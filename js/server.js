@@ -202,8 +202,8 @@ io.sockets.on('connection', function (socket) {
 						actualizacion_contenido: 'Created this task'
 					};
 					
-					socket.emit('commentTask', data);
-					socket.broadcast.emit('commentTask', data);
+					socket.emit('commentTask', actualizacion);
+					socket.broadcast.emit('commentTask', actualizacion);
 					
 					var tobroad = {
 						tarea_id: tarea.tarea_id,

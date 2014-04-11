@@ -11,8 +11,11 @@ $data['uri'] = $uri;
 
 // SESSION A LA FUERZA
 // @TODO
-$_SESSION['uid'] = 1;
+//$_SESSION['uid'] = 1;
 $usuario_id = intval($_SESSION['uid']);
+if($usuario_id == 0){
+	redirect('');
+}
 
 $team_id = $uri->segment(2);
 $project_id = intval($uri->segment(3));
@@ -360,11 +363,15 @@ if($uri->segment(1) == 'ajax'){
 	if($uri->segment(2) == 'complete'){
 		$task_id = $uri->segment(3);
 		mysql_query("UPDATE tarea SET tarea_completada = 1 WHERE tarea_id = '".intval($task_id)."'");
+		$task = getRow("SELECT fk_proyecto_id FROM tarea WHERE tarea_id = '".intval($task_id)."'");
+		mysql_query("INSERT INTO actualizacion SET fk_tarea_id = '".intval($task_id)."', fk_proyecto_id = '".$task['fk_proyecto_id']."',fk_usuario_id = '$usuario_id', actualizacion_contenido = 'Marked as complete'");
 		die("ok");
 	}
 	if($uri->segment(2) == 'incomplete'){
 		$task_id = $uri->segment(3);
 		mysql_query("UPDATE tarea SET tarea_completada = 0 WHERE tarea_id = '".intval($task_id)."'");
+		$task = getRow("SELECT fk_proyecto_id FROM tarea WHERE tarea_id = '".intval($task_id)."'");
+		mysql_query("INSERT INTO actualizacion SET fk_tarea_id = '".intval($task_id)."', fk_proyecto_id = '".$task['fk_proyecto_id']."', fk_usuario_id = '$usuario_id', actualizacion_contenido = 'Marked as incomplete'");
 		die("ok");
 	}
 	if($uri->segment(2) == 'project'){
