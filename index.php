@@ -18,6 +18,9 @@ $team_id = $uri->segment(2);
 $project_id = intval($uri->segment(3));
 $task_id = $uri->segment(4);
 
+$data['project_id'] = $project_id;
+$data['task_id'] = $task_id;
+
 if($usuario_id > 0){
 	$data['usuario'] = getRow("SELECT *, CONCAT_WS(' ', usuario_nombre, usuario_apellido) AS usuario_nombrecompleto FROM usuario WHERE usuario_id = $usuario_id");
 	
@@ -34,7 +37,7 @@ if($usuario_id > 0){
 	$data['teams'] = $teams;
 	
 	$projects = getResult("
-		SELECT proyecto_id, proyecto_nombre, proyecto_color, proyecto_privado, rel_teamusuario.fk_team_id, (SELECT COUNT(tarea_id) FROM tarea WHERE tarea.fk_proyecto_id = proyecto.proyecto_id AND tarea_activo = '1') AS tasks_open, (SELECT COUNT(tarea_id) FROM tarea WHERE tarea.fk_proyecto_id = proyecto.proyecto_id) AS tasks
+		SELECT proyecto_id, proyecto_nombre, proyecto_color, proyecto_privado, rel_teamusuario.fk_team_id, (SELECT COUNT(tarea_id) FROM tarea WHERE tarea.fk_proyecto_id = proyecto.proyecto_id AND tarea_completada = '0') AS tasks_open, (SELECT COUNT(tarea_id) FROM tarea WHERE tarea.fk_proyecto_id = proyecto.proyecto_id) AS tasks
 		FROM proyecto
 		JOIN rel_proyectoteam ON rel_proyectoteam.fk_proyecto_id = proyecto.proyecto_id
 		JOIN rel_teamusuario ON rel_teamusuario.fk_team_id = rel_proyectoteam.fk_team_id
@@ -310,6 +313,11 @@ if($uri->segment(1) == 'ajax'){
 		if($uri->segment(3) == 'completed'){
 			$where .= "AND tarea.tarea_completada = '1'";
 		}
+		
+		if($uri->segment(4)){
+			$where .= "AND tarea.fk_proyecto_id = '".intval($uri->segment(4))."'";
+		}
+		
 		$tasks = getResult("
 			SELECT tarea_id, tarea_nombre, tarea_fin, tarea_due, tarea_completada, proyecto_id, proyecto_nombre, proyecto_color 
 			FROM tarea 
