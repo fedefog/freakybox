@@ -460,13 +460,13 @@
 						  <div class="form-group date">
                             <label for="start-date" class="col-lg-3 control-label">Inicio</label>
                             <div class="col-lg-3">
-                              <input type="text" class="datepicker form-control" name="inicio" value="02-16-2012" id="dp1">
+                              <input type="text" class="datepicker form-control" name="inicio" value="<?php echo date('d/m/Y');?>" data-date-format="mm/dd/yy" id="dp1">
 							  <div class="tagholder">
 							  </div>
                             </div>
                             <label for="due-date" class="col-lg-3 control-label due-date">Fin</label>
                             <div class="col-lg-3">
-                              <input type="text" class="datepicker form-control" name="fin" value="02-16-2012" id="dp1">
+                              <input type="text" class="datepicker form-control" name="fin" value="<?php echo date('d/m/Y');?>" data-date-format="mm/dd/yy" id="dp1">
 							  <div class="tagholder">
 							  </div>
                             </div>
@@ -606,13 +606,13 @@
 						  <div class="form-group date">
                             <label for="start-date" class="col-lg-3 control-label">Inicio</label>
                             <div class="col-lg-3">
-                              <input type="text" class="datepicker form-control" name="inicio" value="02-16-2012" id="dp1">
+                              <input type="text" class="datepicker form-control" name="inicio" value="<?php echo date('d/m/Y');?>" data-date-format="mm/dd/yy" id="dp1">
 							  <div class="tagholder">
 							  </div>
                             </div>
                             <label for="due-date" class="col-lg-3 control-label due-date">Fin</label>
                             <div class="col-lg-3">
-                              <input type="text" class="datepicker form-control" name="fin" value="02-16-2012" id="dp1">
+                              <input type="text" class="datepicker form-control" name="fin" value="<?php echo date('d/m/Y');?>" data-date-format="mm/dd/yy" id="dp1">
 							  <div class="tagholder">
 							  </div>
                             </div>
