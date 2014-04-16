@@ -500,6 +500,10 @@ ul li {
 	padding-left:15px;
 }
 
+.projects-summary a {
+	
+}
+
 .project-state {
 	width: 19.2%;
 	float: left;
@@ -542,7 +546,7 @@ ul li {
 	background-color:#999999;
 }
 
-#other-projects-states {
+.other-projects-states {
 	width: 100%;
 	-webkit-transition: all 0.2s ease-in-out;
 	-moz-transition: all 0.2s ease-in-out;
@@ -553,7 +557,7 @@ ul li {
 	overflow: hidden;
 }
 
-#other-projects-states.visible {
+.other-projects-states.visible {
 	max-height:25em;
 }
 
