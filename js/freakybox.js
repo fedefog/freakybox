@@ -5,6 +5,7 @@ $(document).ready(function() {
 	/* DESPLEGABLE PARA PROJECTS STATES */
 	
 	$('.all-projects-states').click(function (e) {
+	  alert("test");
 	  e.preventDefault();
 	  $('#other-projects-states').toggleClass("visible");
     });
