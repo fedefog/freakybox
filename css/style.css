@@ -293,10 +293,25 @@ ul li {
 	border-bottom:1px solid #999999;
 }
 
-.company {
+.company a {
+	padding-left: 30px;
+	width: 100%;
+	display: block;
+	background: url(images/btn-arrow-dark.png) no-repeat right center;
+	font-weight: bold;
+	color: #535353;
+	margin: 10px 0;
+	font-size: 13px;
+	text-transform: uppercase;
+}
+
+.company a:hover {
+	text-decoration: none;
+}
+
+.dropdown.company {
 	width: 100%;
 	padding-right: 15px;
-	padding-left: 15px;
 }
 
 .company:hover {
@@ -458,20 +473,20 @@ ul li {
 	background:url(images/arrow-options.png) #FFF no-repeat center;
 }
 
-.workspace-wrapper::-webkit-scrollbar, .teams-updates::-webkit-scrollbar {
+.workspace-wrapper::-webkit-scrollbar, .teams-updates::-webkit-scrollbar, #tasks::-webkit-scrollbar {
     width: 8px;
 }
 
-.workspace-wrapper::-webkit-scrollbar-track, .teams-updates::-webkit-scrollbar-track {
+.workspace-wrapper::-webkit-scrollbar-track, .teams-updates::-webkit-scrollbar-track, #tasks::-webkit-scrollbar-track {
 	background:#CCCCCC;
 }
 
-.workspace-wrapper::-webkit-scrollbar-thumb, .teams-updates::-webkit-scrollbar-thumb {
+.workspace-wrapper::-webkit-scrollbar-thumb, .teams-updates::-webkit-scrollbar-thumb, #tasks::-webkit-scrollbar-thumb {
     background: #999999; 
 	cursor: pointer;
 }
 
-.workspace-wrapper::-webkit-scrollbar-thumb:window-inactive, .teams-updates::-webkit-scrollbar-thumb:window-inactive {
+.workspace-wrapper::-webkit-scrollbar-thumb:window-inactive, .teams-updates::-webkit-scrollbar-thumb:window-inactive, #tasks::-webkit-scrollbar-thumb:window-inactive {
 	background: rgba(255,0,0,0.4); 
 }
 
@@ -514,6 +529,7 @@ ul li {
 	box-sizing: border-box;
 	padding: 15px;
 	margin-right:1%;
+	margin-bottom: 10px;
 }
 
 .project-state.last {
@@ -528,7 +544,7 @@ ul li {
 }
 
 .project-state .percentage {
-	font-size: 48px;
+	font-size: 40px;
 	width: 50%;
 	line-height: 100%;
 	font-weight: lighter;
@@ -584,9 +600,13 @@ ul li {
 /* Module */
 
 .module {
-	padding-top:14px;
+	padding-top:7px;
 	padding-left:0;
 	padding-right:15px;
+}
+
+.module.projects-summary {
+	padding-top: 14px;
 }
 
 .module:first-child {
@@ -633,10 +653,12 @@ ul li {
 #tasks {
 	border:1px solid #CCC;
 	background:#FFF;
-	margin-bottom:10px;
+	margin-bottom:5px;
 	width:100%;
 	color:#333333;
 	float: left;
+	overflow-y: scroll;
+	max-height: 382px;
 }
 
 #tasks .task:first-child {
@@ -1093,4 +1115,12 @@ input.datepicker {
 	bottom: 55px;
 	right: 0px;
 	display: block;
+}
+
+@media (max-width: 1430px) {
+
+	#tasks {
+		max-height: 291px;
+	}
+
 }

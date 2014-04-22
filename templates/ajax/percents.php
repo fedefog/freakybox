@@ -6,7 +6,7 @@
 		<a class="edit-project" href="/ajax/project/<?php echo $project['proyecto_id']; ?>" tabindex="-1">
 			<div class="project-state color-1 <?php echo ($i == 4)?'last':'';?>" <?php echo ($project['proyecto_color'])?'style="background:#'.$project['proyecto_color'].';"':''?>>
 				<span class="name left"><?php echo $project['proyecto_nombre']; ?></span>
-				<span class="percentage right"><?php echo $terminado; ?></span>
+				<span class="percentage right"><?php echo $terminado; ?>%</span>
 				<div class="progress">
 					<div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $terminado; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $terminado; ?>%;">
 						<span class="sr-only"><?php echo $terminado; ?>% Complete</span>
@@ -24,7 +24,7 @@
 	<a class="edit-project" href="/ajax/project/<?php echo $project['proyecto_id']; ?>" tabindex="-1">
 		<div class="project-state color-1" <?php echo ($project['proyecto_color'])?'style="background:#'.$project['proyecto_color'].';"':''?>>
 			<span class="name left"><?php echo $project['proyecto_nombre']; ?></span>
-			<span class="percentage right"><?php echo $terminado; ?></span>
+			<span class="percentage right"><?php echo $terminado; ?>%</span>
 			<div class="progress">
 				<div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $terminado; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $terminado; ?>%;">
 					<span class="sr-only"><?php echo $terminado; ?>% Complete</span>

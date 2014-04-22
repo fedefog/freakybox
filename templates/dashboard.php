@@ -148,8 +148,8 @@
                     
                     <div class="row company-wrapper">
                     
-                        <div class="company">
-                          <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">Company Name</a>
+                        <div class="dropdown company">
+                          <a data-toggle="modal" href="#myModal" role="menuitem" tabindex="-1">Studio Hakuna</a>
                         </div><!-- / company -->
                     
                     </div><!-- / row -->
