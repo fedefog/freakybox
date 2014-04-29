@@ -43,12 +43,6 @@
                           <div class="form-group color-project">
                             <label for="project-color" class="col-lg-3 control-label">Color</label>
                             <div class="col-lg-9">
-								<span style="background-color:#fec755; border: 1px solid;" data-hex="fec755" data-field="create-project-color" class="itemcolor"></span>
-								<span style="background-color:#cf2441; border: 1px solid;" data-hex="cf2441" data-field="create-project-color" class="itemcolor"></span>
-								<span style="background-color:#27aae1; border: 1px solid;" data-hex="27aae1" data-field="create-project-color" class="itemcolor"></span>
-								<span style="background-color:#30495c; border: 1px solid;" data-hex="30495c" data-field="create-project-color" class="itemcolor"></span>
-								<span style="background-color:#8bcf30; border: 1px solid;" data-hex="8bcf30" data-field="create-project-color" class="itemcolor"></span>
-								<span style="background-color:#ffffff; border: 1px solid;" data-hex="ffffff" data-field="create-project-color" class="colorpick"></span>
 								<input id="create-project-color" type="hidden" name="color" value="<?php echo $proyecto['proyecto_color']; ?>"/>
                             </div>
 							<script>
