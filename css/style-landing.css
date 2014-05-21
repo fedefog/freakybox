@@ -183,10 +183,10 @@ section {
 
 .quick-start #start {
 	border:none;
-	font-family: 'SohoStd-Light', Helvetica;
+	font-family: 'SohoStd-Bold', Helvetica;
 	color:#FFF;
 	background:#4A97B8;
-	font-size: 20px;
+	font-size: 17px;
 	height: 50px;
 	box-sizing: border-box;
 	width:170px;
@@ -196,6 +196,11 @@ section {
 	line-height: 50px;
 	text-align:center;
 	text-decoration:none;
+	letter-spacing: 1px;
+}
+
+.quick-start #start:hover {
+	background: #4184A1;
 }
 
 .quick-start #free {
@@ -671,9 +676,11 @@ section {
 
 #video-footer {
 	background:url(images-landing/video2.jpg);
-	height:400px;
-	width:100%;
-	position:relative;
+	height: 670px;
+	width: 100%;
+	position: relative;
+	background-size: cover;
+
 }
 
 #video-footer a {
@@ -815,11 +822,23 @@ a#registro {
 	border-radius: 5px;
 }
 
+a#registro:hover {
+	background: #39758F;
+}
+
 a#inicio-sesion {
 	background:#F96159;
 	margin-right: 0;
 	box-shadow: 0px 3px #CB5E55;
 	border-radius: 5px;
+}
+
+a#inicio-sesion:hover {
+	background: #D6544C;
+}
+
+.actions a:hover {
+	text-decoration: none;
 }
 
 .learn-more {
@@ -834,6 +853,11 @@ a#inicio-sesion {
 	color:#FFF;
 	text-align: center;
 	line-height: 65px;
+}
+
+.learn-more:hover {
+	text-decoration: none;
+	color: #FFF;
 }
 
 /* MEDIA QUERIES */

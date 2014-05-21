@@ -37,11 +37,11 @@
 
     <section id="home" class="scrollsections">
         <div class="section-content">
-            <div class="description">Freakybox es una aplicación simple, rápida, potente en gestión de proyectos para equipos creativos.</div>
-            <div class="title">Gestión de Proyectos Online<br>El mejor Camino</div>
+            <div class="description">Freakybox es una aplicación web simple, intuitiva y potente para la efectiva gestión de tareas & equipos.</div>
+            <div class="title">Tus Proyectos y Equipos,<br>donde sea.</div>
             <div class="quick-start">
                 <form>
-                    <input type="text" class="email" name="email" placeholder="name@company.com">
+                    <input type="text" class="email" name="email" placeholder="nombre@empresa.com">
                     <a data-toggle="modal" href="#modal-register" role="menuitem" tabindex="-1" id="start" title="Comenzar">Comenzar</a>
                     <div id="free"></div>
                 </form>
@@ -177,34 +177,36 @@ You can try every plan 15-day free. <span>Enjoy it!</span></div>
                 <div class="plan">
                     <div class="type">Starter</div>
                     <div class="number"><img src="../images/gratis-plan.png" alt="Gratis" title="Gratis"></div>
-                    <div class="users">7 Usuarios</div>
-                    <div class="description">small teams and stratups</div>
+                    <div class="users">5 Usuarios/equipo</div>
+                    <div class="description">10 Usuarios en total
+en todo el sistema, para equipos chicos y startups.</div>
                     <div class="try"><a href="" title="Probar Ahora">PROBAR AHORA</a></div>
                 </div><!-- / plan -->
                 <div class="plan">
                     <div class="type">Team</div>
-                    <div class="number"><span class="peso">$</span>19<span class="mes">/mes</span></div>
-                    <div class="users">100 Usuarios</div>
-                    <div class="description">smart business team expansion</div>
+                    <div class="number"><span class="peso">$</span>30<span class="mes">/mes</span></div>
+                    <div class="users">30 Usuarios Totales</div>
+                    <div class="description">Hasta 5 usuarios por equipo. Equipos en expansion.</div>
                     <div class="try"><a href="" title="Probar Ahora">PROBAR AHORA</a></div>
                 </div><!-- / plan -->
                 <div class="plan">
                     <div class="type">Bussiness</div>
-                    <div class="number"><span class="peso">$</span>45<span class="mes">/mes</span></div>
-                    <div class="users">100 Usuarios</div>
-                    <div class="description">manage multiple teams</div>
+                    <div class="number"><span class="peso">$</span>60<span class="mes">/mes</span></div>
+                    <div class="users">100 Usuarios Totales</div>
+                    <div class="description">Hasta 5 usuarios por equipo. Equipos grandes.</div>
                     <div class="try"><a href="" title="Probar Ahora">PROBAR AHORA</a></div>
                 </div><!-- / plan -->
                 <div class="plan">
                     <div class="type">Enterprise</div>
                     <div class="number"><span class="peso">$</span>99<span class="mes">/mes</span></div>
-                    <div class="users">100 Usuarios</div>
-                    <div class="description">large teams</div>
+                    <div class="users">Ilimitado</div>
+                    <div class="description">Usuarios por equipo ilimitado. Usuarios totales ilimitados.
+Coorporativos.</div>
                     <div class="try"><a href="" title="Probar Ahora">PROBAR AHORA</a></div>
                 </div><!-- / plan -->
             </div><!-- / plans -->
             <div class="sign-up-free">
-                <a href="" title="">SIGNUP NOW!<span>15 DAYS FREE - UNLIMITED</span></a>
+                <a href="" title="">REGISTRATE!<span>15 DÍAS GRATIS - ILIMITADO</span></a>
             </div><!-- / sign up -->
         </div><!-- / section content -->
 </section>
@@ -225,22 +227,22 @@ You can try every plan 15-day free. <span>Enjoy it!</span></div>
                 <ul>
                 <li>Product</li>
                 <li><a href="" title="">Tour</a></li>
-                <li><a href="" title="">Pricing</a></li>
-                <li><a href="" title="">Privacy</a></li>
-                <li><a href="" title="">Terms</a></li>
+                <li><a href="" title="">Precios</a></li>
+                <li><a href="" title="">Privacidad</a></li>
+                <li><a href="" title="">Terminos</a></li>
                 </ul>
                 <ul>
                 <li>Company</li>
-                <li><a href="" title="">About Us</a></li>
+                <li><a href="" title="">Sobre Nosotros</a></li>
                 <li><a href="" title="">Blog</a></li>
-                <li><a href="" title="">Contact</a></li>
+                <li><a href="" title="">Contacto</a></li>
                 </ul>
                 <ul>
                 <li>Users</li>
-                <li><a href="" title="">Sign In</a></li>
-                <li><a href="" title="">Support</a></li>
+                <li><a href="" title="">Registrate</a></li>
+                <li><a href="" title="">Soporte</a></li>
                 <li><a href="" title="">FAQs</a></li>
-                <li><a href="" title="">Testimonials</a></li>
+                <li><a href="" title="">Testimonios</a></li>
                 </ul>
                 <ul>
                 <li>Follow</li>
@@ -256,8 +258,8 @@ You can try every plan 15-day free. <span>Enjoy it!</span></div>
         </div><!-- / footer content -->
         <div class="super-footer">
             <div class="middle">
-                <div class="copy">Freaky Box Copyrighted ©2013 All rights reserved.</div>
-                <div class="developed"><span>Developed by</span> <a href="" title="Studio Hakuna"></a></div>
+                <div class="copy">FreakyBox Copyrighted ©2014 Todos los derechos reservados.</div>
+                <div class="developed"><span>Desarrollado por</span> <a href="" title="Studio Hakuna"></a></div>
             </div><!-- / middle -->
             <div class="clear"></div>
         </div><!-- / super footer -->    
