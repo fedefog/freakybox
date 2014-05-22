@@ -81,7 +81,7 @@
                                 <li class="divider"></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Profile</a></li>
                                 <li class="divider"></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Logout</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="?logout=1">Logout</a></li>
                               </ul>
                         </div><!-- / user profile -->
                         

@@ -11,7 +11,7 @@ $data['uri'] = $uri;
 
 // SESSION A LA FUERZA
 // @TODO
-$_SESSION['uid'] = 1;
+//$_SESSION['uid'] = 1;
 $usuario_id = intval($_SESSION['uid']);
 if($usuario_id == 0){
 	redirect('');
@@ -23,6 +23,10 @@ $task_id = $uri->segment(4);
 
 $data['project_id'] = $project_id;
 $data['task_id'] = $task_id;
+
+if($_GET['logout']){
+	$_SESSION['uid'] = 0;
+}
 
 if($usuario_id > 0){
 	$data['usuario'] = getRow("SELECT *, CONCAT_WS(' ', usuario_nombre, usuario_apellido) AS usuario_nombrecompleto FROM usuario WHERE usuario_id = $usuario_id");
