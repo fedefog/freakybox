@@ -178,7 +178,7 @@
                         <div class="module states projects-summary">
                         
                             <div class="title">
-                                <strong>Destacados</strong>Estado de Proyectos
+                                <strong>Destacados</strong> Estado de Proyectos
                                 <a class="right all-projects-states" href="#" title="All Projects States">Todos los Proyectos</a>
                             </div><!-- / title -->
 							
