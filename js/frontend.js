@@ -146,8 +146,11 @@ var Core = (function() {
 	var createTask = function(data){
 		console.log("Create Task:");
 		console.log(data);
+		
+		var count = $("#tasks .task").length + 1;
+		
 		var html = '<div class="task">';
-		html = html + '<div class="task-number">' + data.tarea_id + '</div>';
+		html = html + '<div class="task-number">' + count + '</div>';
         html = html + '<div class="task-state"><input type="checkbox" class="complete-task" value="' + data.tarea_id + '"></div>';
         html = html + '<div class="task-title">' + data.tarea_nombre + '</div>';
         html = html + '<div class="view-task"><a class="view-task-btn showtask" href="/ajax/task/' + data.tarea_id + '" role="menuitem" tabindex="-1" title="View Task"></a><a class="remove-task-btn" href="" data-id="' + data.tarea_id + '" title="Remove Task"></a></div>';
