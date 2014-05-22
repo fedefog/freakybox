@@ -276,11 +276,11 @@ if($uri->segment(1) == 'ajax'){
 			");
 		}
 		else{
+			$term = mysql_real_escape_string($_GET['term']);
 			$users = getResult("
 				SELECT usuario_id, usuario_nombre, usuario_apellido, usuario_email
 				FROM usuario
-				JOIN rel_usuariousuario ON rel_usuariousuario.fk_contacto_id = usuario.usuario_id
-				WHERE rel_usuariousuario.fk_usuario_id = '$usuario_id'
+				WHERE usuario_email LIKE '$term%' 
 				ORDER BY usuario.usuario_nombre ASC
 			");
 		}
