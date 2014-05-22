@@ -155,12 +155,23 @@
                     </div><!-- / row -->
                     <script type="">
 							$(document).ready(function(){
+								
 								$.ajax({
 									url: '/ajax/sidebar',
 									dataType: 'html',
 									success: function(data){
 										$('.workspace-wrapper').html(data);
 									}									
+								});
+								
+								$(document).on('click', '.delproject', function(e){
+									e.preventDefault();
+									var id = $(this).data('project');
+									var proyecto = {
+										proyecto_id: id
+									};
+									Frontend.deleteProject(proyecto);
+									$('.project-'+id).remove();
 								});
 							});
 						</script>

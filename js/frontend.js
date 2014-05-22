@@ -17,6 +17,7 @@ var Core = (function() {
 		
 		_socket.on('createTeam', createTeam);
 		_socket.on('createProject', createProject);
+		_socket.on('deleteProject', deleteProject);
 		_socket.on('createTask', createTask);
 		_socket.on('updateTask', updateTask);
 		_socket.on('commentTask', commentTask);
@@ -45,6 +46,12 @@ var Core = (function() {
 		//@TODO: Actualizar en algun lado.
 		//updateTask(data);
         _socket.emit('updateProject', data);
+    };
+    
+    Core.prototype.deleteProject = function(data) {
+		//@TODO: Actualizar en algun lado.
+		//updateTask(data);
+        _socket.emit('deleteProject', data);
     };
 	
 	Core.prototype.createTask = function(data) {
@@ -127,6 +134,12 @@ var Core = (function() {
 	
 	var updateProject = function(data){
 		console.log("Updated Project:");
+		console.log(data);
+	}
+	
+	var deleteProject = function(data){
+		$('.project-'+data.proyecto_id).remove();
+		console.log("Deleted Project:");
 		console.log(data);
 	}
 	

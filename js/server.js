@@ -149,6 +149,15 @@ io.sockets.on('connection', function (socket) {
 			socket.broadcast.emit('updateProject', data);
 		});
     });
+    
+    socket.on('deleteProject', function(data){					
+		connection.query('DELETE FROM proyecto WHERE proyecto_id = ?', data.proyecto_id, function(err, result) {
+			if (err) throw err;
+					
+			socket.emit('deleteProject', data);
+			socket.broadcast.emit('deleteProject', data);
+		});
+    });
 	
 	socket.on('createTask', function(data){					
 		var ini = data.inicio.split('/');

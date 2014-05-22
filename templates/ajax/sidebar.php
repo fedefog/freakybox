@@ -19,14 +19,14 @@
 		</a>
 		<ul id="team-<?php echo $team['team_id']; ?>" class="projects-team">
 		<?php foreach($team['proyectos'] as $proyecto){ ?>
-			<li>
+			<li class="project project-<?php echo $proyecto['proyecto_id']; ?>">
 				<a href="/dashboard/<?php echo $team['team_id']; ?>/<?php echo $proyecto['proyecto_id']; ?>" title=""><?php echo $proyecto['proyecto_nombre']; ?></a>
 				<div class="dropdown project-options">
 					<a data-toggle="dropdown" class="options-arrow" href="#"></a>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 							<li role="presentation"><a href="">Archive Project</a></li>
 							<li class="divider"></li>
-							<li role="presentation"><a href="">Delete Project</a></li>
+							<li role="presentation"><a class="delproject" href="" data-project="<?php echo $proyecto['proyecto_id']; ?>">Delete Project</a></li>
 						</ul>
 				</div><!-- / dropdown -->
 			</li>
