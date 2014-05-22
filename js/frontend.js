@@ -129,7 +129,7 @@ var Core = (function() {
 		percent = percent + '	</div><!-- / project State -->';
 		percent = percent + '</a>';
 		
-		$('.projects-summary').append(percent);
+		$('.other-projects-states').append(percent);
     };
 	
 	var updateProject = function(data){
