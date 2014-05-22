@@ -55,7 +55,7 @@
                     <div class="buttons left">
                 
                         <div class="dropdown add-new">
-                          <a data-toggle="dropdown" class="btn" href="#">Add New<span></span></a>
+                          <a data-toggle="dropdown" class="btn" href="#">Crear Nuevo<span></span></a>
                           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                          	 <span class="caret"></span>
                             <li role="presentation"><a data-toggle="modal" href="#modal-create-team" role="menuitem" tabindex="-1">Crear Equipo</a></li>
@@ -178,8 +178,8 @@
                         <div class="module states projects-summary">
                         
                             <div class="title">
-                                <strong>Featured</strong> Projects States
-                                <a class="right all-projects-states" href="#" title="All Projects States">All Projects States</a>
+                                <strong>Destacados</strong>Estado de Proyectos
+                                <a class="right all-projects-states" href="#" title="All Projects States">Todos los Proyectos</a>
                             </div><!-- / title -->
 							
                         
@@ -208,7 +208,7 @@
                             <div class="row">
                         
                                 <div class="title">
-                                    <strong>Latest</strong> Teams Updates
+                                    <strong>Últimos</strong> Updates de tu Equipo
                                     <div class="options dropdown">
                                         <a data-toggle="dropdown" class="btn" href="#"></a>
                                           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -251,25 +251,18 @@
                 
                 <div class="shortcodes left">
                 
-                    <span><strong>SOME MAGIC</strong> SHORTCODES</span>  
-                    <ul>
-                        <li><strong>Tab+Q</strong> Quick Add</li>
-                        <li><strong>Tab+bksp</strong>  Delete Task</li>
-                        <li><strong>Tab+DownArrow</strong> Move Down</li>
-                        <li><strong>Tab+Enter</strong> Mark Complete</li>
-                        <li><a href="" title="More Shortcodes">+More</a></li>
-                    </ul>
+                    <span>COPYRIGHT©TODOS LOS DERECHOS RESERVADOS. FREAKYBOX  • 2014</span>  
                     
                 </div><!-- / shortcodes -->
                 
                 <div class="nav-footer right">
                     <ul>      
-                        <li><a href="" title="ABOUT">ABOUT</a></li>
+                        <li><a href="" title="ABOUT">NOSOTROS</a></li>
                         <li><a href="" title="BLOG">BLOG</a></li>
-                        <li><a href="" title="TERMS">TERMS</a></li>
-                        <li><a href="" title="PRIVACY">PRIVACY</a></li>
-                        <li><a href="" title="HELP">HELP</a></li>
-                        <li><a href="" title="CONTACT">CONTACT</a></li>
+                        <li><a href="" title="TERMS"> TERMINOS Y CONDICIONES </a></li>
+                        <li><a href="" title="PRIVACY">PRIVACIDAD</a></li>
+                        <li><a href="" title="HELP">AYUDA</a></li>
+                        <li><a href="" title="CONTACT">CONTACTO</a></li>
                     </ul>
                 </div><!-- / nav footer -->
             
