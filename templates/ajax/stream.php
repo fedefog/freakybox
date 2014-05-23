@@ -8,7 +8,7 @@
 				<?php echo $update['tarea_nombre']; ?>
 			</div><!-- / task update title -->
 			
-			<a class="view-task-btn right" data-toggle="modal" href="#modal-task" role="menuitem" tabindex="-1"></a>
+			<a class="view-task-btn right showtask" href="/ajax/task/<?php echo $update['tarea_id']; ?>"></a>
 			
 			<div class="project-name-update right">
 				<span class="label label-default" <?php echo ($update['proyecto_color'])?'style="background:#'.$update['proyecto_color'].';"':''?>><a class="edit-project" href="/ajax/project/<?php echo $update['proyecto_id']; ?>" role="menuitem" tabindex="-1"><?php echo $update['proyecto_nombre']; ?></a></span>
@@ -34,7 +34,7 @@
 				
 				<div class="date-update"><?php echo date('l \a\t H:i a', strtotime($update['actualizacion_fecha'])); ?>&middot;</div><!-- / date update -->
 				<div class="like-update"><a href="" title="like"></a></div><!-- / like update -->
-				<div class="follow-task right"><a href="" title="Follow Task">Follow Task</a></div>
+				<div class="follow-task right"><a href="" title="Follow Task">Seguir Tarea</a></div>
 				
 			</div><!-- / update body -->
 			
