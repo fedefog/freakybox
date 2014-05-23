@@ -7,7 +7,7 @@
 	<div class="team-content">
 		<div class="team-people">
 			<?php foreach($team['usuarios'] as $usuario_temp){ ?>
-			<a href="" class="">
+			<a href="/ajax/tasks/from/<?php echo $usuario_temp['usuario_id']; ?>" class="switchtasks">
 				<img src="<?php echo gravatar($usuario_temp['usuario_email'], 22); ?>" alt="User" title="<?php echo (!empty($usuario_temp['usuario_nombre']) || !empty($usuario_temp['usuario_apellido']))?$usuario_temp['usuario_nombre'].' '.$usuario_temp['usuario_apellido']:$usuario_temp['usuario_email']; ?>">
 			</a>
 			<?php } ?>

@@ -320,22 +320,38 @@ if($uri->segment(1) == 'ajax'){
 		if($uri->segment(3) == 'completed'){
 			$where .= "AND tarea.tarea_completada = '1'";
 		}
-		
-		if($uri->segment(4)){
-			$where .= "AND tarea.fk_proyecto_id = '".intval($uri->segment(4))."'";
+		if($uri->segment(3) == 'from'){
+			$responsable = intval($uri->segment(4));
+			$tasks = getResult("
+				SELECT tarea_id, tarea_nombre, tarea_fin, tarea_due, tarea_completada, proyecto_id, proyecto_nombre, proyecto_color 
+				FROM tarea 
+				JOIN proyecto ON proyecto.proyecto_id = tarea.fk_proyecto_id 
+				WHERE fk_responsable_id = '$responsable'
+				GROUP BY tarea.tarea_id 
+				ORDER BY tarea_completada, tarea_due ASC
+			");
+			$usr = getRow("SELECT usuario_nombre, usuario_apellido, CONCAT_WS(' ', usuario.usuario_nombre, usuario.usuario_apellido) AS usuario_nombrecompleto FROM usuario WHERE usuario_id = '$responsable'");
+			$data['pn'] = $usr['usuario_nombre'];
+			$data['tasks'] = $tasks;
+			$template = abs_path('templates/ajax/tasks.php');
 		}
-		
-		$tasks = getResult("
-			SELECT tarea_id, tarea_nombre, tarea_fin, tarea_due, tarea_completada, proyecto_id, proyecto_nombre, proyecto_color 
-			FROM tarea 
-			JOIN proyecto ON proyecto.proyecto_id = tarea.fk_proyecto_id 
-			$where
-			GROUP BY tarea.tarea_id 
-			ORDER BY tarea_completada, tarea_due ASC
-		");
-		
-		$data['tasks'] = $tasks;
-		$template = abs_path('templates/ajax/tasks.php');
+		else{
+			if($uri->segment(4)){
+				$where .= "AND tarea.fk_proyecto_id = '".intval($uri->segment(4))."'";
+			}
+			
+			$tasks = getResult("
+				SELECT tarea_id, tarea_nombre, tarea_fin, tarea_due, tarea_completada, proyecto_id, proyecto_nombre, proyecto_color 
+				FROM tarea 
+				JOIN proyecto ON proyecto.proyecto_id = tarea.fk_proyecto_id 
+				$where
+				GROUP BY tarea.tarea_id 
+				ORDER BY tarea_completada, tarea_due ASC
+			");
+			
+			$data['tasks'] = $tasks;
+			$template = abs_path('templates/ajax/tasks.php');
+		}
 	}
 	if($uri->segment(2) == 'task'){
 		$task_id = $uri->segment(3);
