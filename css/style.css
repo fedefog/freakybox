@@ -532,7 +532,7 @@ ul li {
 	margin-bottom: 10px;
 }
 
-.project-state.last {
+.project-state.last, .other-projects-states .edit-project.last .project-state  {
 	margin-right:0;
 }
 
@@ -667,7 +667,7 @@ ul li {
 
 .task {
 	width:100%;
-	border-top: 1px solid #ddd;
+	border-top: 1px solid #CCCCCC;
 	float:left;
 }
 
@@ -735,6 +735,8 @@ a.view-subtask:hover {
 	width: 50px;
 	text-align:center;
 	float:right!important;
+	font-size: 13px;
+	padding-top: 9px;
 }
 
 .task-project {
@@ -794,7 +796,8 @@ a.remove-task-btn {
 /* TASK STATES */ 
 
 .task.completed {
-	background:#D4D4D4;
+	background:#D9D9D9;
+	opacity: 0.8;
 }
 
 .task.completed .task-number {
@@ -802,7 +805,7 @@ a.remove-task-btn {
 }
 
 .task.completed {
-	color:#888888!important;
+	color:#919191!important;
 }
 
 .task.completed .task-project a, .task.completed .view-task-btn {
@@ -925,6 +928,7 @@ a.remove-task-btn {
 	float:left;
 	border-bottom: 1px solid #CCC;
 	width: 100%;
+	color: #666666;
 }
 
 .task-update-header{
@@ -950,6 +954,7 @@ a.remove-task-btn {
 	float: left;
 	background:url(images/bg-line-updates.jpg) repeat-y 25px center;
 	padding:0px 15px;
+	width: 100%;
 }
 
 .update-body {
@@ -959,7 +964,13 @@ a.remove-task-btn {
 }
 
 .update-content {
-	padding-bottom: 15px
+	padding-bottom: 15px;
+	color:#333333;
+}
+
+.task-update .name {
+	font-weight: bold;
+	color: #333333;
 }
 
 .update-content p {
@@ -986,7 +997,7 @@ a.remove-task-btn {
 }
 
 .follow-task a {
-	color:#333;
+	color:#666;
 }
 
 /* REPLY NOTIFICATION  */

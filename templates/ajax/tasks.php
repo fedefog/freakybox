@@ -1,7 +1,7 @@
 <div class="col-md-6 module">
     <div class="row">
         <div class="title">
-            <strong class="whotasks"><?php echo $pn; ?>'s</strong> Tasks
+            Tareas de <strong class="whotasks"><?php echo $pn; ?>'s</strong>
              <div class="options dropdown">
                 <a data-toggle="dropdown" class="btn" href="#"></a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">

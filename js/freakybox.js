@@ -8,6 +8,12 @@ $(document).ready(function() {
 	  e.preventDefault();
 	  $('.other-projects-states').toggleClass("visible");
     });
+
+	setTimeout(function() {
+    $('.other-projects-states .edit-project').filter(function(index){
+	 return (index%5 == 4);
+	}).addClass('last');
+	}, 1000);
 	
 	/* DESPLEGABLE PARA SUBTASKS */
 	
