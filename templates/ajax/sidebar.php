@@ -15,7 +15,7 @@
 		<span class="clearfix"></span>
 
 		<a class="add-project" data-toggle="modal" data-team="1" href="#modal-create-project" role="menuitem" tabindex="-1">
-			PROJECT
+			PROYECTO
 		</a>
 		<ul id="team-<?php echo $team['team_id']; ?>" class="projects-team">
 		<?php foreach($team['proyectos'] as $proyecto){ ?>

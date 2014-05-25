@@ -34,6 +34,18 @@
       <script src="/js/html5shiv.js"></script>
       <script src="/js/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+        body {
+            -webkit-transition: all 0.2s ease-in-out 0.5s;
+            -moz-transition: all 0.2s ease-in-out 0.5s;
+            -o-transition: all 0.2s ease-in-out 0.5s;
+            -ms-transition: all 0.2s ease-in-out 0.5s;
+            transition: all 0.2s ease-in-out 0.5s;
+            opacity: 0;
+            }
+    </style>
+
   </head>
 
   <body> 
@@ -46,7 +58,7 @@
                 
                 <div class="col-md-2 main-logo">
                     
-                   <h1><a href="#" title="Freakybox"><img src="/images/freaky-logo.png" alt="Freakybox Logo" title="Freakybox"></a></h1>
+                   <h1><a href="http://190.16.165.20:8282/dashboard" title="Freakybox"><img src="/images/freaky-logo.png" alt="Freakybox Logo" title="Freakybox"></a></h1>
                     
                 </div><!-- / col 2 -->
                 
@@ -77,16 +89,16 @@
                             <a data-toggle="dropdown" class="btn" href="#"><?php _e($usuario['usuario_nombrecompleto']); ?></a>
                               <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                               	<span class="caret"></span>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Settings</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Configuración</a></li>
                                 <li class="divider"></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Profile</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Perfil</a></li>
                                 <li class="divider"></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="?logout=1">Logout</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="?logout=1">Salir</a></li>
                               </ul>
                         </div><!-- / user profile -->
                         
                          <div class="notifications dropdown">
-                            <a data-toggle="dropdown" class="notification-btn" href="#"></a>
+                            <a data-toggle="dropdown" class="notification-btn" href="#"><span class="noti">3</span></a>
                               <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                               	<span class="caret"></span>
                                 <li role="presentation">
@@ -117,7 +129,7 @@
                         </div><!-- / notifications -->
                         
                         <div class="upgrade-plan right">
-                            <button type="button" class="btn">Upgrade Plan</button>
+                            <button type="button" class="btn">Mejorar Plan</button>
                         </div><!-- / calendar -->
                         
                         <div class="calendar right">
@@ -284,20 +296,20 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title">Create Team</h4>
+                      <h4 class="modal-title">Crear Equipo</h4>
                     </div>
                     <div class="modal-body">
                       <form class="form-horizontal" role="form">
                           <div class="form-group">
-                            <label for="team-name" class="col-lg-3 control-label">Team Name</label>
+                            <label for="team-name" class="col-lg-3 control-label"> Nombre del Equipo</label>
                             <div class="col-lg-9">
-                              <input type="text" name="team" class="form-control" id="team-name" placeholder="Team Name">
+                              <input type="text" name="team" class="form-control" id="team-name" placeholder="Nombre del Equipo">
                             </div>
                           </div>
                           <div class="form-group">
-                            <label for="team-name" class="col-lg-3 control-label">Team Members</label>
+                            <label for="team-name" class="col-lg-3 control-label">Miembros</label>
                             <div class="col-lg-9">
-                              <input type="text" class="form-control tagsearch" id="user-name" placeholder="User or E-mail">
+                              <input type="text" class="form-control tagsearch" id="user-name" placeholder="Usuario o E-mail">
 							  <div class="tagholder">
 							  </div>
                             </div>
@@ -406,25 +418,25 @@
 								});
 							</script>
                           <div class="form-group">
-                          	<label for="team-privacy" class="col-lg-3 control-label">Team Privacy</label>
+                          	<label for="team-privacy" class="col-lg-3 control-label">Privacidad</label>
                             <div class="col-lg-9">
                               <div class="radio">
                               	<label>
                                 <input type="radio" name="private" id="optionsRadios1" value="0" checked>
-                                Public
+                                Publico
                                 </label>
                                 </div>
                                 <div class="radio">
                                 <label>
                                 <input type="radio" name="private" id="optionsRadios2" value="1">
-                                Private
+                                Privado
                                 </label>
                               </div>
                             </div>
                           </div>
                           <div class="form-group">
                             <div class="col-lg-offset-3 col-lg-9">
-                              <button type="submit" class="btn btn-default btn-submit">Create New Team</button>
+                              <button type="submit" class="btn btn-default btn-submit">Crear Nuevo Equipo</button>
                             </div>
                           </div>
                     </form>
@@ -762,5 +774,6 @@
      </div><!-- / wrap --> 
 	<ul class="notify">
 	</ul>
+    <style>body{opacity: 1;}</style>
   </body>
 </html>

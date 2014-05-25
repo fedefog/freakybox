@@ -1,7 +1,7 @@
 <div class="col-md-6 module">
     <div class="row">
         <div class="title">
-            Tareas de <strong class="whotasks"><?php echo $pn; ?>'s</strong>
+            Tareas de <strong class="whotasks"><?php echo $pn; ?></strong>
              <div class="options dropdown">
                 <a data-toggle="dropdown" class="btn" href="#"></a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -48,7 +48,7 @@
 			<?php foreach($tasks as $task){ ?>
         	<div class="task <?php echo ($task['tarea_completada'])?'completed':'';?>">
                 <div class="task-number"><?php echo $fake_id; ?></div>
-                <div class="task-state"><input type="checkbox" class="complete-task" value="<?php echo $task['tarea_id']; ?>" <?php echo ($task['tarea_completada'])?'checked="checked"':'';?>></div>
+                <div class="task-state"><input type="checkbox" id="ch_<?php echo $task['tarea_id']; ?>" class="complete-task" value="<?php echo $task['tarea_id']; ?>" <?php echo ($task['tarea_completada'])?'checked="checked"':'';?>><label for="ch_<?php echo $task['tarea_id']; ?>"></label></div>
                 <div class="task-title"><?php echo $task['tarea_nombre']; ?></div>
                 <div class="view-task"><a class="view-task-btn showtask" href="/ajax/task/<?php echo $task['tarea_id']; ?>" role="menuitem" tabindex="-1" title="View Task"></a><a class="remove-task-btn" data-id="<?php echo $task['tarea_id']; ?>" title="Remove Task"></a></div>
                 <div class="task-due-date"><?php echo date('d M', strtotime($task['tarea_fin'])); ?></div>
@@ -89,7 +89,7 @@
         </div><!-- / tasks -->
         
           <div class="add-new-task-btn">
-          	<a class="add-new-task" data-toggle="modal" href="#modal-create-task" role="menuitem" tabindex="-1">ADD NEW TASK</a>
+          	<a class="add-new-task" data-toggle="modal" href="#modal-create-task" role="menuitem" tabindex="-1">NUEVA TAREA</a>
           </div><!-- / add new task btn -->  
         
     </div><!-- / row -->    
@@ -151,7 +151,7 @@
 	});
 </script>
 
-<div class="modal fade" id="modal-task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade full" id="modal-task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			
