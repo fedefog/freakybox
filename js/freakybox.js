@@ -7,6 +7,13 @@ $(document).ready(function() {
 	$('.carousel').carousel({
 	  interval: false
 	})
+
+	/* Like bt */
+	
+	$('.like-update a').click(function (e) {
+	  e.preventDefault();
+	  $(this).toggleClass("active");
+    });
 		
 	/* DESPLEGABLE PARA PROJECTS STATES */
 	
