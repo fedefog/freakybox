@@ -1,6 +1,12 @@
 // JavaScript Document of Freakybox
 
 $(document).ready(function() {
+
+	/* CAROUSEL */
+
+	$('.carousel').carousel({
+	  interval: false
+	})
 		
 	/* DESPLEGABLE PARA PROJECTS STATES */
 	

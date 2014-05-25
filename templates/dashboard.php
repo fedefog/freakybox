@@ -78,7 +78,7 @@
                           </ul>
                         </div><!-- / dropdown -->
                         
-                        <a href="#" class="btn team-builder" title="Team Builder">Team Builder</a>
+                        <a data-toggle="modal" href="#modal-teambuilder" class="btn team-builder" title="Team Builder">Team Builder</a>
                     
                     </div><!-- / buttons -->
                     
@@ -768,6 +768,48 @@
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
               </div><!-- /.modal -->
+
+              <div class="modal fade" id="modal-teambuilder" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      
+                        <div id="carousel-example-generic" class="carousel slide carousel-fade" data-ride="carousel">
+
+                          <!-- Wrapper for slides -->
+                          <div class="carousel-inner">
+                            <div class="item active">
+                              <img src="http://hakuna.com.ar/projects/freakybox/teambuilder-1.png">
+                            </div><!-- item -->
+                            <div class="item">
+                              <img src="http://hakuna.com.ar/projects/freakybox/teambuilder-2.png">
+                            </div><!-- item -->
+                            <div class="item">
+                              <img class="img-top" src="http://hakuna.com.ar/projects/freakybox/teambuilder-3-top.png">
+                              <div class="scroll"><img src="http://hakuna.com.ar/projects/freakybox/teambuilder-3.jpg"></div>
+                              <img class="img-bottom" src="http://hakuna.com.ar/projects/freakybox/teambuilder-3-bottom.png">
+                            </div><!-- item -->
+                            <div class="item">
+                              <img src="http://hakuna.com.ar/projects/freakybox/teambuilder-4.png">
+                            </div><!-- item -->
+                            <div class="item">
+                              <img src="http://hakuna.com.ar/projects/freakybox/teambuilder-5.png">
+                            </div><!-- item -->
+                          </div><!-- / inner ->
+
+                          <!-- Controls -->
+                          <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                          </a>
+                          <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                          </a>
+                        </div>
+
+                    </div><!-- modal body -->
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
     
         </div> <!-- /container -->
         

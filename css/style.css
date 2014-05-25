@@ -1240,6 +1240,86 @@ th.prev, th.next, td.day {
 	display: block;
 }
 
+#modal-teambuilder .modal-dialog {
+	width: 812px;
+}
+
+#modal-teambuilder .modal-body {
+	padding: 0;
+}
+
+.carousel.carousel-fade .item {
+	-webkit-transition: opacity 0.5s ease-in-out;
+	-moz-transition: opacity 0.5s ease-in-out;
+	-ms-transition: opacity 0.5s ease-in-out;
+	-o-transition: opacity 0.5s ease-in-out;
+	transition: opacity 0.5s ease-in-out;
+	opacity:0;
+	height: 467px;
+}
+
+.carousel.carousel-fade .active.item {
+	opacity:1;
+}
+
+.carousel.carousel-fade .active.left,
+.carousel.carousel-fade .active.right {
+	left: 0;
+	z-index: 2;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+
+.carousel.carousel-fade .next,
+.carousel.carousel-fade .prev {
+	left: 0;
+	z-index: 1;
+}
+
+.carousel.carousel-fade .carousel-control {
+	z-index: 3;
+}
+
+.carousel .img-bottom {
+	position: absolute;
+	z-index: 2;
+	bottom: 0;
+}
+
+.carousel div.scroll {
+	height: 384px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.left.carousel-control {
+	display: none;
+}
+
+.left.carousel-control {
+	display: none;
+}
+
+.right.carousel-control {
+	position: absolute;
+	top: 331px;
+	background: transparent;
+	bottom: 0;
+	left: auto;
+	width: 320px;
+	right: 39px;
+	font-size: 20px;
+	color: #fff;
+	text-align: center;
+	text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+	opacity: .5;
+	filter: alpha(opacity=50);
+	height: 48px;
+}
+
+.right.carousel-control span {
+	display: none;
+}
 
 @media (max-width: 1432px) {
 
@@ -1251,7 +1331,7 @@ th.prev, th.next, td.day {
 
 @media (max-width: 1280px) {
 	.task-title {
-	width: 262px;
+	width: 245px;
 	}
 
 }
