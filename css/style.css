@@ -586,6 +586,8 @@ span.noti {
 	width: 50%;
 	font-weight: lighter;
 	line-height: 130%;
+	max-height: 50px;
+	overflow-y: hidden;
 }
 
 .project-state .percentage {

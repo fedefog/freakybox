@@ -83,10 +83,11 @@ $(function(){
 		 if(($(this).width() >=768)) {
              $('.teams-updates').height($('body').height() -369);
 		 }
-		 /* codigo para arreglar el alto de los tasks 
+		 /* codigo para arreglar el alto de los tasks */
 		 if(($(this).width() >=768)) {
-             $('.list-tasks-generic').height($('body').height() -369);
-		 }*/
+		 	 var tasks_height = $('body').height() -352;
+             $('.list-tasks-generic').css({ maxHeight: tasks_height + 'px' })
+		 }
       })
       .resize();
 });
