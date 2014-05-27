@@ -51,7 +51,7 @@
                 <div class="task-state"><input type="checkbox" id="ch_<?php echo $task['tarea_id']; ?>" class="complete-task" value="<?php echo $task['tarea_id']; ?>" <?php echo ($task['tarea_completada'])?'checked="checked"':'';?>><label for="ch_<?php echo $task['tarea_id']; ?>"></label></div>
                 <div class="task-title"><?php echo $task['tarea_nombre']; ?></div>
                 <div class="view-task"><a class="view-task-btn showtask" href="/ajax/task/<?php echo $task['tarea_id']; ?>" role="menuitem" tabindex="-1" title="View Task"></a><a class="remove-task-btn" data-id="<?php echo $task['tarea_id']; ?>" title="Remove Task"></a></div>
-                <div class="task-due-date"><?php echo date('d M', strtotime($task['tarea_fin'])); ?></div>
+                <div class="task-due-date"><?php echo strftime('%e %b', strtotime($task['tarea_fin'])); ?></div>
                 <div class="task-project"><span class="label label-default"><a class="color-1 edit-project" <?php echo ($task['proyecto_color'])?'style="background:#'.$task['proyecto_color'].';"':''?> href="/ajax/project/<?php echo $task['proyecto_id']; ?>" tabindex="-1"><?php echo $task['proyecto_nombre']; ?></a></span></div>
             </div><!-- / task -->
             <?php $fake_id++; ?>

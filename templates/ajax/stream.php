@@ -32,7 +32,7 @@
 					<p><?php echo $update['actualizacion_contenido']; ?></p>
 				</div><!-- / update content -->
 				
-				<div class="date-update"><?php echo date('l \a\t H:i a', strtotime($update['actualizacion_fecha'])); ?>&middot;</div><!-- / date update -->
+				<div class="date-update"><?php echo strftime('%A a las %H:%M %P', strtotime($update['actualizacion_fecha'])); ?>&middot;</div><!-- / date update -->
 				<div class="like-update"><a href="" title="Me gusta"></a></div><!-- / like update -->
 				<div class="follow-task right"><a href="" title="Follow Task">Seguir Tarea</a></div>
 				
