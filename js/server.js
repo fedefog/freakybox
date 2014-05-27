@@ -208,7 +208,7 @@ io.sockets.on('connection', function (socket) {
 						fk_proyecto_id: data.proyecto_id,
 						fk_tarea_id : data.tarea_id,
 						fk_usuario_id: usuario_id,
-						actualizacion_contenido: 'Created this task'
+						actualizacion_contenido: 'Creó esta tarea.'
 					};
 					
 					socket.emit('commentTask', actualizacion);
@@ -256,7 +256,7 @@ io.sockets.on('connection', function (socket) {
 				fk_proyecto_id: data.proyecto_id,
 				fk_tarea_id : data.tarea_id,
 				fk_usuario_id: data.usuario_id,
-				actualizacion_contenido: 'Updated task information'
+				actualizacion_contenido: 'Actualizó esta tarea.'
 			};
 			
 			connection.query('INSERT INTO actualizacion SET ?', actualizacion, function(err, result) {

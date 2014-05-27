@@ -142,7 +142,7 @@
 			var tarea = {
 				tarea_id: id
 			};
-			var ask = confirm("Are you sure you want to delete this task?");
+			var ask = confirm("¿Está seguro de que desea eliminar esta tarea?");
 			if (ask == true){
 				Frontend.deleteTask(tarea);
 				el.closest('.task').hide('slow');
