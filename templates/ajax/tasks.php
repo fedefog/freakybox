@@ -96,6 +96,31 @@
 
 </div><!-- / col 6 -->
 
+<!-- Modal -->
+<div id="task-delete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">Borrar Tarea</h4>
+			</div>
+			<div class="modal-body">
+				¿Está seguro de que desea eliminar esta tarea?
+			</div>
+			<div class="modal-footer">
+				<button id="delete" type="button" class="btn btn-danger">
+					Borrar
+				</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">
+					Cancelar
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('body').on('click', '.complete-task', function(e){
@@ -135,18 +160,25 @@
 			});
 		});
 		
+		var task = '';
+		
 		$('body').on('click', '.remove-task-btn', function(e){
 			e.preventDefault();
-			var el = $(this);
-			var id = $(this).data('id');
+			task = $(this);
+			$('#task-delete').modal('show');
+		});
+				
+		$('#task-delete button#delete').click(function(e) {
+			e.preventDefault();
+			$('#task-delete').modal('hide');
+
+			var id = task.data('id');
 			var tarea = {
 				tarea_id: id
 			};
-			var ask = confirm("¿Está seguro de que desea eliminar esta tarea?");
-			if (ask == true){
-				Frontend.deleteTask(tarea);
-				el.closest('.task').hide('slow');
-			}			
+
+			Frontend.deleteTask(tarea);
+			task.closest('.task').hide('slow');
 		});
 	});
 </script>
